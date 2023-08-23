@@ -13,6 +13,7 @@ class Song(db.Model):
 
     # relationship attributes
     user = db.relationship("User", back_populates="songs")
+    comments = db.relationship("Comment", back_populates="song", cascade="all, delete-orphan")
     song_likes = db.relationship(
         "User",
         secondary=likes,

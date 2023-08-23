@@ -13,7 +13,8 @@ class User(db.Model):
     password = db.Column(db.String(100), nullable=False)
 
     # relationship attributes
-    songs = db.relationship("Song", back_populates="user", cascade="all, delete-orphan")
+    songs = db.relationship("Song", back_populates="users", cascade="all, delete-orphan")
+    comments = db.relationship("Comment", back_populates="user", cascade="all, delete-orphan")
     user_likes = db.relationship(
         "Song",
         secondary=likes,
