@@ -6,10 +6,10 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import AllSongs from "./components/AllSongs";
-import OneSong from "./components/OneSong";
-import CreateSongForm from "./components/CreateSongForm";
-import EditSongForm from "./components/EditSongForm";
-import ManageSongs from "./components/ManageSongs";
+// import OneSong from "./components/OneSong";
+// import CreateSongForm from "./components/CreateSongForm";
+// import EditSongForm from "./components/EditSongForm";
+// import ManageSongs from "./components/ManageSongs";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ function App() {
           <Route exact path="/">
             <AllSongs />
           </Route>
-          <Route exact path="/songs/new">
+          {/* <Route exact path="/songs/new">
             <CreateSongForm />
           </Route>
           <Route exact path="/songs/user">
@@ -43,7 +43,7 @@ function App() {
           </Route>
           <Route exact path="/songs/:songId/edit">
             <EditSongForm />
-          </Route>
+          </Route> */}
         </Switch>
       )}
     </>

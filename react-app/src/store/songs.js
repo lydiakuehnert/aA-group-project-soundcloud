@@ -71,7 +71,7 @@ export const getSongsThunk = () => async dispatch => {
 
     if (res.ok) {
         const songs = await res.json();
-        dispatch(getSongsAction(songs.Songs))
+        dispatch(getSongsAction(songs))
     }
 };
 
