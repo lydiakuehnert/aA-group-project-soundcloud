@@ -1,0 +1,26 @@
+.song-card {
+    display: flex;
+    flex-direction: column;
+    width: 210px;
+}
+
+.song-card-link {
+    text-decoration: none;
+    color: black;
+}
+
+.song-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: small;
+}
+
+.song-card img {
+    height: 200px;
+    width: 100%;
+}
+
+.song-card h4 {
+    margin-top: 0;
+    ;
+}
