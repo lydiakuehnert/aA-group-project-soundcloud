@@ -1,5 +1,6 @@
 from .db import db
 from .like import likes
+from .db import add_prefix_for_prod
 
 
 class Song(db.Model):
@@ -7,7 +8,7 @@ class Song(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
     image = db.Column(db.String(250), nullable=False)
     audio = db.Column(db.String(255), nullable=False)
 
