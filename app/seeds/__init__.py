@@ -21,8 +21,9 @@ def seed():
         undo_comments()
         undo_songs()
         undo_users()
-    seed_users()
-    seed_songs()
+    users = seed_users()
+    print(users)
+    seed_songs(users)
     seed_comments()
 
     # Add other seed functions here

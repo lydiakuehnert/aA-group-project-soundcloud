@@ -1,25 +1,29 @@
 from app.models import db, Song, environment, SCHEMA
 from sqlalchemy.sql import text
+from random import choice, sample, randint
 
 # Adds a demo user, you can add other users here if you want
-def seed_songs():
+def seed_songs(all_users):
     song1 = Song(
         name='Song1',
         user_id=1,
         image='https://pngimg.com/d/number1_PNG14888.png',
-        audio='dummydata.mp4'
+        audio='dummydata.mp4',
+        song_likes=sample(all_users, randint(0, len(all_users)))
         )
     song2 = Song(
         name='Song2',
         user_id=2,
         image='https://media.istockphoto.com/id/968526968/photo/number-2-3d-clean-red-isolated-on-white.jpg?s=170667a&w=0&k=20&c=K7KpYAEeBWH-ZApToHHHZT6Ju7orQZE38mzMgqtLdPo=',
-        audio='dummydata.mp4'
+        audio='dummydata.mp4',
+        song_likes=sample(all_users, randint(0, len(all_users)))
         )
     song3 = Song(
         name='Song3',
         user_id=3,
         image='https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/NYCS-bull-trans-3.svg/2048px-NYCS-bull-trans-3.svg.png',
-        audio='dummydata.mp4'
+        audio='dummydata.mp4',
+        song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     db.session.add(song1)
