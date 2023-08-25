@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     lastname = db.Column(db.String(100))
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    songs = db.relationship("Song", back_populates="users", cascade="all, delete-orphan")
+    songs = db.relationship("Song", back_populates="user", cascade="all, delete-orphan")
     comments = db.relationship("Comment", back_populates="user", cascade="all, delete-orphan")
     user_likes = db.relationship(
         "Song",
@@ -46,7 +46,7 @@ class User(db.Model, UserMixin):
             "songs": [song.to_dict() for song in self.songs],
             "likes": len(self.user_likes)
         }
-    
+
     def to_dict_no_song(self):
         return {
             "id": self.id,
