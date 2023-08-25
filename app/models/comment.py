@@ -1,4 +1,4 @@
-from .db import db
+from .db import db, add_prefix_for_prod
 
 
 class Comment(db.Model):
@@ -6,8 +6,8 @@ class Comment(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String(2000), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    song_id = db.Column(db.Integer, db.ForeignKey("songs.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
+    song_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("songs.id")), nullable=False)
     createdAt = db.Column(db.Date, nullable=False)
 
     # relationship attributes
