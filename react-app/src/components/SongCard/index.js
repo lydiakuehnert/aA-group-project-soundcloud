@@ -9,7 +9,7 @@ export default function SongCard({ song }) {
         <div title={song.name} className="song-card">
             <NavLink className="song-card-link" exact to={`/songs/${song.id}`}>
                 <div>
-                    <img src={song.image} alt="song image"></img>
+                    <img src={song.image} alt="album of song"></img>
                 </div>
                 <div className="song-details">
                     <h3 className="song-track-name">{song.name}</h3>
