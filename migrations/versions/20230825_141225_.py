@@ -9,6 +9,10 @@ from alembic import op
 import sqlalchemy as sa
 
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
+
 # revision identifiers, used by Alembic.
 revision = '5f90a4ab210d'
 down_revision = 'ffdc0a98111c'
@@ -48,6 +52,10 @@ def upgrade():
         batch_op.add_column(sa.Column('firstname', sa.String(length=100), nullable=True))
         batch_op.add_column(sa.Column('lastname', sa.String(length=100), nullable=True))
 
+    if environment == "production":
+        op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
