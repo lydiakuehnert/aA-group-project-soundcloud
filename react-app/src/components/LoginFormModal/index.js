@@ -24,7 +24,7 @@ function LoginFormModal() {
   return (
     <div className="login-outer-box">
     <div className="login-box">
-      <h1>Log In</h1>
+      <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
