@@ -48,12 +48,14 @@ const editSongAction = (song) => {
     }
 }
 
-export const getUserSongsThunk = () => async dispatch => {
-    const res = await fetch('/api/songs/current')
+export const getSearchedSongsThunk = (query) => async dispatch => {
+    const res = await fetch(`/api/songs/search?=${query}`)
 
     if (res.ok) {
+        console.log(res)
         const songs = await res.json();
-        dispatch(getUserSongsAction(songs.Songs))
+        console.log(songs)
+        dispatch(getSongsAction(songs))
     }
 }
 

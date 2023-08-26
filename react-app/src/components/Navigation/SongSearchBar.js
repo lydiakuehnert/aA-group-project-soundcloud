@@ -9,7 +9,7 @@ export default function SongSearchBar() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        history.push(`/songs?=${searchTerm}`)
+        history.push(`/songs/search?=${searchTerm}`)
     }
 
     return (
