@@ -11,9 +11,8 @@ export default function SongCard({ song }) {
                 <div>
                     <img src={song.image} alt="album of song"></img>
                 </div>
-            <div className="song-play"><p><i class="fa-regular fa-circle-play fa-4x"></i></p></div>
+            <div className="song-play"><i class="fa-regular fa-circle-play fa-4x"></i></div>
 
-            <div className="song-play"><i class="fa-regular fa-circle-play fa-2xl"></i></div>
 
                 <div className="song-details">
                     <p className="song-track-name">{song.name}</p>
