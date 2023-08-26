@@ -1,7 +1,5 @@
 .song-card {
-    display: flex;
-    flex-direction: column;
-    width: 210px;
+    margin-bottom: 1em;
 }
 
 .song-card-link {
@@ -10,9 +8,11 @@
 }
 
 .song-details {
-    display: flex;
-    justify-content: space-between;
-    font-size: small;
+    margin-top: .3em;
+}
+
+.song-details > p {
+    margin: 0;
 }
 
 .song-card img {
@@ -21,7 +21,9 @@
     width: 180px;
 }
 
-.song-card h4 {
-    margin-top: 0;
 
+.artist-name {
+    font-size: .8em;
+    color:rgb(153, 153, 153);
+    padding-top: 3px;
 }

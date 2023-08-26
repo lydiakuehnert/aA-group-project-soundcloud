@@ -12,6 +12,7 @@ function Navigation({ isLoaded }){
 			<li>
 				<NavLink id="logo" exact to="/">LoudCloud</NavLink>
 			</li>
+			
 			{isLoaded && (
 				<li>
 					<ProfileButton user={sessionUser} />
