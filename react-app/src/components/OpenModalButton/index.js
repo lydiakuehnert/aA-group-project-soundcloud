@@ -25,6 +25,9 @@ function OpenModalButton({
       <button className='button-black' onClick={onClick}>{buttonText}</button>
     );
   }
+  return (
+      <button onClick={onClick}>{buttonText}</button>
+    );
 }
 
 export default OpenModalButton;
