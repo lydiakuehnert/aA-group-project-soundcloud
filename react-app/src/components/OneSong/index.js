@@ -45,9 +45,9 @@ export default function OneSong() {
                     </div> */}
                 </div>
             </div>
-            {/* <div className="comment-detail-box">
+            <div className="comment-detail-box">
                 <SongComments song={song} />
-            </div> */}
+            </div>
         </div>
     )
 }
