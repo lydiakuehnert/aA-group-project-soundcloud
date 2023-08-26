@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getCommentsThunk } from "../../store/comments";
-// import CommentPost from "../CommentPost";
+import CommentPost from "../CommentPost";
 import OpenModalButton from "../OpenModalButton";
 import DeleteComment from "../DeleteComment";
 import "./SongComments.css";
@@ -16,7 +16,7 @@ export default function SongComments({ song }) {
 
     useEffect(() => {
         dispatch(getCommentsThunk(song.id))
-    }, [dispatch])
+    }, [dispatch, song.id])
 
     if (!comments) return <p>Loading...</p>;
     if (!song) return <p>Loading...</p>;
@@ -24,12 +24,7 @@ export default function SongComments({ song }) {
 
     return (
         <div className="song-comments">
-            {/* {sessionUser && sessionUser.id !== song.user.id && !comments.find(comment => comment.user_id === sessionUser.id) &&
-                <OpenModalButton
-                    buttonText="Post Your Comment"
-                    className="modal-post-comment"
-                    modalComponent={<CommentPost song={song} />}
-                />} */}
+            {!sessionUser ? (<></>) : <CommentPost song={song}/>}
             {sessionUser && !comments.length && sessionUser.id !== song.user.id && <h5>Be the first to post a comment!</h5>}
             {comments.length > 0 && comments.slice().reverse().map(comment => {
                 const commentMonth = comment.createdAt.split("")[6]

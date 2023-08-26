@@ -36,7 +36,7 @@ export const getCommentsThunk = (songId) => async dispatch => {
 
 export const createCommentThunk = ({ songId, payload }) => async dispatch => {
     try {
-        const res = await fetch(`/api/songs/${songId}/comments`, {
+        const res = await fetch(`/api/comments/${songId}/new`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload)
