@@ -37,15 +37,15 @@ def upgrade():
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('song_id', sa.Integer(), nullable=False),
     sa.Column('createdAt', sa.Date(), nullable=False),
-    sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['song_id'], ['songs.id']),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id']),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('likes',
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('song_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['song_id'], ['songs.id']),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id']),
+    sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('user_id', 'song_id')
     )
     with op.batch_alter_table('users', schema=None) as batch_op:
