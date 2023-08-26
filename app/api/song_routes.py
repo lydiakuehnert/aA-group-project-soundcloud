@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, render_template
+from flask import Blueprint, jsonify, render_template, request
 from flask_login import login_required
 from app.models import User, Comment, Song
 from .AWS_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
@@ -20,6 +20,12 @@ def get_one_song(id):
     one_song = Song.query.get(id)
     return one_song.to_dict()
 
+@songs.route('/search')
+def get_searched_songs():
+    query = request.args.get('')
+    get_songs = Song.query.filter(Song.name.like(f'%{query}')).all()
+    response = [song.to_dict() for song in get_songs]
+    return response
 
 # @songs.route("/new", methods=["GET","POST"])
 # def create_new_song():
