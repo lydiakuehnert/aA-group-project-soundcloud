@@ -1,11 +1,15 @@
 /* TODO Add site wide styles */
+body {
+  margin: 0;
+}
+
 .button-orange {
     color: white;
     background-color: rgb(255, 75, 20);
     cursor: pointer;
     border: 0;
     border-radius: 3px;
-    padding: 5px;
+    padding: 8px;
   }
 
   .button-black {
@@ -14,7 +18,7 @@
     cursor: pointer;
     border: 1px solid white;
     border-radius: 3px;
-    padding: 5px;
+    padding: 8px;
   }
 
 

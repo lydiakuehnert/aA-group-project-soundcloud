@@ -9,7 +9,7 @@
 }
 
 #logo {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-decoration: none;
   color: rgb(219, 50, 75);
   font-family: 'Bungee', cursive;
@@ -17,11 +17,22 @@
 
 .nav-bar {
   display: flex;
-  justify-content: space-between;
-  margin: 10px;
-  padding: 20px;
+  justify-content: start;
+  align-items: center;
+  margin: 0 0 1em 0;
+  padding: 8px;
+  width: 100%;
   list-style-type: none;
   border-bottom: 1px solid rgb(172, 168, 168);
+  background-color: rgb(69, 69, 69);
+}
+
+.nav-bar > li {
+  margin-right: 1em;
+}
+
+.profile-button {
+  margin-left: auto;
 }
 
 .li-nav-bar {
@@ -79,8 +90,4 @@
   border-radius: 45%;
   padding: 10px 17px;
   cursor: pointer;
-}
-
-.login-button {
-  margin-bottom: 5px;
 }
