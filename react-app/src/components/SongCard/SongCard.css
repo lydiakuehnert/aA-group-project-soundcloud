@@ -16,11 +16,12 @@
 }
 
 .song-card img {
-    height: 200px;
-    width: 100%;
+    object-fit: cover;
+    height: 180px;
+    width: 180px;
 }
 
 .song-card h4 {
     margin-top: 0;
-    ;
+
 }

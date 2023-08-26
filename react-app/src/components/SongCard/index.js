@@ -12,8 +12,8 @@ export default function SongCard({ song }) {
                     <img src={song.image} alt="album of song"></img>
                 </div>
                 <div className="song-details">
-                    <h3 className="song-track-name">{song.name}</h3>
-                    <h3 className="artist-name">{song.user.username}</h3>
+                    <p className="song-track-name">{song.name}</p>
+                    <p className="artist-name">{song.user.username}</p>
                 </div>
             </NavLink>
         </div>
