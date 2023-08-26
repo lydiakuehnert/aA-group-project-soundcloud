@@ -12,7 +12,7 @@ function Navigation({ isLoaded }){
 
 	return (
 		<ul className='nav-bar'>
-			<li>
+			<li className="logo-li">
 				<NavLink id="logo" exact to="/">LoudCloud</NavLink>
 			</li>
 			
@@ -27,7 +27,7 @@ function Navigation({ isLoaded }){
 						modalComponent={<LoginFormModal />}
 					/>
 					</li>
-					<li>
+					<li className="signup-button">
 					<OpenModalButton
 						buttonText="Create Account"
 						modalComponent={<SignupFormModal />}
