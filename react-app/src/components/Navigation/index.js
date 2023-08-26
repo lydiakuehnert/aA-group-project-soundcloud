@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import SongSearchBar from "./SongSearchBar";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
@@ -15,7 +16,10 @@ function Navigation({ isLoaded }){
 			<li className="logo-li">
 				<NavLink id="logo" exact to="/">LoudCloud</NavLink>
 			</li>
-			
+			<li className='searchbar-li'>
+				<SongSearchBar id='searchbar' />
+			</li>
+
 			{sessionUser ? (
 				<></>
 
