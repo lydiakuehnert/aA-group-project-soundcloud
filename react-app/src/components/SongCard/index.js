@@ -13,6 +13,8 @@ export default function SongCard({ song }) {
                 </div>
             <div className="song-play"><p><i class="fa-regular fa-circle-play fa-4x"></i></p></div>
 
+            <div className="song-play"><i class="fa-regular fa-circle-play fa-2xl"></i></div>
+
                 <div className="song-details">
                     <p className="song-track-name">{song.name}</p>
                     <p className="artist-name">{song.user.username}</p>
