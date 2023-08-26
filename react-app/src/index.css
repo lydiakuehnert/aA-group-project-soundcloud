@@ -1,1 +1,36 @@
 /* TODO Add site wide styles */
+body {
+  margin: 0;
+  background-color: gainsboro;
+}
+
+#root {
+  width: 1240px;
+  height: 100%;
+  margin: auto;
+  background-color: white;
+}
+
+.button-orange {
+    color: white;
+    background-color: rgb(255, 75, 20);
+    cursor: pointer;
+    border: 0;
+    border-radius: 3px;
+    padding: 8px;
+  }
+
+  .button-black {
+    color: white;
+    background-color: rgb(69, 69, 69);
+    cursor: pointer;
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 8px;
+  }
+
+
+  .errors {
+    color: red;
+    margin: 0;
+}

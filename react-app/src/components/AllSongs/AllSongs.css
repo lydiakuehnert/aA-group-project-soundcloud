@@ -1,7 +1,8 @@
 .all-songs {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin: 0 50px;
-    justify-content: start;
+    gap: 15px;
+    width: 1240px;
+    margin: auto;
+    justify-content: center;
 }
