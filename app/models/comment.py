@@ -1,8 +1,12 @@
-from .db import db, add_prefix_for_prod
+from .db import db, environment, SCHEMA, add_prefix_for_prod
+from flask_login import UserMixin
 
 
-class Comment(db.Model):
+class Comment(db.Model, UserMixin):
     __tablename__ = 'comments'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String(2000), nullable=False)
