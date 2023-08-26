@@ -21,6 +21,11 @@ function LoginFormModal() {
     }
   };
 
+  const loginDemo = (e) => {
+    e.preventDefault();
+    dispatch(login('demo@aa.io', 'password')).then(closeModal())
+  }
+
   return (
     <div className="login-outer-box">
     <div className="login-box">
@@ -53,6 +58,7 @@ function LoginFormModal() {
         </label>
         
         <button id="login-button" className='button-orange' type="submit">Log In</button>
+        <button id="login-demo" className='button-orange' onClick={loginDemo} >Demo User</button>
       </form>
       </div></div>
   );
