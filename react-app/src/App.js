@@ -6,7 +6,7 @@ import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import AllSongs from "./components/AllSongs";
-// import OneSong from "./components/OneSong";
+import OneSong from "./components/OneSong";
 // import CreateSongForm from "./components/CreateSongForm";
 // import EditSongForm from "./components/EditSongForm";
 // import ManageSongs from "./components/ManageSongs";
@@ -37,11 +37,11 @@ function App() {
           </Route>
           <Route exact path="/songs/user">
             <ManageSongs />
-          </Route>
+          </Route> */}
           <Route exact path="/songs/:songId">
             <OneSong />
           </Route>
-          <Route exact path="/songs/:songId/edit">
+          {/* <Route exact path="/songs/:songId/edit">
             <EditSongForm />
           </Route> */}
         </Switch>
