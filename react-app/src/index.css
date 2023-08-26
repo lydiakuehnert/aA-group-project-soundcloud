@@ -33,4 +33,5 @@ body {
   .errors {
     color: red;
     margin: 0;
-}
+    list-style: none;
+  }
