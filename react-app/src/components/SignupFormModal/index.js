@@ -30,8 +30,9 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
-			<h1>Sign Up</h1>
+		<div className="signup-outer-box">
+		<div className="signup-box">
+			<h1>Create your LoudCloud account</h1>
 			<form onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
@@ -39,8 +40,9 @@ function SignupFormModal() {
 					))}
 				</ul>
 				<label>
-					Email
 					<input
+          				className='signup-input'
+						placeholder="Email"
 						type="text"
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
@@ -48,8 +50,9 @@ function SignupFormModal() {
 					/>
 				</label>
 				<label>
-					Username
 					<input
+						className='signup-input'
+						placeholder="Username"
 						type="text"
 						value={username}
 						onChange={(e) => setUsername(e.target.value)}
@@ -57,8 +60,9 @@ function SignupFormModal() {
 					/>
 				</label>
 				<label>
-					Password
 					<input
+						className='signup-input'
+						placeholder="Password"
 						type="password"
 						value={password}
 						onChange={(e) => setPassword(e.target.value)}
@@ -66,17 +70,19 @@ function SignupFormModal() {
 					/>
 				</label>
 				<label>
-					Confirm Password
 					<input
+						className='signup-input'
+						placeholder="Confirm Password"
 						type="password"
 						value={confirmPassword}
 						onChange={(e) => setConfirmPassword(e.target.value)}
 						required
 					/>
 				</label>
-				<button type="submit">Sign Up</button>
+				<button id='signup-button' className='button-orange' type="submit">Sign Up</button>
 			</form>
-		</>
+		</div>
+		</div>
 	);
 }
 

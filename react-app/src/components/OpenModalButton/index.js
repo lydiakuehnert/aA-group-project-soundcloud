@@ -15,9 +15,16 @@ function OpenModalButton({
     if (onButtonClick) onButtonClick();
   };
 
-  return (
-    <button onClick={onClick}>{buttonText}</button>
-  );
+  if (buttonText === 'Create Account') {
+    return (
+      <button className='button-orange' onClick={onClick}>{buttonText}</button>
+    );
+  }
+  if (buttonText === 'Sign In') {
+    return (
+      <button className='button-black' onClick={onClick}>{buttonText}</button>
+    );
+  }
 }
 
 export default OpenModalButton;

@@ -1,10 +1,14 @@
-from .db import db
+from .db import db, environment, SCHEMA
 from .like import likes
 from .db import add_prefix_for_prod
+from flask_login import UserMixin
 
 
-class Song(db.Model):
+class Song(db.Model, UserMixin):
     __tablename__ = 'songs'
+
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)

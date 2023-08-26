@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
 .profile-dropdown {
   position: absolute;
 }
@@ -7,19 +9,37 @@
 }
 
 #logo {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-decoration: none;
   color: rgb(219, 50, 75);
+  font-family: 'Bungee', cursive;
+  
+}
+
+.logo-li {
+  position: absolute;
+  left: 15%;
 }
 
 .nav-bar {
   display: flex;
-  justify-content: space-between;
-  margin: 10px;
-  padding: 20px;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0 0 1em 0;
+  padding: 8px;
+  width: 100%;
   list-style-type: none;
   border-bottom: 1px solid rgb(172, 168, 168);
+  background-color: rgb(69, 69, 69);
 }
+
+.nav-bar > li {
+  margin-right: 1em;
+}
+/* 
+.signup-button{
+  margin-left: auto;
+} */
 
 .li-nav-bar {
   display: flex;
@@ -76,8 +96,4 @@
   border-radius: 45%;
   padding: 10px 17px;
   cursor: pointer;
-}
-
-.login-button {
-  margin-bottom: 5px;
 }
