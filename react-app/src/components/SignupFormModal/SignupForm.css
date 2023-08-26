@@ -1,0 +1,31 @@
+.signup-outer-box {
+    display: block;
+    text-align: center;
+}
+
+.signup-box {
+    display: flex;
+    border-radius: 25px;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+    width: 400px;
+  
+}
+
+
+.signup-input{
+    display: inline-block;
+    border: 2px solid black;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 350px;
+    margin-bottom: 0.5em;
+}
+
+#signup-button{
+    padding: 12px;
+    width: 350px;
+    margin: 15px;
+}
