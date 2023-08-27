@@ -16,7 +16,7 @@ export default function SongSearchBar() {
         <div>
             <form onSubmit={handleSubmit}>
                 <input
-                    type='text'
+                    type='search'
                     placeholder='Search for song name...'
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}

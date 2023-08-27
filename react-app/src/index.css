@@ -16,6 +16,10 @@ body {
   background-color: white;
 }
 
+.hidden {
+  display: none;
+}
+
 .button-orange {
     color: white;
     background-color: rgb(255, 75, 20);
