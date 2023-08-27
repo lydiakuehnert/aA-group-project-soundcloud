@@ -16,11 +16,15 @@ export default function SongSearchBar() {
         <div>
             <form onSubmit={handleSubmit}>
                 <input
+                    className="search-input"
                     type='search'
                     placeholder='Search for song name...'
+                    size='35'
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
+                {/* changing search button to magnifying glass */}
+                {/* <button className="search-button" type='submit'>Search</button> */}
             </form>
         </div>
     )

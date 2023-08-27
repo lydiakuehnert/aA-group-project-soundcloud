@@ -4,6 +4,9 @@
   position: absolute;
 }
 
+.fa-cloud-bolt {
+  color: rgb(219, 50, 75);
+}
 
 
 #logo {
@@ -95,3 +98,18 @@
   padding: 10px 17px;
   cursor: pointer;
 }
+
+.searchbar-li {
+  position: absolute;
+  left: 40%;
+}
+
+.search-input {
+  padding: 6px;
+  border-radius: 5px;
+  border: 0;
+}
+
+/* .search-button { 
+  background-image: ;
+} */
