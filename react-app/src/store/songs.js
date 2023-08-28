@@ -92,39 +92,9 @@ export const getLikedSongsThunk = () => async dispatch => {
     }
 };
 
-export const getLikedSongsThunk = () => async dispatch => {
-    try {
-        const res = await fetch('/api/likes')
-
-        if (res.ok) {
-            const songs = await res.json();
-            dispatch(getSongsAction(songs))
-        }
-    }
-    catch (e) {
-        const data = await e.json()
-        return data;
-    }
-};
-
-export const getLikedSongsThunk = () => async dispatch => {
-    try {
-        const res = await fetch('/api/likes')
-
-        if (res.ok) {
-            const songs = await res.json();
-            dispatch(getSongsAction(songs))
-        }
-    }
-    catch (e) {
-        const data = await e.json()
-        return data;
-    }
-};
-
 export const createSongThunk = (song, user) => async dispatch => {
     try {
-        const res = await fetch('/api/songs', {
+        const res = await fetch('/api/songs/upload', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(song)
@@ -146,7 +116,9 @@ export const createSongThunk = (song, user) => async dispatch => {
             console.log(newSong)
             return newSong;
         }
+        console.log('hapge')
     } catch (e) {
+        console.log('sadge')
         const data = await e.json()
         return data;
     }

@@ -21,6 +21,9 @@ function Navigation({ isLoaded }){
 			<li className='searchbar-li'>
 				<SongSearchBar id='searchbar' />
 			</li>
+			<li className="upload-button">
+				<NavLink exact to={`/upload`}><button>Upload</button></NavLink>
+			</li>
 
 			{sessionUser ? (
 				<></>
@@ -38,9 +41,6 @@ function Navigation({ isLoaded }){
 						buttonText="Create Account"
 						modalComponent={<SignupFormModal />}
 					/>
-					</li>
-					<li className="upload-button">
-						<NavLink exact to={`/upload`}><button>Upload</button></NavLink>
 					</li>
 				</>
 				)
