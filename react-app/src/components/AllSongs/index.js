@@ -15,7 +15,7 @@ export default function AllSongs() {
     }, [dispatch])
 
     return (
-        <div className="all-songs">
+        <div className="all-songs index">
             {songs.length > 0 && songs.map(song => (
                 <SongCard key={song.id} song={song} />
             ))}

@@ -21,7 +21,7 @@ export default function SongSearch() {
     }, [dispatch, searched])
 
     return (
-        <div className="all-songs">
+        <div className="all-songs index">
             {songs.length > 0 && songs.map(song => (
                 <SongCard key={song.id} song={song} />
             ))}

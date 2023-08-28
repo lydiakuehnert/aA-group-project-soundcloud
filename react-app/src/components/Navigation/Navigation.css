@@ -2,6 +2,8 @@
 
 .profile-dropdown {
   position: absolute;
+  z-index: 1000;
+  border: 1px solid gainsboro;
 }
 
 .fa-cloud-bolt {
@@ -26,7 +28,6 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin: 0 0 1em 0;
   padding: 8px;
   width: 100%;
   list-style-type: none;
