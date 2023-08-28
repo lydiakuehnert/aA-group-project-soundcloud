@@ -39,7 +39,7 @@ export default function SongUpload() {
     return (
         <>
             <h1>still buggy</h1>
-            <form onSubmit={handleSubmit}>
+            <form enctype="multipart/form-data" onSubmit={handleSubmit}>
                 <section>
                     <label>
                         Name
