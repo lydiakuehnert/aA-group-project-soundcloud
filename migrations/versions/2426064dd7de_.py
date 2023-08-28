@@ -1,8 +1,8 @@
-"""create users, songs, likes, and comments tables
+"""empty message
 
-Revision ID: ee4d3d1136c5
+Revision ID: 2426064dd7de
 Revises: 
-Create Date: 2023-08-28 16:23:07.920103
+Create Date: 2023-08-28 17:48:32.141075
 
 """
 from alembic import op
@@ -12,8 +12,9 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
+
 # revision identifiers, used by Alembic.
-revision = 'ee4d3d1136c5'
+revision = '2426064dd7de'
 down_revision = None
 branch_labels = None
 depends_on = None
