@@ -28,7 +28,7 @@ export default function EditComment({ comment, songId }) {
     return (
         <div className="edit-modal">
             <h2>Edit Comment</h2>
-            <input
+            <textarea
                 type="text"
                 placeholder="Write a comment"
                 value={input}
