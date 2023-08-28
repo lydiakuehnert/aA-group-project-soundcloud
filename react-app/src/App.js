@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import Player from "./components/Player";
 import AllSongs from "./components/AllSongs";
 import OneSong from "./components/OneSong";
 import SongSearch from "./components/SongSearch";
@@ -62,6 +63,7 @@ function App() {
           </Route> */}
         </Switch>
       )}
+      <Player isLoaded={isLoaded} />
     </>
   );
 }
