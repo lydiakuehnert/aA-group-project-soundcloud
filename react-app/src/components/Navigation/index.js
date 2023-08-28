@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import SongSearchBar from "./SongSearchBar";
+import SongUpload from "../SongUpload";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
@@ -36,6 +37,9 @@ function Navigation({ isLoaded }){
 						buttonText="Create Account"
 						modalComponent={<SignupFormModal />}
 					/>
+					</li>
+					<li className="upload-button">
+						<NavLink exact to={`/upload`}><button>Upload</button></NavLink>
 					</li>
 				</>
 				)
