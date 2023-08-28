@@ -77,27 +77,29 @@ export const getSongsThunk = () => async dispatch => {
     }
 };
 
-export const createSongThunk = (payload) => async dispatch => {
+export const createSongThunk = (song, user) => async dispatch => {
     try {
-        const { newSong, SongImages } = payload;
         const res = await fetch('/api/songs', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newSong)
+            body: JSON.stringify(song)
         })
 
         if (res.ok) {
-            const song = await res.json();
-            for (let i = 0; i < SongImages.length; i++) {
-                let img = SongImages[i]
-                await fetch(`/api/songs/${song.id}/images`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(img)
-                })
-            }
-            dispatch(createSongAction(song))
-            return song;
+            console.log('hit')
+            if (!user) throw new Error('Please log in to create a song')
+            const newSong = await res.json();
+            // for (let i = 0; i < SongImages.length; i++) {
+            //     let img = SongImages[i]
+            //     await fetch(`/api/songs/${song.id}/images`, {
+            //         method: 'POST',
+            //         headers: { 'Content-Type': 'application/json' },
+            //         body: JSON.stringify(img)
+            //     })
+            // }
+            dispatch(createSongAction(newSong))
+            console.log(newSong)
+            return newSong;
         }
     } catch (e) {
         const data = await e.json()
@@ -161,7 +163,7 @@ const songReducer = (state = initialState, action) => {
         }
         case CREATE_SONG: {
             newState = { ...state, allSongs: { ...state.allSongs }, singleSong: {} }
-            // newState.allSongs[action.song.id] = action.song;
+            newState.allSongs[action.song.id] = action.song;
             newState.singleSong = action.song;
             return newState
         }

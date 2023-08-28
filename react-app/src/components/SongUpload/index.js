@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
+import { createSongThunk } from '../../store/songs';
 
 export default function SongUpload() {
     const dispatch = useDispatch()
     const history = useHistory()
     const user = useSelector(state => state.session.user)
+    const user_id = user.id
     const [name, setName] = useState('')
     const [image, setImage] = useState('')
     const [audio, setAudio] = useState('')
+    const [errors, setErrors] = useState({})
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -22,9 +25,11 @@ export default function SongUpload() {
             setErrors(validationErrors)
         }
 
-        const song = { name, image, audio }
-
-        const newSong = await dispatch(createSong(song, user))
+        const song = { name, user_id, image, audio }
+        console.log('hit.')
+        const newSong = await dispatch(createSongThunk(song, user))
+        console.log('hit!')
+        console.log(newSong)
         history.push(`/songs/${newSong.id}`)
     }
 
@@ -32,7 +37,7 @@ export default function SongUpload() {
     return (
         <>
             <h1>form forming form</h1>
-            <form>
+            <form onSubmit={handleSubmit}>
                 <section>
                     <label>
                         Name
@@ -43,6 +48,7 @@ export default function SongUpload() {
                             onChange={(e) => setName(e.target.value)}
                         />
                     </label>
+                    {errors.name && <p>{errors.name}</p>}
                     <label>
                         Image
                         <input
@@ -52,6 +58,7 @@ export default function SongUpload() {
                             onChange={(e) => setImage(e.target.value)}
                         />
                     </label>
+                    {errors.image && <p>{errors.image}</p>}
                     <label>
                         Audio
                         <input
@@ -61,7 +68,9 @@ export default function SongUpload() {
                             onChange={(e) => setAudio(e.target.value)}
                         />
                     </label>
+                    {errors.audio && <p>{errors.audio}</p>}
                 </section>
+                <button type="submit">Create Song</button>
             </form>
         </>
     )

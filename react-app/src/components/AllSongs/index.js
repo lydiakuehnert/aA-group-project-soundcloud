@@ -21,9 +21,6 @@ export default function AllSongs() {
                     <SongCard key={song.id} song={song} />
                 ))}
             </div>
-            <div>
-                <h1>Top Songs of the Month</h1>
-            </div>
         </>
     )
 }
