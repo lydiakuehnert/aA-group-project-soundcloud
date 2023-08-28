@@ -7,8 +7,8 @@ def seed_songs(all_users):
     song1 = Song(
         name='Song1',
         user_id=1,
-        image='https://pngimg.com/d/number1_PNG14888.png',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Images/Untitled.png',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Audio/Chopin.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
     song2 = Song(
