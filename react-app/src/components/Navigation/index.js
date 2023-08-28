@@ -22,7 +22,7 @@ function Navigation({ isLoaded }){
 				<SongSearchBar id='searchbar' />
 			</li>
 			<li className="upload-button">
-				<NavLink exact to={`/upload`}><button>Upload</button></NavLink>
+				<NavLink exact to={`/upload`}><button>Upload (still wonky)</button></NavLink>
 			</li>
 
 			{sessionUser ? (

@@ -36,7 +36,7 @@ export default function SongUpload() {
 
     return (
         <>
-            <h1>form forming form</h1>
+            <h1>still buggy</h1>
             <form onSubmit={handleSubmit}>
                 <section>
                     <label>
