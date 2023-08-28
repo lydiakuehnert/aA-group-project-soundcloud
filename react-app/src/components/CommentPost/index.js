@@ -26,21 +26,21 @@ export default function CommentPost({ song }) {
             setErrors(result)
         } else {
             dispatch(getSongThunk(songId))
-            closeModal()
+            setInput("")
         }
     }
 
     return (
         <form onSubmit={handleSubmit} className="comment-form-box">
-            <h2>Comment</h2>
+            <i class="fa-solid fa-cloud-bolt fa-2x"></i>
             {Object.values(errors).length > 0 && <p className="errors">{errors.message}</p>}
-            <textarea
+            <input
                 type="text"
                 placeholder="Write a comment"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
             />
-            <button type="submit" disabled={input.length < 10}>Submit Your Comment</button>
+            <button type="submit">Submit</button>
         </form>
     )
 }
