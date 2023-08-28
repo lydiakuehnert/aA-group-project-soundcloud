@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { useHistory } from 'react-router-dom';
 import "./LoginForm.css";
 
 function LoginFormModal() {
@@ -10,6 +11,7 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { closeModal } = useModal();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,8 +20,16 @@ function LoginFormModal() {
       setErrors(data);
     } else {
         closeModal()
+        history.push('/');
+
     }
   };
+
+  const loginDemo = (e) => {
+    e.preventDefault();
+    
+    dispatch(login('demo@aa.io', 'password')).then(closeModal()).then(history.push('/'))
+  }
 
   return (
     <div className="login-outer-box">
@@ -28,13 +38,13 @@ function LoginFormModal() {
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li className='errors' key={idx}>{error.split(':')[1]}</li>
           ))}
         </ul>
         <label>
           <input
             className="input"
-            placeholder="Username or Email"
+            placeholder="Email"
             type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -53,6 +63,7 @@ function LoginFormModal() {
         </label>
         
         <button id="login-button" className='button-orange' type="submit">Log In</button>
+        <button id="login-demo" className='button-orange' onClick={loginDemo} >Demo User</button>
       </form>
       </div></div>
   );

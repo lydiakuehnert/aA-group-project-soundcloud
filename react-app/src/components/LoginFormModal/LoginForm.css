@@ -29,6 +29,13 @@
     padding: 12px;
     width: 376px;
     margin-top: 15px;
+  }
+
+  #login-demo {
+    font-size: 14px;
+    padding: 12px;
+    width: 376px;
+    margin-top: 10px;
     margin-bottom: 15px;
   }
   

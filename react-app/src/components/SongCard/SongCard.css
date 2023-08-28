@@ -21,9 +21,17 @@
     width: 180px;
 }
 
-
 .artist-name {
     font-size: .8em;
     color:rgb(153, 153, 153);
     padding-top: 3px;
+}
+.card-image {
+    position: relative;
+}
+
+.song-play {
+    position: absolute;
+    top: 35%;
+    left: 35%;
 }
