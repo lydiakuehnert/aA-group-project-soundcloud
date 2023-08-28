@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(255), nullable=False, unique=True)
     firstname = db.Column(db.String(100))
     lastname = db.Column(db.String(100))
+    image = db.Column(db.String(255))
     hashed_password = db.Column(db.String(255), nullable=False)
 
     songs = db.relationship("Song", back_populates="user", cascade="all, delete-orphan")

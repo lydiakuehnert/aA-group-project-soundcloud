@@ -9,6 +9,7 @@ import AllSongs from "./components/AllSongs";
 import OneSong from "./components/OneSong";
 import SongSearch from "./components/SongSearch";
 import LikedSongs from "./components/LikedSongs";
+import Profile from "./components/Profile";
 // import CreateSongForm from "./components/CreateSongForm";
 // import EditSongForm from "./components/EditSongForm";
 // import ManageSongs from "./components/ManageSongs";
@@ -46,6 +47,9 @@ function App() {
           <Route exact path="/songs/user">
             <ManageSongs />
           </Route> */}
+          <Route exact path="/profile">
+            <Profile />
+          </Route>
           <Route exact path="/songs/:songId">
             <OneSong />
           </Route>

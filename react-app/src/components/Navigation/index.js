@@ -22,7 +22,13 @@ function Navigation({ isLoaded }){
 			</li>
 
 			{sessionUser ? (
-				<></>
+				<>
+				{isLoaded && (
+				<li className="profile-button">
+					<ProfileButton user={sessionUser} />
+				</li>
+			)}
+				</>
 
 			) : (
 				<>
@@ -43,11 +49,7 @@ function Navigation({ isLoaded }){
 			}
 
 
-			{isLoaded && (
-				<li className="profile-button">
-					<ProfileButton user={sessionUser} />
-				</li>
-			)}
+			
 		</ul>
 		</div>
 	);

@@ -4,6 +4,7 @@ import { logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import Profile from "../Profile";
 import "./Navigation.css";
 
 function ProfileButton({ user }) {
@@ -55,7 +56,10 @@ function ProfileButton({ user }) {
           </>
         ) : (
           <>
-            <li className="login-button">
+          <li>
+            <Profile />
+          </li>
+            {/* <li className="login-button">
               <OpenModalButton
                 buttonText="Sign In"
                 onItemClick={closeMenu}
@@ -68,7 +72,8 @@ function ProfileButton({ user }) {
                 onItemClick={closeMenu}
                 modalComponent={<SignupFormModal />}
               />
-            </li>
+            </li> */}
+            
           </>
         )}
       </ul>
