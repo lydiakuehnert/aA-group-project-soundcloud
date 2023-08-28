@@ -25,6 +25,9 @@ function Navigation({ isLoaded }){
 			<li className="upload-button">
 				<NavLink exact to={`/upload`}><button>Upload (still wonky)</button></NavLink>
 			</li>) : null}
+			<li className="user-songs-button">
+				<NavLink exact to={`/uploads`}><button>Your Songs</button></NavLink>
+			</li>
 
 			{sessionUser ? (
 				<></>

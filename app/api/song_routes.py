@@ -57,10 +57,30 @@ def post_song():
     else:
         print(form.errors)
         return {"errors": form.errors}
+@songs.route('/<int:id>', methods=['PUT'])
+def edit_song(id):
+    form = SongForm()
 
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        song_to_update = Song.query.get(id)
+        song_to_update.name = form.data['name']
+        song_to_update.image = form.data['image']
+        song_to_update.audio = form.data['audio']
+        db.session.commit()
+        return song_to_update.to_dict()
+
+@songs.route('/<int:id>', methods=['DELETE'])
+def delete_song(id):
+    get_song = Song.query.get(id)
+    db.session.delete(get_song)
+    db.session.commit()
+    return {"Success": "successfully deleted"}
 
 @songs.route('/<int:id>')
 def get_one_song(id):
+    print('hewwoooo')
     one_song = Song.query.get(id)
     return one_song.to_dict()
 

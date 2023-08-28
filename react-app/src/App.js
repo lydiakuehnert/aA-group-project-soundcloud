@@ -5,11 +5,13 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import Player from "./components/Player";
 import AllSongs from "./components/AllSongs";
 import OneSong from "./components/OneSong";
 import SongSearch from "./components/SongSearch";
 import LikedSongs from "./components/LikedSongs";
 import SongUpload from "./components/SongUpload";
+import SongUser from "./components/SongUser";
 // import CreateSongForm from "./components/CreateSongForm";
 // import EditSongForm from "./components/EditSongForm";
 // import ManageSongs from "./components/ManageSongs";
@@ -35,6 +37,9 @@ function App() {
           <Route path='/upload'>
             <SongUpload />
           </Route>
+          <Route path='/uploads'>
+            <SongUser />
+          </Route>
           <Route path="/songs/search">
             <SongSearch />
           </Route>
@@ -58,6 +63,7 @@ function App() {
           </Route> */}
         </Switch>
       )}
+      <Player isLoaded={isLoaded} />
     </>
   );
 }

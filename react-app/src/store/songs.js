@@ -101,24 +101,13 @@ export const createSongThunk = (song, user) => async dispatch => {
         })
 
         if (res.ok) {
-            console.log('hit')
             if (!user) throw new Error('Please log in to create a song')
             const newSong = await res.json();
-            // for (let i = 0; i < SongImages.length; i++) {
-            //     let img = SongImages[i]
-            //     await fetch(`/api/songs/${song.id}/images`, {
-            //         method: 'POST',
-            //         headers: { 'Content-Type': 'application/json' },
-            //         body: JSON.stringify(img)
-            //     })
-            // }
             dispatch(createSongAction(newSong))
             console.log(newSong)
             return newSong;
         }
-        console.log('hapge')
     } catch (e) {
-        console.log('sadge')
         const data = await e.json()
         return data;
     }
@@ -134,25 +123,16 @@ export const deleteSongThunk = (songId) => async dispatch => {
     }
 }
 
-export const editSongThunk = (payload) => async dispatch => {
+export const editSongThunk = (song, songId) => async dispatch => {
     try {
-        const { newSong, SongImages } = payload;
-        const res = await fetch(`/api/songs/${newSong.id}`, {
+        const res = await fetch(`/api/songs/${songId}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newSong)
+            body: JSON.stringify(song)
         })
 
         if (res.ok) {
             const song = await res.json();
-            for (let i = 0; i < SongImages.length; i++) {
-                let img = SongImages[i]
-                await fetch(`/api/songs/${song.id}/images`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(img)
-                })
-            }
             dispatch(editSongAction(song))
             return song;
         }
