@@ -4,6 +4,7 @@ import { getCommentsThunk } from "../../store/comments";
 import CommentPost from "../CommentPost";
 import OpenModalButton from "../OpenModalButton";
 import DeleteComment from "../DeleteComment";
+import EditComment from "../EditComment";
 import "./SongComments.css";
 
 export default function SongComments({ song }) {
@@ -41,8 +42,12 @@ export default function SongComments({ song }) {
                         </h5>
                         <p>{comment.comment}</p>
                         {sessionUser && sessionUser.id === comment.user.id && <OpenModalButton
-                            buttonText=<i class=" fa-solid fa-trash"></i>
+                            buttonText=<i class=" fa-solid fa-trash"></i> 
                             modalComponent={<DeleteComment comment={comment} songId={song.id} />}
+                        />}
+                        {sessionUser && sessionUser.id === comment.user.id && <OpenModalButton
+                            buttonText=<i class="fa-solid fa-pen-nib"></i>
+                            modalComponent={<EditComment comment={comment} songId={song.id} />}
                         />}
                     </div>
                 )
