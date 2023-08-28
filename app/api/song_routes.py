@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from app.models import User, Comment, Song, db
 from .AWS_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 from ..forms.song_form import SongForm
+from auth_routes import validation_errors_to_error_messages
 
 songs = Blueprint('songs', __name__)
 
@@ -17,18 +18,36 @@ def all_songs():
 @songs.route('/upload', methods=["POST"])
 @login_required
 def post_song():
-    print('hewwo')
+    # print('hewwo')
     form = SongForm()
 
     form["csrf_token"].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
 
+        image = form.data["image"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        print(upload)
+
+        if "url" not in upload:
+            print([upload])
+            return upload.errors
+
+        audio = form.data["audio"]
+        audio.filename = get_unique_filename(audio.filename)
+        audioLoad = upload_file_to_s3(audio)
+        print(audioLoad)
+
+        if "url" not in audioLoad:
+            print([audioLoad])
+            return audioLoad.errors
+
         new_song = Song(
             name=form.data['name'],
             user_id = current_user.to_dict()['id'],
-            image=form.data['image'],
-            audio=form.data['audio']
+            image=upload['url'],
+            audio=audioLoad['url']
         )
 
         db.session.add(new_song)
@@ -51,6 +70,7 @@ def get_searched_songs():
     get_songs = Song.query.filter(Song.name.like(f'%{query}%')).all()
     response = [song.to_dict() for song in get_songs]
     return response
+
 
 # @songs.route("/new", methods=["GET","POST"])
 # def create_new_song():

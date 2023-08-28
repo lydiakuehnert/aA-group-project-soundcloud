@@ -54,20 +54,18 @@ export default function SongUpload() {
                     <label>
                         Image
                         <input
-                            type='text'
-                            placeholder='Upload Image (url)'
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
+                            type='file'
+                            accept='image/*'
+                            onChange={(e) => setImage(e.target.files[0])}
                         />
                     </label>
                     {errors.image && <p>{errors.image}</p>}
                     <label>
                         Audio
                         <input
-                            type='text'
-                            placeholder='Upload Audio (url)'
-                            value={audio}
-                            onChange={(e) => setAudio(e.target.value)}
+                            type='file'
+                            accept='audio/*'
+                            onChange={(e) => setAudio(e.target.files[0])}
                         />
                     </label>
                     {errors.audio && <p>{errors.audio}</p>}
