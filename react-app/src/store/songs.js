@@ -77,6 +77,21 @@ export const getSongsThunk = () => async dispatch => {
     }
 };
 
+export const getLikedSongsThunk = () => async dispatch => {
+    try {
+        const res = await fetch('/api/likes')
+
+        if (res.ok) {
+            const songs = await res.json();
+            dispatch(getSongsAction(songs))
+        }
+    }
+    catch (e) {
+        const data = await e.json()
+        return data;
+    }
+};
+
 export const createSongThunk = (payload) => async dispatch => {
     try {
         const { newSong, SongImages } = payload;
