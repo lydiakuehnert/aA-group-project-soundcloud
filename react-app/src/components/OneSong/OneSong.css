@@ -11,12 +11,10 @@
     object-fit: cover;
 }
 
-.song-detail-page {
-    margin: 40px;
-}
-
 .song-detail-box {
+    margin: 40px;
     border-bottom: 2px solid black;
+
 }
 
 .under-pics {
