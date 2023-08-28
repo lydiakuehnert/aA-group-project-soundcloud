@@ -1,16 +1,19 @@
-"""create tables
+"""create users, songs, likes, and comments tables
 
-Revision ID: 8f10b512a9d5
-Revises:
-Create Date: 2023-08-28 12:38:46.435004
+Revision ID: ee4d3d1136c5
+Revises: 
+Create Date: 2023-08-28 16:23:07.920103
 
 """
 from alembic import op
 import sqlalchemy as sa
 
+import os
+environment = os.getenv("FLASK_ENV")
+SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '8f10b512a9d5'
+revision = 'ee4d3d1136c5'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -55,6 +58,12 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('user_id', 'song_id')
     )
+
+    if environment == "production":
+        op.execute(f"ALTER TABLE likes SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE comments SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE songs SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
