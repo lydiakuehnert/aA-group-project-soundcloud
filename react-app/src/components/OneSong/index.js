@@ -20,7 +20,7 @@ export default function OneSong() {
     if (!song.id) return null;
 
     return (
-        <div className="song-detail-page">
+        <div className="song-detail-page index">
             <div className="song-detail-box">
                 <h1>{song.name}</h1>
                 <div className="song-img-box">
