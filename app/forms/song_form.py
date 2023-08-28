@@ -11,8 +11,8 @@ on the template for this form for AWS to work
 
 class SongForm(FlaskForm):
     name = StringField('Comment', validators=[DataRequired()])
-    image = URLField('Image URL', validators=[DataRequired()])
-    # image = FileField('Image URL', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
-    audio = URLField('Audio URL', validators=[DataRequired()])
-    # audio = FileField('Audio URL', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    # image = URLField('Image URL', validators=[DataRequired()])
+    image = FileField('Image URL', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
+    # audio = URLField('Audio URL', validators=[DataRequired()])
+    audio = FileField('Audio URL', validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     submit = SubmitField('Create New Song')

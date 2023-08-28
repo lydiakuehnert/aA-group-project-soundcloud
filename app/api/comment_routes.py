@@ -38,9 +38,28 @@ def create_new_comment(songId):
     else:
         print(form.errors)
         return {"errors": form.errors}
+    
+
+@comments.route('/edit/<int:id>', methods=['PUT'])
+@login_required
+def update_post(id):
+    form = CommentForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        comment_to_update = Comment.query.get(id)
+        comment_to_update.comment = form.data['comment']
+        db.session.commit()
+        return comment_to_update.to_dict()
+
+    else:
+        print(form.errors)
+        return {"errors": form.errors}
 
 
-@comments.route('/<int:id>')
+
+@comments.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_comment(id):
     comment_to_delete = Comment.query.get(id)

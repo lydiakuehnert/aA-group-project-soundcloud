@@ -1,4 +1,4 @@
-.delete-modal {
+.edit-modal {
     height: 220px;
     width: 400px;
     border: 3px solid black;
@@ -7,28 +7,32 @@
     flex-direction: column;
 }
 
-.delete-modal h2 {
+.edit-modal h2 {
     display: flex;
     justify-content: center;
     margin-bottom: 0;
 }
 
-.delete-modal p {
-    margin: 20px 10px;
+.edit-modal textarea {
+    height: 200px;
+    margin: 13px;
+    border: 2px solid black;
+    border-radius: 3px;
+    background-color: aliceblue;
 }
 
-.delete-modal button {
+.edit-modal button {
     margin: 2px 10px;
     padding: 8px;
     cursor: pointer;
 }
 
-.yes-button {
+.edit-button {
     background-color: rgb(219, 50, 75);
     color: white;
 }
 
-.no-button {
+.cancel-button {
     background-color: gray;
     color: white;
 }

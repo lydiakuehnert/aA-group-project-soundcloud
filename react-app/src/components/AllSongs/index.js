@@ -15,10 +15,12 @@ export default function AllSongs() {
     }, [dispatch])
 
     return (
-        <div className="all-songs">
-            {songs.length > 0 && songs.map(song => (
-                <SongCard key={song.id} song={song} />
-            ))}
-        </div>
+        <>
+            <div className="all-songs index">
+                {songs.length > 0 && songs.map(song => (
+                    <SongCard key={song.id} song={song} />
+                ))}
+            </div>
+        </>
     )
 }

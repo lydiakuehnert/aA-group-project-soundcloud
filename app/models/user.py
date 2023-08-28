@@ -44,7 +44,8 @@ class User(db.Model, UserMixin):
             "lastname": self.lastname,
             "email": self.email,
             "songs": [song.to_dict() for song in self.songs],
-            "likes": len(self.user_likes)
+            "likes": len(self.user_likes),
+            "likesList": [song.to_dict() for song in self.user_likes]
         }
 
     def to_dict_no_song(self):
