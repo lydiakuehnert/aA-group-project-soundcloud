@@ -12,6 +12,7 @@ function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
 	return (
+		<div className="nav-background">
 		<ul className='nav-bar'>
 			<li className="logo-li">
 			<i class="fa-solid fa-cloud-bolt fa-2x"></i><NavLink id="logo" exact to="/">LoudCloud</NavLink>
@@ -48,6 +49,7 @@ function Navigation({ isLoaded }){
 				</li>
 			)}
 		</ul>
+		</div>
 	);
 }
 
