@@ -23,7 +23,7 @@ def get_one_song(id):
 @songs.route('/search')
 def get_searched_songs():
     query = request.args.get('')
-    get_songs = Song.query.filter(Song.name.like(f'%{query}')).all()
+    get_songs = Song.query.filter(Song.name.like(f'%{query}%')).all()
     response = [song.to_dict() for song in get_songs]
     return response
 
