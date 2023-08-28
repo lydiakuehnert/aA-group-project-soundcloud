@@ -44,6 +44,7 @@ class User(db.Model, UserMixin):
             "firstname": self.firstname,
             "lastname": self.lastname,
             "email": self.email,
+            "image": self.image,
             "songs": [song.to_dict() for song in self.songs],
             "likes": len(self.user_likes),
             "likesList": [song.to_dict() for song in self.user_likes]
@@ -56,5 +57,6 @@ class User(db.Model, UserMixin):
             "firstname": self.firstname,
             "lastname": self.lastname,
             "email": self.email,
+            "image": self.image,
             "likes": len(self.user_likes)
         }

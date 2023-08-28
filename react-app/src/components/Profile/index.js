@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 export default function Profile() {
     const dispatch = useDispatch()
 
+
+    //allowed - "png", "jpg", "jpeg"
     const user = useSelector(state => state.session.user);
     if (!user) return null;
 
