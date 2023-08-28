@@ -19,9 +19,9 @@ export default function DeleteComment({ comment, songId }) {
     return (
         <div className="delete-modal">
             <h2>Confirm Delete</h2>
-            <p>Are you sure you want to delete this comment?</p>
+            <p>Do you really want to remove this comment?</p>
             <button onClick={handleDelete} className="yes-button">Yes (Delete Comment)</button>
-            <button onClick={closeModal} className="no-button">No (Keep Comment)</button>
+            <button onClick={closeModal} className="no-button">Cancel (Keep Comment)</button>
         </div>
     )
 }
