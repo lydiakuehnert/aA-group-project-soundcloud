@@ -9,11 +9,12 @@ body {
   background-color: gainsboro;
 }
 
-#root {
+.index {
   width: 1240px;
   min-height: 1000px;
   margin: auto;
   background-color: white;
+  padding-top: 3em;
 }
 
 .hidden {

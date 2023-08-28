@@ -24,7 +24,7 @@ export default function SongComments({ song }) {
 
     return (
         <div className="song-comments">
-            {!sessionUser ? (<></>) : <CommentPost song={song}/>}
+            {sessionUser && (sessionUser.id !== song.user.id) ? <CommentPost song={song} /> : <></>}
             {sessionUser && !comments.length && sessionUser.id !== song.user.id && <h5>Be the first to post a comment!</h5>}
             {comments.length > 0 && comments.slice().reverse().map(comment => {
                 const commentMonth = comment.createdAt.split("")[6]
@@ -40,8 +40,8 @@ export default function SongComments({ song }) {
                             {month} {year}
                         </h5>
                         <p>{comment.comment}</p>
-                        {sessionUser && sessionUser.id === comment.user_id && <OpenModalButton
-                            buttonText="Delete"
+                        {sessionUser && sessionUser.id === comment.user.id && <OpenModalButton
+                            buttonText=<i class=" fa-solid fa-trash"></i>
                             modalComponent={<DeleteComment comment={comment} songId={song.id} />}
                         />}
                     </div>
