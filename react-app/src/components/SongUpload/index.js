@@ -23,14 +23,16 @@ export default function SongUpload() {
 
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors)
+            return
         }
 
         const song = { name, user_id, image, audio }
-        console.log('hit.')
-        const newSong = await dispatch(createSongThunk(song, user))
-        console.log('hit!')
-        console.log(newSong)
-        history.push(`/songs/${newSong.id}`)
+        try {
+            const newSong = await dispatch(createSongThunk(song, user))
+            history.push(`/songs/${newSong.id}`)
+        } catch (error) {
+            console.error('Error creating spot:', error)
+        }
     }
 
 
