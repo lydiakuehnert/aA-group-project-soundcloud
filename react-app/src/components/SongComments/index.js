@@ -41,7 +41,7 @@ export default function SongComments({ song }) {
                         </h5>
                         <p>{comment.comment}</p>
                         {sessionUser && sessionUser.id === comment.user.id && <OpenModalButton
-                            buttonText="Delete"
+                            buttonText=<i class=" fa-solid fa-trash"></i>
                             modalComponent={<DeleteComment comment={comment} songId={song.id} />}
                         />}
                     </div>
