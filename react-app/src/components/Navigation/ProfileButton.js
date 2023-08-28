@@ -5,6 +5,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import "./Navigation.css";
+import { NavLink } from 'react-router-dom';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -49,6 +50,9 @@ function ProfileButton({ user }) {
             <li>{user.username}</li>
             <li>{user.email}</li>
             <li>{user.firstname} {user.lastname}</li>
+            <li>
+              <NavLink className='liked-songs-link' exact to={`/likes`}>Liked Songs</NavLink>
+            </li>
             <li>
               <button onClick={handleLogout}>Sign Out</button>
             </li>
