@@ -4,7 +4,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 import './Player.css';
 
-function Player({ isLoaded, song }) {
+function Player({ isLoaded }) {
     const playerSong = useSelector(state => state.songs.playerSong);
     console.log("SONGAUDIO", playerSong)
 
