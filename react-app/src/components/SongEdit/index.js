@@ -1,18 +1,21 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
-import { createSongThunk } from '../../store/songs';
+import { editSongThunk } from '../../store/songs';
+import { useModal } from '../../context/Modal';
 
-export default function SongUpload() {
+export default function SongEdit({ songId }) {
     const dispatch = useDispatch()
     const history = useHistory()
+    const chosenSong = useSelector(state => Object.values(state.songs.allSongs)).filter(song => song.id === songId)[0];
     const user = useSelector(state => state.session.user)
     const user_id = user.id
-    const [name, setName] = useState('')
-    const [image, setImage] = useState('')
-    const [audio, setAudio] = useState('')
+    const [name, setName] = useState(chosenSong.name)
+    const [image, setImage] = useState(chosenSong.image)
+    const [audio, setAudio] = useState(chosenSong.audio)
     const [errors, setErrors] = useState({})
-    const [uploading, setUploading] = useState(false);
+    const {closeModal} = useModal()
+    const [updating, setUpdating] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -26,19 +29,18 @@ export default function SongUpload() {
             setErrors(validationErrors)
             return
         }
-
         const formData = new FormData()
-        formData.append("name",name)
+        // formData.append("songId",songId)
         formData.append("user_id",user_id)
-        formData.append("image",image)
+        formData.append("name",name)
         formData.append("audio",audio)
-
-
-        // const song = { name, user_id, image, audio }
+        formData.append("image",image)
+        // const song = { songId, name, user_id, image, audio }
         try {
-            setUploading(true)
-            const newSong = await dispatch(createSongThunk(formData, user))
-            history.push(`/songs/${newSong.id}`)
+            setUpdating(true)
+            await dispatch(editSongThunk(formData, songId))
+            closeModal()
+            history.push(`/songs/${songId}`)
         } catch (error) {
             console.error('Error creating spot:', error)
         }
@@ -47,14 +49,13 @@ export default function SongUpload() {
 
     return (
         <>
-            <h1>still buggy</h1>
-            <form enctype="multipart/form-data" onSubmit={handleSubmit}>
+            <h1>still shitty</h1>
+            <form onSubmit={handleSubmit}>
                 <section>
                     <label>
                         Name
                         <input
                             type='text'
-                            placeholder='Name your track'
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                         />
@@ -79,8 +80,8 @@ export default function SongUpload() {
                     </label>
                     {errors.audio && <p>{errors.audio}</p>}
                 </section>
-                <button type="submit">Create Song</button>
-                {(uploading)&& <p className='status-message'>Uploading...</p>}
+                <button type="submit">Edit Song</button>
+                {(updating)&& <p className='status-message'>Updating...</p>}
             </form>
         </>
     )

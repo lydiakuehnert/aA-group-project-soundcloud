@@ -5,7 +5,8 @@ import 'react-h5-audio-player/lib/styles.css';
 import './Player.css';
 
 function Player({ isLoaded }) {
-    const sessionUser = useSelector(state => state.session.user);
+    const playerSong = useSelector(state => state.songs.playerSong);
+    console.log("SONGAUDIO", playerSong)
 
     return (
         <>
@@ -13,7 +14,8 @@ function Player({ isLoaded }) {
                 <div className="player-background">
                     <AudioPlayer
                     autoPlay
-                    src="http://example.com/audio.mp3"
+                    src={playerSong}
+                    // src="https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/f66bebe9a94a4be89d84ea4e8099d094.mp3"
                     onPlay={e => console.log("onPlay")}
                     // other props here
                     />

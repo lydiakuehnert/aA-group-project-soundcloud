@@ -9,6 +9,8 @@ export default function LikedSongs() {
 
     const songsObj = useSelector(state => state.songs.allSongs);
     const songs = Object.values(songsObj)
+    console.log('hi')
+    console.log(songs)
 
     useEffect(() => {
         dispatch(getLikedSongsThunk())

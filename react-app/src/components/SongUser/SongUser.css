@@ -1,0 +1,23 @@
+.all-user-songs {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 1240px;
+    margin: auto;
+    justify-content: center;
+}
+
+.user-song-button-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-song-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.user-song-buttons button {
+    width: 80px
+}

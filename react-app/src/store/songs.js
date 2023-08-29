@@ -4,6 +4,8 @@ const CREATE_SONG = "songs/createSong";
 const GET_USER_SONGS = "songs/getUserSongs";
 const DELETE_SONG = "songs/deleteSong";
 const EDIT_SONG = "songs/editSong";
+const PLAYER_SONG = "songs/playerSong"
+const CREATE_LIKE = "songs/likeSong"
 
 
 const getUserSongsAction = (songs) => {
@@ -34,6 +36,13 @@ const createSongAction = (song) => {
     }
 }
 
+const createLikeAction = (songId) => {
+    return {
+        type: CREATE_LIKE,
+        songId
+    }
+}
+
 const deleteSongAction = (songId) => {
     return {
         type: DELETE_SONG,
@@ -46,6 +55,17 @@ const editSongAction = (song) => {
         type: EDIT_SONG,
         song
     }
+}
+
+const playerSongAction = (song) => {
+    return {
+        type: PLAYER_SONG,
+        song
+    }
+}
+
+export const playerSongThunk = (song) => async dispatch => {
+    dispatch(playerSongAction(song))
 }
 
 export const getSearchedSongsThunk = (query) => async dispatch => {
@@ -84,6 +104,7 @@ export const getLikedSongsThunk = () => async dispatch => {
         if (res.ok) {
             const songs = await res.json();
             dispatch(getSongsAction(songs))
+            console.log(songs)
         }
     }
     catch (e) {
@@ -92,33 +113,61 @@ export const getLikedSongsThunk = () => async dispatch => {
     }
 };
 
+export const createLikeThunk = (songId) => async dispatch => {
+    try {
+        const res = await fetch(`/api/likes/${songId}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        })
+        if (res.ok) {
+            const postLike = await res.json()
+            dispatch(createLikeAction(songId))
+            return postLike
+        } else {
+            const data = await res.json()
+            return data
+        }
+    } catch (e) {
+        console.error("an error has occured:", e)
+        return null
+    }
+}
+
+export const deleteLikeThunk = (songId) => async dispatch => {
+    try {
+        const res = await fetch(`/api/likes/${songId}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' }
+        })
+
+        if (res.ok) {
+            const deleteLike = await res.json()
+            dispatch()
+            return deleteLike
+        }
+    } catch (e) {
+        const data = await e.json()
+        return data
+    }
+}
+
 export const createSongThunk = (song, user) => async dispatch => {
     try {
         const res = await fetch('/api/songs/upload', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(song)
+            // headers: { 'Content-Type': 'application/json' },
+            // body: JSON.stringify(song)
+            body: song
         })
 
         if (res.ok) {
-            console.log('hit')
             if (!user) throw new Error('Please log in to create a song')
             const newSong = await res.json();
-            // for (let i = 0; i < SongImages.length; i++) {
-            //     let img = SongImages[i]
-            //     await fetch(`/api/songs/${song.id}/images`, {
-            //         method: 'POST',
-            //         headers: { 'Content-Type': 'application/json' },
-            //         body: JSON.stringify(img)
-            //     })
-            // }
             dispatch(createSongAction(newSong))
             console.log(newSong)
             return newSong;
         }
-        console.log('hapge')
     } catch (e) {
-        console.log('sadge')
         const data = await e.json()
         return data;
     }
@@ -134,25 +183,18 @@ export const deleteSongThunk = (songId) => async dispatch => {
     }
 }
 
-export const editSongThunk = (payload) => async dispatch => {
+export const editSongThunk = (song, songId) => async dispatch => {
     try {
-        const { newSong, SongImages } = payload;
-        const res = await fetch(`/api/songs/${newSong.id}`, {
+        const res = await fetch(`/api/songs/${songId}`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newSong)
+            // headers: { 'Content-Type': 'application/json' },
+            // body: JSON.stringify(song)
+            body: song
         })
 
         if (res.ok) {
             const song = await res.json();
-            for (let i = 0; i < SongImages.length; i++) {
-                let img = SongImages[i]
-                await fetch(`/api/songs/${song.id}/images`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(img)
-                })
-            }
+            console.log("NEW SONG FROM THUNKY", song)
             dispatch(editSongAction(song))
             return song;
         }
@@ -163,7 +205,7 @@ export const editSongThunk = (payload) => async dispatch => {
 }
 
 
-const initialState = { allSongs: {}, singleSong: {} };
+const initialState = { allSongs: {}, singleSong: {}, playerSong: {}};
 
 const songReducer = (state = initialState, action) => {
     let newState;
@@ -184,6 +226,12 @@ const songReducer = (state = initialState, action) => {
             newState.singleSong = action.song;
             return newState
         }
+        case CREATE_LIKE: {
+            newState = { ...state, allSongs: { ...state.allSongs } }
+            // newState.allSongs[action.songId] = action.song
+            // newState.singleSong = action.song
+            return newState
+        }
         case GET_USER_SONGS: {
             newState = { ...state, allSongs: {}, singleSong: {} }
             action.songs.forEach(song => newState.allSongs[song.id] = song)
@@ -198,6 +246,11 @@ const songReducer = (state = initialState, action) => {
             newState = { ...state, allSongs: { ...state.allSongs }, singleSong: {} }
             newState.allSongs[action.song.id] = action.song;
             return newState;
+        }
+        case PLAYER_SONG: {
+            newState = { ...state, allSongs: { ...state.allSongs }, singleSong: {}, playerSong: {} }
+            newState.playerSong = action.song
+            return newState
         }
         default:
             return state;

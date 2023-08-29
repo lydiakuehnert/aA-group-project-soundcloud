@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSongThunk } from "../../store/songs";
 import SongComments from "../SongComments";
+import LikeSong from "../LikeSong";
 import "./OneSong.css"
 
 export default function OneSong() {
@@ -29,6 +30,7 @@ export default function OneSong() {
                 <div className="under-pics">
                     <div>
                         <h1>Artist: {song.user.username}</h1>
+                        <LikeSong />
                     </div>
                     {/* <div className="callout-info-box">
                         <div className="callout-info">

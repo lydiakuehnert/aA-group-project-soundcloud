@@ -1,13 +1,13 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required, current_user
-from app.models import User, Comment, Song
+from app.models import User, Comment, Song, db, likes
 # from sqlalchemy.orm import sessionmaker
 # Session = sessionmaker(bind=engine)
 # session = Session()
 
-likes = Blueprint('likes', __name__)
+likes_bp = Blueprint('likes', __name__)
 
-@likes.route('')
+@likes_bp.route('')
 @login_required
 def user_liked_songs():
     curr_user = User.query.get(current_user.id)
@@ -18,7 +18,10 @@ def user_liked_songs():
     response = [song.to_dict() for song in curr_user.user_likes]
     return response
 
-    # get_liked_songs = Song.query.join(Song.song_likes).filter(Song.song_id == current_user.to_dict()['id'])
-    # if current_user.is_authenticated:
-    #     print('CURRENT USER!!!', current_user.to_dict()["id"])
-    #     return current_user.to_dict()
+@likes_bp.route('/<int:songId>', methods=['POST'])
+@login_required
+def create_like(songId):
+    curr_user = User.query.get(current_user.id)
+    db.session.execute(likes.insert().values(user_id=curr_user.id, song_id=songId))
+    db.session.commit()
+    return jsonify({"message": "Liked"}), 201

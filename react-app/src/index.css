@@ -21,6 +21,10 @@ body {
   display: none;
 }
 
+.zero-opacity {
+  opacity: 0;
+}
+
 .button-orange {
     color: white;
     background-color: rgb(255, 75, 20);

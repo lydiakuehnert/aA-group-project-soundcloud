@@ -25,9 +25,18 @@ function Navigation({ isLoaded }){
 			<li className="upload-button">
 				<NavLink exact to={`/upload`}><button>Upload (still wonky)</button></NavLink>
 			</li>) : null}
+			<li className="user-songs-button">
+				<NavLink exact to={`/uploads`}><button>Your Songs</button></NavLink>
+			</li>
 
 			{sessionUser ? (
-				<></>
+				<>
+				{isLoaded && (
+				<li className="profile-button">
+					<ProfileButton user={sessionUser} />
+				</li>
+			)}
+				</>
 
 			) : (
 				<>
@@ -48,11 +57,7 @@ function Navigation({ isLoaded }){
 			}
 
 
-			{isLoaded && (
-				<li className="profile-button">
-					<ProfileButton user={sessionUser} />
-				</li>
-			)}
+			
 		</ul>
 		</div>
 	);
