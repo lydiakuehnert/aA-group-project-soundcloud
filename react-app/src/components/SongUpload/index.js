@@ -12,6 +12,7 @@ export default function SongUpload() {
     const [image, setImage] = useState('')
     const [audio, setAudio] = useState('')
     const [errors, setErrors] = useState({})
+    const [uploading, setUploading] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -26,9 +27,17 @@ export default function SongUpload() {
             return
         }
 
-        const song = { name, user_id, image, audio }
+        const formData = new FormData()
+        formData.append("name",name)
+        formData.append("user_id",user_id)
+        formData.append("image",image)
+        formData.append("audio",audio)
+
+
+        // const song = { name, user_id, image, audio }
         try {
-            const newSong = await dispatch(createSongThunk(song, user))
+            setUploading(true)
+            const newSong = await dispatch(createSongThunk(formData, user))
             history.push(`/songs/${newSong.id}`)
         } catch (error) {
             console.error('Error creating spot:', error)
@@ -71,6 +80,7 @@ export default function SongUpload() {
                     {errors.audio && <p>{errors.audio}</p>}
                 </section>
                 <button type="submit">Create Song</button>
+                {(uploading)&& <p>Uploading...</p>}
             </form>
         </>
     )
