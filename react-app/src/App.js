@@ -12,7 +12,6 @@ import SongSearch from "./components/SongSearch";
 import LikedSongs from "./components/LikedSongs";
 import SongUpload from "./components/SongUpload";
 import SongUser from "./components/SongUser";
-// import EditSongForm from "./components/EditSongForm";
 import Profile from "./components/Profile";
 
 
@@ -49,22 +48,12 @@ function App() {
           <Route exact path="/likes">
             <LikedSongs />
           </Route>
-          {/* <Route exact path="/songs/new">
-            <CreateSongForm />
-          </Route>
-          <Route exact path="/songs/user">
-            <ManageSongs />
-          </Route> */}
           <Route exact path="/profile">
             <Profile />
           </Route>
-          {/* 
           <Route exact path="/songs/:songId">
             <OneSong />
           </Route>
-          {/* <Route exact path="/songs/:songId/edit">
-            <EditSongForm />
-          </Route> */}
         </Switch>
       )}
       <Player isLoaded={isLoaded} />
