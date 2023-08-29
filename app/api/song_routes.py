@@ -121,7 +121,6 @@ def delete_song(id):
 
 @songs.route('/<int:id>')
 def get_one_song(id):
-    print('hewwoooo')
     one_song = Song.query.get(id)
     return one_song.to_dict()
 

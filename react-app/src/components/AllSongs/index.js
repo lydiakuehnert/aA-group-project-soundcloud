@@ -9,6 +9,8 @@ export default function AllSongs() {
 
     const songsObj = useSelector(state => state.songs.allSongs);
     const songs = Object.values(songsObj)
+    const states = useSelector(state => state)
+    console.log(states)
 
     useEffect(() => {
         dispatch(getSongsThunk())

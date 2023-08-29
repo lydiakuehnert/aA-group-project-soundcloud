@@ -4,6 +4,7 @@ const CREATE_SONG = "songs/createSong";
 const GET_USER_SONGS = "songs/getUserSongs";
 const DELETE_SONG = "songs/deleteSong";
 const EDIT_SONG = "songs/editSong";
+const CREATE_LIKE = "songs/likeSong"
 
 
 const getUserSongsAction = (songs) => {
@@ -31,6 +32,13 @@ const createSongAction = (song) => {
     return {
         type: CREATE_SONG,
         song
+    }
+}
+
+const createLikeAction = (songId) => {
+    return {
+        type: CREATE_LIKE,
+        songId
     }
 }
 
@@ -84,6 +92,7 @@ export const getLikedSongsThunk = () => async dispatch => {
         if (res.ok) {
             const songs = await res.json();
             dispatch(getSongsAction(songs))
+            console.log(songs)
         }
     }
     catch (e) {
@@ -91,6 +100,42 @@ export const getLikedSongsThunk = () => async dispatch => {
         return data;
     }
 };
+
+export const createLikeThunk = (songId) => async dispatch => {
+    try {
+        const res = await fetch(`/api/songs/${songId}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        })
+
+        if (res.ok) {
+            const postLike = await res.json()
+            dispatch(createLikeAction(songId))
+            return postLike
+        }
+    } catch (e) {
+        const data = await e.json()
+        return data
+    }
+}
+
+export const deleteLikeThunk = (songId) => async dispatch => {
+    try {
+        const res = await fetch(`/api/songs/${songId}`, {
+            method: 'DELETE',
+            headers: { 'Content-Type': 'application/json' }
+        })
+
+        if (res.ok) {
+            const deleteLike = await res.json()
+            dispatch()
+            return deleteLike
+        }
+    } catch (e) {
+        const data = await e.json()
+        return data
+    }
+}
 
 export const createSongThunk = (song, user) => async dispatch => {
     try {
@@ -164,6 +209,14 @@ const songReducer = (state = initialState, action) => {
             newState.allSongs[action.song.id] = action.song;
             newState.singleSong = action.song;
             return newState
+        }
+        case CREATE_LIKE: {
+            newState = { ...state, allSongs: { ...state.allSongs } }
+            if (newState.allSongs[action.songId].likes !== undefined) {
+                newState.allSongs[action.songId].likes += 1
+            } else {
+                newState.allSongs[action.songId].likes = 1
+            }
         }
         case GET_USER_SONGS: {
             newState = { ...state, allSongs: {}, singleSong: {} }
