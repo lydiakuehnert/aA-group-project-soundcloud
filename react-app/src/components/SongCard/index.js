@@ -1,16 +1,25 @@
 import "./SongCard.css";
 import { NavLink } from 'react-router-dom';
 import { useState } from "react";
+import Player from "../Player";
 
 
 export default function SongCard({ song }) {
     const [songClass, setSongClass] = useState('song-play hidden');
+    const [songAudio, setSongAudio] = useState(song.audio)
 
     if (!song) return null;
 
     const hoverPlay = () => {
         setSongClass("song-play")
     }
+
+    const sendAudio = () => {
+        setSongAudio(song.audio)
+        console.log("INSENDAUDIO", songAudio)
+        return <Player song={songAudio} />
+    }
+
 
     const mouseLeave = () => setSongClass('song-play hidden')
 
@@ -21,14 +30,16 @@ export default function SongCard({ song }) {
         onMouseEnter={hoverPlay}
         onMouseLeave={mouseLeave}
         >
-            <NavLink className="song-card-link" exact to={`/songs/${song.id}`}>
+
                 <div className="card-image">
                     <img src={song.image} alt="album of song"></img>
 
-            <div className={songClass}><i class="fa-regular fa-circle-play fa-4x"></i></div>
+                
+            <div className={songClass} onClick={sendAudio}><i class="fa-regular fa-circle-play fa-4x"></i></div>
 
                 </div>
 
+            <NavLink className="song-card-link" exact to={`/songs/${song.id}`}>
                 <div className="song-details">
                     <p className="song-track-name">{song.name}</p>
                     <p className="artist-name">{song.user.username}</p>
