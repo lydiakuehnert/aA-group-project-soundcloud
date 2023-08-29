@@ -12,12 +12,8 @@ import SongSearch from "./components/SongSearch";
 import LikedSongs from "./components/LikedSongs";
 import SongUpload from "./components/SongUpload";
 import SongUser from "./components/SongUser";
-<<<<<<< HEAD
-import Profile from "./components/Profile";
-// import CreateSongForm from "./components/CreateSongForm";
-=======
->>>>>>> tuesplayer
 // import EditSongForm from "./components/EditSongForm";
+import Profile from "./components/Profile";
 
 
 function App() {
