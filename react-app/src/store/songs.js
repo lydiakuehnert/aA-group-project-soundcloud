@@ -96,8 +96,9 @@ export const createSongThunk = (song, user) => async dispatch => {
     try {
         const res = await fetch('/api/songs/upload', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(song)
+            // headers: { 'Content-Type': 'application/json' },
+            // body: JSON.stringify(song)
+            body: song
         })
 
         if (res.ok) {

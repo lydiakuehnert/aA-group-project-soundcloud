@@ -32,7 +32,7 @@ def post_song():
 
         if "url" not in upload:
             print([upload])
-            return upload.errors
+            return {'errors': upload}
 
         audio = form.data["audio"]
         audio.filename = get_unique_filename(audio.filename)
@@ -41,7 +41,7 @@ def post_song():
 
         if "url" not in audioLoad:
             print([audioLoad])
-            return audioLoad.errors
+            return {'errors': audioLoad}
 
         new_song = Song(
             name=form.data['name'],
@@ -52,11 +52,12 @@ def post_song():
 
         db.session.add(new_song)
         db.session.commit()
-        return new_song.to_dict()
+        return {'newSong': new_song.to_dict()}
 
     else:
         print(form.errors)
         return {"errors": form.errors}
+    
 @songs.route('/<int:id>', methods=['PUT'])
 def edit_song(id):
     form = SongForm()
