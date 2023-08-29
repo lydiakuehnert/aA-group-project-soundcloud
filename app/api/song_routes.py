@@ -70,29 +70,26 @@ def edit_song(id):
         image_deleted = remove_file_from_s3(song_to_update.image)
         audio_deleted = remove_file_from_s3(song_to_update.audio)
         if image_deleted and audio_deleted is True:
-            db.session.delete(song_to_update)
+            image = form.data["image"]
+            image.filename = get_unique_filename(image.filename)
+            upload = upload_file_to_s3(image)
+            print(upload)
+            if "url" not in upload:
+                print([upload])
+                return {'errors': upload}
+            audio = form.data["audio"]
+            audio.filename = get_unique_filename(audio.filename)
+            audioLoad = upload_file_to_s3(audio)
+            print(audioLoad)
+            if "url" not in audioLoad:
+                print([audioLoad])
+                return {'errors': audioLoad}
+            song_to_update.image = upload['url']
+            song_to_update.audio = audioLoad['url']
         else:
             return "<h1> Error Occurred in Updating Song<h1>"
         song_to_update.name = form.data['name']
-        # song_to_update.image = form.data['image']
-        # song_to_update.audio = form.data['audio']
-        image = form.data["image"]
-        image.filename = get_unique_filename(image.filename)
-        upload = upload_file_to_s3(image)
-        print(upload)
-        if "url" not in upload:
-            print([upload])
-            return {'errors': upload}
-        audio = form.data["audio"]
-        audio.filename = get_unique_filename(audio.filename)
-        audioLoad = upload_file_to_s3(audio)
-        print(audioLoad)
-        if "url" not in audioLoad:
-            print([audioLoad])
-            return {'errors': audioLoad}
-        song_to_update.image = upload['url']
-        song_to_update.audio = audioLoad['url']
-        print("HIT LINE 95")
+
         print("EDITED SONG IMAGE AND AUDIO", song_to_update.image, song_to_update.audio)
         db.session.commit()
         return song_to_update.to_dict()
