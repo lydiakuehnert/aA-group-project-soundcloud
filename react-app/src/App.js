@@ -12,10 +12,13 @@ import SongSearch from "./components/SongSearch";
 import LikedSongs from "./components/LikedSongs";
 import SongUpload from "./components/SongUpload";
 import SongUser from "./components/SongUser";
+<<<<<<< HEAD
 import Profile from "./components/Profile";
 // import CreateSongForm from "./components/CreateSongForm";
+=======
+>>>>>>> tuesplayer
 // import EditSongForm from "./components/EditSongForm";
-// import ManageSongs from "./components/ManageSongs";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +62,7 @@ function App() {
           <Route exact path="/profile">
             <Profile />
           </Route>
+          {/* 
           <Route exact path="/songs/:songId">
             <OneSong />
           </Route>
