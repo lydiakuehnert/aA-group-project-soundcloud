@@ -36,7 +36,7 @@ export default function SongCard({ song }) {
                 <div className="card-image">
                     <img src={song.image} alt="album of song"></img>
 
-                
+
             <div className={songClass} onClick={sendAudio}><i class="fa-regular fa-circle-play fa-4x"></i></div>
 
                 </div>
