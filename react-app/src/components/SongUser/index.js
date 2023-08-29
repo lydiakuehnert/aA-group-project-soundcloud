@@ -21,23 +21,26 @@ export default function SongUser() {
     return (
         <>
             <div className="all-user-songs index">
+                <div className="flexed-div">
                 {songs.length > 0 && songs.map(song => (
                     <>
                         <div className="user-song-button-container">
                             <SongCard key={song.id} song={song} />
                             <div className="user-song-buttons">
                                 {user && user.id === song.user.id && <OpenModalButton
-                                    buttonText=<i class="fa-solid fa-trash"></i>
+                                    buttonText=<i className="fa-solid fa-trash"></i>
                                     modalComponent={<SongDelete songId={song.id} />}
                                 />}
                                 {user && user.id === song.user.id && <OpenModalButton
-                                    buttonText=<i class=" fa-solid fa-pen-nib"></i>
+                                    buttonText=<i className=" fa-solid fa-pen-nib"></i>
                                     modalComponent={<SongEdit songId={song.id} />}
                                 />}
                             </div>
                         </div>
                     </>
                 ))}
+
+                </div>
             </div>
         </>
     )
