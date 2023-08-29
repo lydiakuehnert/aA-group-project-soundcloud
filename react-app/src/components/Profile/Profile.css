@@ -17,3 +17,16 @@
     align-items: flex-start;
     margin-left: 10em;
 }
+
+#profile-image {
+    height: 200px;
+    width: 200px;
+    object-fit: fill;
+    border-radius: 200%;
+}
+
+.track-image {
+    height: 160px;
+    width: 160px;
+    object-fit: cover;
+}
