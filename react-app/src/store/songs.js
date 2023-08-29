@@ -4,6 +4,7 @@ const CREATE_SONG = "songs/createSong";
 const GET_USER_SONGS = "songs/getUserSongs";
 const DELETE_SONG = "songs/deleteSong";
 const EDIT_SONG = "songs/editSong";
+const PLAYER_SONG = "songs/playerSong"
 const CREATE_LIKE = "songs/likeSong"
 
 
@@ -54,6 +55,17 @@ const editSongAction = (song) => {
         type: EDIT_SONG,
         song
     }
+}
+
+const playerSongAction = (song) => {
+    return {
+        type: PLAYER_SONG,
+        song
+    }
+}
+
+export const playerSongThunk = (song) => async dispatch => {
+    dispatch(playerSongAction(song))
 }
 
 export const getSearchedSongsThunk = (query) => async dispatch => {
@@ -189,7 +201,7 @@ export const editSongThunk = (song, songId) => async dispatch => {
 }
 
 
-const initialState = { allSongs: {}, singleSong: {} };
+const initialState = { allSongs: {}, singleSong: {}, playerSong: {}};
 
 const songReducer = (state = initialState, action) => {
     let newState;
@@ -232,6 +244,11 @@ const songReducer = (state = initialState, action) => {
             newState = { ...state, allSongs: { ...state.allSongs }, singleSong: {} }
             newState.allSongs[action.song.id] = action.song;
             return newState;
+        }
+        case PLAYER_SONG: {
+            newState = { ...state, allSongs: { ...state.allSongs }, singleSong: { ...state.singleSong } }
+            newState.playerSong = action.song
+            return newState
         }
         default:
             return state;
