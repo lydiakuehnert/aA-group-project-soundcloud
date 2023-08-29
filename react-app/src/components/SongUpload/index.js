@@ -80,7 +80,7 @@ export default function SongUpload() {
                     {errors.audio && <p>{errors.audio}</p>}
                 </section>
                 <button type="submit">Create Song</button>
-                {(uploading)&& <p>Uploading...</p>}
+                {(uploading)&& <p className='status-message'>Uploading...</p>}
             </form>
         </>
     )
