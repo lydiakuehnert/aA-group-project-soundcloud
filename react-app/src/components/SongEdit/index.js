@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { editSongThunk } from '../../store/songs';
+import { useModal } from '../../context/Modal';
 
 export default function SongEdit({ songId }) {
     const dispatch = useDispatch()
@@ -13,6 +14,7 @@ export default function SongEdit({ songId }) {
     const [image, setImage] = useState(chosenSong.image)
     const [audio, setAudio] = useState(chosenSong.audio)
     const [errors, setErrors] = useState({})
+    const {closeModal} = useModal()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -26,11 +28,17 @@ export default function SongEdit({ songId }) {
             setErrors(validationErrors)
             return
         }
-
-        const song = { songId, name, user_id, image, audio }
+        const formData = new FormData()
+        // formData.append("songId",songId)
+        formData.append("user_id",user_id)
+        formData.append("name",name)
+        formData.append("audio",audio)
+        formData.append("image",image)
+        // const song = { songId, name, user_id, image, audio }
         try {
-            const editedSong = await dispatch(editSongThunk(song, songId))
-            history.push(`/songs/${editedSong.id}`)
+            await dispatch(editSongThunk(formData, songId))
+            closeModal()
+            history.push(`/songs/${songId}`)
         } catch (error) {
             console.error('Error creating spot:', error)
         }
@@ -54,18 +62,18 @@ export default function SongEdit({ songId }) {
                     <label>
                         Image
                         <input
-                            type='text'
-                            value={image}
-                            onChange={(e) => setImage(e.target.value)}
+                            type='file'
+                            accept='image/*'
+                            onChange={(e) => setImage(e.target.files[0])}
                         />
                     </label>
                     {errors.image && <p>{errors.image}</p>}
                     <label>
                         Audio
                         <input
-                            type='text'
-                            value={audio}
-                            onChange={(e) => setAudio(e.target.value)}
+                            type='file'
+                            accept='audio/*'
+                            onChange={(e) => setAudio(e.target.files[0])}
                         />
                     </label>
                     {errors.audio && <p>{errors.audio}</p>}
