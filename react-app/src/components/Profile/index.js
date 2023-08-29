@@ -2,6 +2,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import OpenModalButton from "../OpenModalButton";
 import AddImageModal from "../AddImageModal";
+import "./Profile.css"
+
 
 
 export default function Profile() {
@@ -12,15 +14,16 @@ export default function Profile() {
 
     return (
         <div className='profile index'>
-            <div>
-            <OpenModalButton
-                buttonText="+"
-                modalComponent={<AddImageModal />} 
-            />
+            <div className='profile-header'>
 
                 <img id='profile-image' src={user.image} alt={user.username}></img>
+                <OpenModalButton
+                    buttonText="+"
+                    modalComponent={<AddImageModal />} 
+                />
                 <h1>{user.username}</h1>
             </div>
+            <div className='tracks-likes-div'>
             <div>
                 <h1>Tracks</h1>
                     {user.songs.map((song) => (
@@ -31,6 +34,7 @@ export default function Profile() {
                         </div>
                         
                     ))}
+            </div>    
                 <div>
                 <h1>{user.likes} Likes</h1>
                 {user.likesList.map(like => (

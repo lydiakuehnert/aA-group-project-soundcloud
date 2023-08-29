@@ -17,13 +17,14 @@ export default function AddImageModal() {
         if (!(fileTypes.some(type => {
             return url.endsWith(type)}))) {
             errorObj['url'] = 'Image URL must end in .png, .jpg, or .jpeg';
-        } if (!url) errorObj['url'] = 'Please set an image or cancel';
+        } if (!url) errorObj['url'] = 'Please set an image or click cancel';
         setErrors(errorObj);
     }, [url])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorClass('errors')
+        console.log(url)
         if(!errors.url){
             dispatch(postImage(url))
             closeModal()

@@ -3,3 +3,17 @@
     height: 50px;
     object-fit: cover;
 }
+
+.tracks-likes-div {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+}
+
+.profile-header{
+    height: 300px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: flex-start;
+    margin-left: 10em;
+}
