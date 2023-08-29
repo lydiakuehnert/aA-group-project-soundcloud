@@ -8,6 +8,8 @@ import Profile from "../Profile";
 import { useHistory, Link } from 'react-router-dom';
 import "./Navigation.css";
 import { NavLink } from 'react-router-dom';
+import noProfileImg from '../../images/blue-profile.jpeg';
+
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -45,9 +47,11 @@ function ProfileButton({ user }) {
 
   return (
     <div className="menu-div">
-      <button onClick={openMenu} className="menu-button">
-        <i className="fas fa-user-circle" />
-      </button>
+      <div onClick={openMenu} className="menu-button">
+        {/* <i className="fas fa-user-circle" /> */}
+        <img className='profile-menu' src={user.image || noProfileImg} alt="profile menu"></img>
+        <i className="fa-solid fa-angle-down"></i>
+      </div>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
