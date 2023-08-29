@@ -1,10 +1,12 @@
 import "./SongCard.css";
 import { NavLink } from 'react-router-dom';
+import { useDispatch } from "react-redux";
 import { useState } from "react";
-import Player from "../Player";
+import { playerSongThunk } from "../../store/songs";
 
 
 export default function SongCard({ song }) {
+    const dispatch = useDispatch();
     const [songClass, setSongClass] = useState('song-play hidden');
     const [songAudio, setSongAudio] = useState(song.audio)
 
@@ -17,7 +19,7 @@ export default function SongCard({ song }) {
     const sendAudio = () => {
         setSongAudio(song.audio)
         console.log("INSENDAUDIO", songAudio)
-        return <Player song={songAudio} />
+        dispatch(playerSongThunk(songAudio))
     }
 
 
