@@ -187,12 +187,14 @@ export const editSongThunk = (song, songId) => async dispatch => {
     try {
         const res = await fetch(`/api/songs/${songId}`, {
             method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(song)
+            // headers: { 'Content-Type': 'application/json' },
+            // body: JSON.stringify(song)
+            body: song
         })
 
         if (res.ok) {
             const song = await res.json();
+            console.log("NEW SONG FROM THUNKY", song)
             dispatch(editSongAction(song))
             return song;
         }

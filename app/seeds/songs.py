@@ -7,157 +7,157 @@ def seed_songs(all_users):
     song1 = Song(
         name='Song1',
         user_id=1,
-        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Images/Untitled.png',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/1.jpg',
         audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Audio/Chopin.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
     song2 = Song(
         name='Song2',
         user_id=2,
-        image='https://media.istockphoto.com/id/968526968/photo/number-2-3d-clean-red-isolated-on-white.jpg?s=170667a&w=0&k=20&c=K7KpYAEeBWH-ZApToHHHZT6Ju7orQZE38mzMgqtLdPo=',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/2.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/1.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
     song3 = Song(
         name='Song3',
         user_id=3,
-        image='https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/NYCS-bull-trans-3.svg/2048px-NYCS-bull-trans-3.svg.png',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/3.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/2.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
     song4 = Song(
         name='Song4',
         user_id=1,
-        image='https://icon2.cleanpng.com/20171220/bfe/number-4-png-5a3a51be177033.0271884715137714540962163.jpg',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/4.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/4.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song5 = Song(
         name='Song5',
         user_id=2,
-        image='https://e7.pngegg.com/pngimages/916/551/png-clipart-number-drawing-number-5-text-logo.png',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/5.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/5.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song6 = Song(
         name='Song6',
         user_id=3,
-        image='https://png.pngtree.com/png-clipart/20210123/ourmid/pngtree-black-number-6-png-image_2787060.jpg',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/6.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/6.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song7 = Song(
         name='Song7',
         user_id=1,
-        image='https://png.pngtree.com/png-clipart/20210328/ourmid/pngtree-pattern-number-7-glowing-color-png-image_3128574.jpg',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/7.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/7.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song8 = Song(
         name='Song8',
         user_id=2,
-        image='https://w7.pngwing.com/pngs/779/719/png-transparent-iphone-8-indore-police-child-minecraft-number-8-english-text-trademark-thumbnail.png',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/8.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/8.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song9 = Song(
         name='Song9',
         user_id=3,
-        image='https://pngimg.com/uploads/number9/number9_PNG19129.png',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/9.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/9.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song10 = Song(
         name='Song10',
         user_id=1,
-        image='https://w7.pngwing.com/pngs/622/298/png-transparent-simple-number-10-miscellaneous-text-trademark-thumbnail.png',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/10.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/10.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song11 = Song(
         name='Song11',
         user_id=2,
-        image='https://png.pngtree.com/png-vector/20210208/ourmid/pngtree-3d-numbers-11-in-a-circle-on-transparent-background-png-image_2905099.jpg',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/11.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/11.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song12 = Song(
         name='Song12',
         user_id=3,
-        image='https://www.pngfind.com/pngs/m/15-150614_number-12-clipart-blue-rounded-rectangle-with-number.png',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/12.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/12.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song13 = Song(
         name='Song13',
         user_id=1,
-        image='https://w7.pngwing.com/pngs/965/612/png-transparent-youtube-13-miscellaneous-text-trademark-thumbnail.png',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/13.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/13.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song14 = Song(
         name='Song14',
         user_id=2,
-        image='https://png.pngtree.com/png-clipart/20210301/ourmid/pngtree-number-14-3d-rendering-png-image_2992758.jpg',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/14.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/14.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song15 = Song(
         name='Song15',
         user_id=3,
-        image='https://png.pngtree.com/png-clipart/20210301/ourmid/pngtree-number-15-3d-rendering-png-image_2992759.jpg',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/15.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/15.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song16 = Song(
         name='Song16',
         user_id=1,
-        image='https://png.pngtree.com/png-vector/20210216/ourmid/pngtree-black-gradient-3d-number-16-png-image_2923782.jpg',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/16.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/16.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song17 = Song(
         name='Song17',
         user_id=2,
-        image='https://png.pngtree.com/png-clipart/20210301/ourmid/pngtree-number-17-3d-rendering-png-image_2992761.jpg',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/17.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/17.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song18 = Song(
         name='Song18',
         user_id=3,
-        image='https://png.pngtree.com/png-clipart/20210411/original/pngtree-number-18-png-image_6212867.jpg',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/18.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/18.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song19 = Song(
         name='Song19',
         user_id=1,
-        image='https://www.pngkit.com/png/full/160-1607668_number-19-png.png',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/19.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/19.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
     song20 = Song(
         name='Song20',
         user_id=2,
-        image='https://www.clipartmax.com/png/small/11-119352_heartbeat-20clipart-clipart-panda-free-number-20-clipart.png',
-        audio='dummydata.mp4',
+        image='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/SoundCloud+images/20.jpg',
+        audio='https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/Soundcloud+Audio/20.mp3',
         song_likes=sample(all_users, randint(0, len(all_users)))
         )
 
