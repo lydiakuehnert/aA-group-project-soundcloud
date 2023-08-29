@@ -15,6 +15,7 @@ export default function SongEdit({ songId }) {
     const [audio, setAudio] = useState(chosenSong.audio)
     const [errors, setErrors] = useState({})
     const {closeModal} = useModal()
+    const [updating, setUpdating] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -36,6 +37,7 @@ export default function SongEdit({ songId }) {
         formData.append("image",image)
         // const song = { songId, name, user_id, image, audio }
         try {
+            setUpdating(true)
             await dispatch(editSongThunk(formData, songId))
             closeModal()
             history.push(`/songs/${songId}`)
@@ -79,6 +81,7 @@ export default function SongEdit({ songId }) {
                     {errors.audio && <p>{errors.audio}</p>}
                 </section>
                 <button type="submit">Edit Song</button>
+                {(updating)&& <p className='status-message'>Updating...</p>}
             </form>
         </>
     )
