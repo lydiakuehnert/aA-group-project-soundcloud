@@ -10,10 +10,11 @@ songs = Blueprint('songs', __name__)
 
 @songs.route('')
 def all_songs():
-    #return all songs
+    # return all songs
     get_songs = Song.query.all()
     response = [song.to_dict() for song in get_songs]
     return response
+
 
 @songs.route('/upload', methods=["POST"])
 @login_required
@@ -45,7 +46,7 @@ def post_song():
 
         new_song = Song(
             name=form.data['name'],
-            user_id = current_user.to_dict()['id'],
+            user_id=current_user.to_dict()['id'],
             image=upload['url'],
             audio=audioLoad['url']
         )
@@ -57,7 +58,8 @@ def post_song():
     else:
         print(form.errors)
         return {"errors": form.errors}
-    
+
+
 @songs.route('/<int:id>', methods=['PUT'])
 def edit_song(id):
     form = SongForm()
@@ -66,24 +68,63 @@ def edit_song(id):
 
     if form.validate_on_submit():
         song_to_update = Song.query.get(id)
+
+        image_deleted = remove_file_from_s3(song_to_update.image)
+        audio_deleted = remove_file_from_s3(song_to_update.audio)
+        if image_deleted and audio_deleted is True:
+            db.session.delete(song_to_update)
+        else:
+            return "<h1> Error Occurred in Updating Song<h1>"
+
         song_to_update.name = form.data['name']
-        song_to_update.image = form.data['image']
-        song_to_update.audio = form.data['audio']
+        # song_to_update.image = form.data['image']
+        # song_to_update.audio = form.data['audio']
+        image = form.data["image"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        print(upload)
+
+        if "url" not in upload:
+            print([upload])
+            return {'errors': upload}
+
+        audio = form.data["audio"]
+        audio.filename = get_unique_filename(audio.filename)
+        audioLoad = upload_file_to_s3(audio)
+        print(audioLoad)
+
+        if "url" not in audioLoad:
+            print([audioLoad])
+            return {'errors': audioLoad}
+
+        song_to_update.image = upload['url']
+        song_to_update.audio = audioLoad['url']
         db.session.commit()
         return song_to_update.to_dict()
+    else:
+        print(form.errors)
+        return {"errors": form.errors}
 
 @songs.route('/<int:id>', methods=['DELETE'])
 def delete_song(id):
     get_song = Song.query.get(id)
-    db.session.delete(get_song)
-    db.session.commit()
-    return {"Success": "successfully deleted"}
+
+    image_deleted = remove_file_from_s3(get_song.image)
+    audio_deleted = remove_file_from_s3(get_song.audio)
+    if image_deleted and audio_deleted is True:
+        db.session.delete(get_song)
+        db.session.commit()
+        return {"Success": "successfully deleted"}
+    else:
+        return "<h1> Error Occurred in Deleting Song<h1>"
+
 
 @songs.route('/<int:id>')
 def get_one_song(id):
     print('hewwoooo')
     one_song = Song.query.get(id)
     return one_song.to_dict()
+
 
 @songs.route('/search')
 def get_searched_songs():
