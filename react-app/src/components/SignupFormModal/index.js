@@ -8,8 +8,8 @@ function SignupFormModal() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
-	const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState("");
+	const [firstname, setfirstname] = useState("");
+	const [lastname, setlastname] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
@@ -25,8 +25,8 @@ function SignupFormModal() {
 		if (email >= 255) errorObj["email"] = "Email must be must be 255 characters or less";
 		if (!email.includes('@') || !email.includes('.')) errorObj["email"] = "Invalid email";
 		if (!email.length) errorObj["email"] = "Email cannot be blank";
-		// if (firstName.length < 1) errorObj['firstName'] = "All fields must be filled out";
-		// if (lastName.length < 1) errorObj['lastName'] = "All fields must be filled out";
+		if (firstname.length >= 100) errorObj['firstname'] = "First name must be must be 100 characters or less";
+		if (lastname.length >= 100) errorObj['lastname'] = "Last name must be must be 100 characters or less";
 		if (password !== confirmPassword) errorObj['password'] = 'Passwords must match';
 		if (password.length < 6) errorObj['password'] = "Password must be at least 6 characters long";
 	
@@ -38,8 +38,11 @@ function SignupFormModal() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setSubmitted(true);
-		if (password === confirmPassword) {
-			const data = await dispatch(signUp(firstName, lastName, username, email, password));
+		setErrorObject({})
+
+		if(!Object.values(errorObject).length){
+			if (password === confirmPassword) {
+			const data = await dispatch(signUp(firstname, lastname, username, email, password));
 			if (data) {
 				setErrors(data);
 			} else {
@@ -50,6 +53,9 @@ function SignupFormModal() {
 				"Confirm Password field must be the same as the Password field",
 			]);
 		}
+		}
+
+		
 	};
 
 	return (
@@ -59,7 +65,7 @@ function SignupFormModal() {
 			<form onSubmit={handleSubmit}>
 				<ul>
 					{errors.map((error, idx) => (
-						<li className='errors' key={idx}>{error}</li>
+						<li className='errors' key={idx}>{error.split(':')[1]}</li>
 					))}
 				</ul>
 				<label>
@@ -90,20 +96,20 @@ function SignupFormModal() {
 				<input className='signup-input'
 					placeholder="First Name"
 					type="text"
-					value={firstName}
-					onChange={(e) => setFirstName(e.target.value)}
-					required
+					value={firstname}
+					onChange={(e) => setfirstname(e.target.value)}
 				/>
 				</label>
+				{errorObject.firstname && <p className='errors'>{errorObject.firstname}</p>}
 				<label>
 				<input className='signup-input'
 					placeholder="Last Name"
 					type="text"
-					value={lastName}
-					onChange={(e) => setLastName(e.target.value)}
-					required
+					value={lastname}
+					onChange={(e) => setlastname(e.target.value)}
 				/>
 				</label>
+				{errorObject.lastname && <p className='errors'>{errorObject.lastname}</p>}
 				<label>
 					<input
 						className='signup-input'
@@ -114,6 +120,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				{errorObject.password && <p className='errors'>{errorObject.password}</p>}
+
 				<label>
 					<input
 						className='signup-input'
