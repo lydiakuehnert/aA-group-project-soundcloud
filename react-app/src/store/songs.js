@@ -260,7 +260,7 @@ const songReducer = (state = initialState, action) => {
             return newState;
         }
         case PLAYER_SONG: {
-            newState = { ...state, allSongs: { ...state.allSongs }, singleSong: {}, playerSong: {} }
+            newState = { ...state, allSongs: { ...state.allSongs }, playerSong: {} }
             newState.playerSong = action.song
             return newState
         }

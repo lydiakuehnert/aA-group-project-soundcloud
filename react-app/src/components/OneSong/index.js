@@ -21,20 +21,27 @@ export default function OneSong() {
         dispatch(getSongThunk(songId))
     }, [dispatch])
 
+    useEffect(() => {
+        if (song) {
+            setSongAudio(song.audio)
+        }
+    }, [song])
+    
     const hoverPlay = () => {
         setSongClass("song-play-button")
     }
 
     const sendAudio = () => {
         setSongAudio(song.audio)
-        console.log("SONGAUDIO", songAudio)
         dispatch(playerSongThunk(songAudio))
     }
+
 
     const mouseLeave = () => setSongClass('song-play-button hidden')
 
     if (!song) return null;
     if (!song.id) return null;
+    if (!song.audio) return null;
 
     return (
         <div className="song-detail-page index">
@@ -50,19 +57,6 @@ export default function OneSong() {
                         <LikeSong />
                         <LikeDelete />
                     </div>
-                    {/* <div className="callout-info-box">
-                        <div className="callout-info">
-                            <div className="callout-price">
-                                <h2>${song.price}</h2> <h3>night</h3>
-                            </div>
-                            <h3>
-                                <i className="fa-solid fa-star"></i>
-                                {song.avgStarRating ? `${song.avgStarRating.toFixed(1)} · ${song.numReviews} ` : "New"}
-                                {song.numReviews === 1 ? "review" : ""}
-                                {song.numReviews > 1 ? "reviews" : ""}
-                            </h3>
-                        </div>
-                    </div> */}
                 </div>
             </div>
             <div className="comment-detail-box">
