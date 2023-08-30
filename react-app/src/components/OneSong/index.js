@@ -10,12 +10,21 @@ import { playerSongThunk } from "../../store/songs";
 
 export default function OneSong() {
     const { songId } = useParams();
-    
+
     const dispatch = useDispatch();
-    
+
     const song = useSelector(state => state.songs.singleSong);
+    const user = useSelector(state => state.session.user)
+    const findLike = user.likesList.find(likedSong => likedSong.id === song.id)
+    let isLiked
+    if (!findLike) isLiked = false
+    else isLiked = true
     const [songAudio, setSongAudio] = useState(song.audio)
     const [songClass, setSongClass] = useState('song-play-button hidden');
+    const [liked, setLiked] = useState(isLiked)
+    const toggleLiked = () => {
+        setLiked(!liked)
+    }
 
     useEffect(() => {
         dispatch(getSongThunk(songId))
@@ -35,6 +44,7 @@ export default function OneSong() {
 
     if (!song) return null;
     if (!song.id) return null;
+    if (!user) return null
 
     return (
         <div className="song-detail-page index">
@@ -47,8 +57,7 @@ export default function OneSong() {
                 <div className="under-pics">
                     <div>
                         <h1>Artist: {song.user.username}</h1>
-                        <LikeSong />
-                        <LikeDelete />
+                        { liked ? <LikeSong toggleLiked={toggleLiked} /> : <LikeDelete toggleLiked={toggleLiked}/> }
                     </div>
                     {/* <div className="callout-info-box">
                         <div className="callout-info">
