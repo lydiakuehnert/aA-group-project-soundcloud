@@ -39,7 +39,8 @@ export default function SongUpload() {
         try {
             setUploading(true)
             const newSong = await dispatch(createSongThunk(formData, user))
-            history.push(`/songs/${newSong.id}`)
+            console.log("NEWSONG FROM SONGUPLOAD",newSong)
+            history.push(`/songs/${newSong?.newSong.id}`)
         } catch (error) {
             console.error('Error creating spot:', error)
         }
