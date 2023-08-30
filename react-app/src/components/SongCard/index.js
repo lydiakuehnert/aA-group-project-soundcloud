@@ -18,7 +18,6 @@ export default function SongCard({ song }) {
 
     const sendAudio = () => {
         setSongAudio(song.audio)
-        console.log("INSENDAUDIO", songAudio)
         dispatch(playerSongThunk(songAudio))
     }
 
@@ -26,8 +25,6 @@ export default function SongCard({ song }) {
     const mouseLeave = () => setSongClass('song-play hidden')
 
     return (
-        //play button appears on hover
-        //TODO: link song to play button and allow play on click
         <div title={song.name} className="song-card"
         onMouseEnter={hoverPlay}
         onMouseLeave={mouseLeave}
