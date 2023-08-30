@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { signUp } from "../../store/session";
@@ -13,10 +13,31 @@ function SignupFormModal() {
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
+	const [errorObject, setErrorObject] = useState({})
 	const { closeModal } = useModal();
+	const [submitted, setSubmitted] = useState(false);
+
+	useEffect(()=> {
+		const errorObj = {};
+		if (username.length >= 40) errorObj["username"] = "Username must be 40 characters or less";
+		if (!username.length) errorObj["username"] = "Username cannot be blank";
+		if (username.includes('@')) errorObj["username"] = "Username cannot be an email";
+		if (email >= 255) errorObj["email"] = "Email must be must be 255 characters or less";
+		if (!email.includes('@') || !email.includes('.')) errorObj["email"] = "Invalid email";
+		if (!email.length) errorObj["email"] = "Email cannot be blank";
+		// if (firstName.length < 1) errorObj['firstName'] = "All fields must be filled out";
+		// if (lastName.length < 1) errorObj['lastName'] = "All fields must be filled out";
+		if (password !== confirmPassword) errorObj['password'] = 'Passwords must match';
+		if (password.length < 6) errorObj['password'] = "Password must be at least 6 characters long";
+	
+		if (submitted) {
+			setErrorObject(errorObj) 
+		}
+		}, [username, email, password, confirmPassword, submitted])
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setSubmitted(true);
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(firstName, lastName, username, email, password));
 			if (data) {
@@ -51,6 +72,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				{errors.email && <p className='errors'>{errors.email}</p>}
+
 				<label>
 					<input
 						className='signup-input'
