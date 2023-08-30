@@ -32,7 +32,7 @@ export default function CommentPost({ song }) {
 
     return (
         <form onSubmit={handleSubmit} className="comment-form-box">
-            <i class="fa-solid fa-cloud-bolt fa-2x"></i>
+            <i className="fa-solid fa-cloud-bolt fa-2x"></i>
             {Object.values(errors).length > 0 && <p className="errors">{errors.message}</p>}
             <input
                 type="text"

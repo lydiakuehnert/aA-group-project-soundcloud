@@ -34,4 +34,13 @@
     position: absolute;
     top: 35%;
     left: 35%;
+    cursor: pointer;
+}
+
+.fa-circle-play{
+    color: rgb(240, 63, 24);
+}
+
+.song-play:hover .fa-circle-play{
+    color: rgb(228, 38, 13);
 }

@@ -29,7 +29,7 @@ export default function Profile() {
             </div>
             <div className='tracks-likes-div'>
             <div>
-                <h1>Tracks</h1>
+                <h1 className='profile-h1'>Tracks</h1>
                     {user.songs.map((song) => (
                         // <div key={song.id} className='userSongs'>
                         // <img className='track-image' src={song.image} alt={user.username}></img>
@@ -42,7 +42,7 @@ export default function Profile() {
                     ))}
             </div>    
                 <div>
-                <h1>{user.likes} Likes</h1>
+                <h1 className='profile-h1'><i class="fa-solid fa-heart"></i> {user.likes} Likes</h1>
                 {user.likesList.map(like => (
                     <div className='likes-list-div'> 
                         <img className='album-like' src={like.image} alt={like.user.username}></img>
@@ -50,12 +50,7 @@ export default function Profile() {
                             <p>{like.name}</p>
                             <p>{like.user.username}</p>
                         </div>
-                        <div>
-                        <AudioPlayer
-                            volume='0.1'
-                            src={like.audio}
-                        />
-                        </div>
+                        
                     </div>
                 ))}
                 
