@@ -81,7 +81,7 @@ export const signUp = (username, firstname, lastname, email, password) => async 
 		},
 		body: JSON.stringify({
 			username,
-			firstname, 
+			firstname,
 			lastname,
 			email,
 			password,
@@ -108,6 +108,7 @@ export const postImage = (image) => async (dispatch) => {
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(image)
 	})
+	console.log("IN POST IMAGE THUNK", image)
 	const updated_user = await res.json();
 	dispatch(postUserImage(updated_user.image))
 	return updated_user.image

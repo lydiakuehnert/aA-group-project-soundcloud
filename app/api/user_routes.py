@@ -28,8 +28,9 @@ def user(id):
 
 @user_routes.route('/image', methods=["PUT"])
 @login_required
-def image(url):
-    current_user.image = url
+def image():
+    curr_user = User.query.get(current_user.id)
+    curr_user.image = url
+    print("IN USER ROUTE", curr_user)
     db.session.commit()
     return {"Success": "Image added"}
-
