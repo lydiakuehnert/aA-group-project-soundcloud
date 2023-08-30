@@ -9,3 +9,9 @@
     flex-direction: column;
     align-items: center;
 }
+
+.upload-div label, input {
+    padding: 5px;
+    margin: 5px;
+}
+

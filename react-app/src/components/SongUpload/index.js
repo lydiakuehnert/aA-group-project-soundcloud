@@ -52,7 +52,9 @@ export default function SongUpload() {
             <div className='song-upload-div'>
             <h1>still buggy</h1>
             <form className='upload-form' enctype="multipart/form-data" onSubmit={handleSubmit}>
+                <div className='upload-div'>
                 <section>
+                    <div>
                     <label>
                         Name
                         <input
@@ -62,7 +64,9 @@ export default function SongUpload() {
                             onChange={(e) => setName(e.target.value)}
                         />
                     </label>
+                    </div>
                     {errors.name && <p>{errors.name}</p>}
+                    <div>
                     <label>
                         Image
                         <input
@@ -71,7 +75,9 @@ export default function SongUpload() {
                             onChange={(e) => setImage(e.target.files[0])}
                         />
                     </label>
+                    </div>
                     {errors.image && <p>{errors.image}</p>}
+                    <div>
                     <label>
                         Audio
                         <input
@@ -80,9 +86,11 @@ export default function SongUpload() {
                             onChange={(e) => setAudio(e.target.files[0])}
                         />
                     </label>
+                    </div>
                     {errors.audio && <p>{errors.audio}</p>}
                 </section>
-                <button type="submit">Create Song</button>
+                <button type="submit" className='button-orange'>Create Song</button>
+                </div>
                 {(uploading)&& <p className='status-message'>Uploading...</p>}
             </form>
             </div>
