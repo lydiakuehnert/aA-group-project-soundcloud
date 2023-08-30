@@ -51,7 +51,7 @@ export default function SongUpload() {
         <div className='index'>
             <div className='song-upload-div'>
             <h1>still buggy</h1>
-            <form enctype="multipart/form-data" onSubmit={handleSubmit}>
+            <form className='upload-form' enctype="multipart/form-data" onSubmit={handleSubmit}>
                 <section>
                     <label>
                         Name

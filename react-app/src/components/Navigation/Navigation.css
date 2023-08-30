@@ -20,8 +20,8 @@
 }
 
 .logo-li {
-  position: absolute;
-  left: 15%;
+  margin-right: auto;
+  padding-left: 5px;
 }
 
 .nav-bar {
@@ -45,7 +45,7 @@
 }
 
 .nav-bar > li {
-  margin-right: 1em;
+  padding-right: 1em;
 }
 /* 
 .signup-button{
