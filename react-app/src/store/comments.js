@@ -43,21 +43,19 @@ export const getCommentsThunk = (songId) => async dispatch => {
 };
 
 export const createCommentThunk = ({ songId, payload }) => async dispatch => {
-    try {
-        const res = await fetch(`/api/comments/${songId}/new`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-        })
+    const res = await fetch(`/api/comments/${songId}/new`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+    })
 
-        if (res.ok) {
-            const comment = await res.json();
-            dispatch(createCommentAction(comment))
-            return comment;
-        }
-    } catch (e) {
-        const data = await e.json()
-        return data;
+    if (res.ok) {
+        const comment = await res.json();
+        dispatch(createCommentAction(comment))
+        return comment;
+    }
+    else {
+        return res
     }
 }
 
@@ -72,22 +70,20 @@ export const deleteCommentThunk = (commentId) => async dispatch => {
 }
 
 export const editCommentThunk = (payload) => async dispatch => {
-    try {
-        const newComment = payload;
-        const res = await fetch(`/api/comments/edit/${newComment.id}`, {
-            method: 'PUT',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newComment)
-        })
+    const newComment = payload;
+    const res = await fetch(`/api/comments/edit/${newComment.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newComment)
+    })
 
-        if (res.ok) {
-            const comment = await res.json();
-            dispatch(editCommentAction(comment))
-            return comment;
-        }
-    } catch (e) {
-        const data = await e.json()
-        return data;
+    if (res.ok) {
+        const comment = await res.json();
+        dispatch(editCommentAction(comment))
+        return comment;
+    }
+    else {
+        return res
     }
 }
 

@@ -18,7 +18,6 @@ export default function SongCard({ song }) {
 
     const sendAudio = () => {
         setSongAudio(song.audio)
-        console.log("INSENDAUDIO", songAudio)
         dispatch(playerSongThunk(songAudio))
     }
 
