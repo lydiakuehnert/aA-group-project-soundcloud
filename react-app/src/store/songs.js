@@ -172,7 +172,7 @@ export const createSongThunk = (song, user) => async dispatch => {
             if (!user) throw new Error('Please log in to create a song')
             const newSong = await res.json();
             dispatch(createSongAction(newSong))
-            console.log(newSong)
+            // console.log(newSong)
             return newSong;
         }
     } catch (e) {
