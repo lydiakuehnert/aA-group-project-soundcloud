@@ -15,6 +15,7 @@ function Player({ isLoaded }) {
                     <AudioPlayer
                     autoPlay
                     src={playerSong}
+                    volume='0.5'
                     // src="https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/f66bebe9a94a4be89d84ea4e8099d094.mp3"
                     onPlay={e => console.log("onPlay")}
                     // other props here

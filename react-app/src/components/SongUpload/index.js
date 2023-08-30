@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { createSongThunk } from '../../store/songs';
+import "./SongUpload.css"
 
 export default function SongUpload() {
     const dispatch = useDispatch()
@@ -46,7 +47,8 @@ export default function SongUpload() {
 
 
     return (
-        <>
+        <div className='index'>
+            <div className='song-upload-div'>
             <h1>still buggy</h1>
             <form enctype="multipart/form-data" onSubmit={handleSubmit}>
                 <section>
@@ -82,6 +84,7 @@ export default function SongUpload() {
                 <button type="submit">Create Song</button>
                 {(uploading)&& <p className='status-message'>Uploading...</p>}
             </form>
-        </>
+            </div>
+        </div>
     )
 }

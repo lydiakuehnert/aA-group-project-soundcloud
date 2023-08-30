@@ -52,9 +52,9 @@ export default function Profile() {
                         </div>
                         <div>
                         <AudioPlayer
-                    // autoPlay
-                    src={like.audio}
-                    />
+                            volume='0.1'
+                            src={like.audio}
+                        />
                         </div>
                     </div>
                 ))}
