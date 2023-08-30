@@ -15,13 +15,9 @@ export default function OneSong() {
 
     const song = useSelector(state => state.songs.singleSong);
     const user = useSelector(state => state.session.user)
-    const findLike = user.likesList.find(likedSong => likedSong.id === song.id)
-    let isLiked
-    if (!findLike) isLiked = false
-    else isLiked = true
     const [songAudio, setSongAudio] = useState(song.audio)
     const [songClass, setSongClass] = useState('song-play-button hidden');
-    const [liked, setLiked] = useState(isLiked)
+    const [liked, setLiked] = useState(false)
     const toggleLiked = () => {
         setLiked(!liked)
     }
@@ -29,6 +25,13 @@ export default function OneSong() {
     useEffect(() => {
         dispatch(getSongThunk(songId))
     }, [dispatch])
+
+    useEffect(() => {
+        if (song && user) {
+            const findLike = user.likesList.find(likedSong => likedSong.id === song.id)
+            setLiked(Boolean(findLike))
+        }
+    }, [song, user])
 
     const hoverPlay = () => {
         setSongClass("song-play-button")
@@ -57,7 +60,7 @@ export default function OneSong() {
                 <div className="under-pics">
                     <div>
                         <h1>Artist: {song.user.username}</h1>
-                        { liked ? <LikeSong toggleLiked={toggleLiked} /> : <LikeDelete toggleLiked={toggleLiked}/> }
+                        { liked ? <LikeDelete toggleLiked={toggleLiked}/> : <LikeSong toggleLiked={toggleLiked} /> }
                     </div>
                     {/* <div className="callout-info-box">
                         <div className="callout-info">
