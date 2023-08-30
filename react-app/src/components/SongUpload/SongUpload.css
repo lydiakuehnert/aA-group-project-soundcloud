@@ -1,5 +1,6 @@
-.song-upload-div {
+.song-upload-div, .upload-form > * {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
