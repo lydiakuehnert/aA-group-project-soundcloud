@@ -21,20 +21,24 @@ function Navigation({ isLoaded }){
 			<li className='searchbar-li'>
 				<SongSearchBar id='searchbar' />
 			</li>
-			{sessionUser ? (
-			<li className="upload-button">
-				<NavLink exact to={`/upload`}><button>Upload (still wonky)</button></NavLink>
-			</li>) : null}
-			<li className="user-songs-button">
-				<NavLink exact to={`/uploads`}><button>Your Songs</button></NavLink>
-			</li>
+			{/* {sessionUser ? ( */}
+			
 
 			{sessionUser ? (
 				<>
 				{isLoaded && (
+				<>
+				<li className="upload-button">
+				<NavLink exact to={`/upload`}><button>Upload (still wonky)</button></NavLink>
+			</li>
+			<li className="user-songs-button">
+				<NavLink exact to={`/uploads`}><button>Your Songs</button></NavLink>
+			</li>
 				<li className="profile-button">
 					<ProfileButton user={sessionUser} />
 				</li>
+
+			</>
 			)}
 				</>
 
@@ -43,12 +47,14 @@ function Navigation({ isLoaded }){
 					<li className="login-button">
 					<OpenModalButton
 						buttonText="Sign In"
+						buttonClass='button-black'
 						modalComponent={<LoginFormModal />}
 					/>
 					</li>
 					<li className="signup-button">
 					<OpenModalButton
 						buttonText="Create Account"
+						buttonClass='button-orange'
 						modalComponent={<SignupFormModal />}
 					/>
 					</li>

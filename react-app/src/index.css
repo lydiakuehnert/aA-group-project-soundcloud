@@ -50,8 +50,10 @@ body {
   }
 
   .button-white {
-    color: white;
+    background-color: white;
     border: 1px solid gray;
+    cursor: pointer;
+    padding: 2px;
   }
 
   .button-white:hover {
