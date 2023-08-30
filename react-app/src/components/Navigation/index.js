@@ -16,7 +16,7 @@ function Navigation({ isLoaded }){
 		<div className="nav-background">
 		<ul className='nav-bar'>
 			<li className="logo-li">
-			<i class="fa-solid fa-cloud-bolt fa-2x"></i><NavLink id="logo" exact to="/">LoudCloud</NavLink>
+			<i className="fa-solid fa-cloud-bolt fa-2x"></i><NavLink id="logo" exact to="/">LoudCloud</NavLink>
 			</li>
 			<li className='searchbar-li'>
 				<SongSearchBar id='searchbar' />

@@ -49,4 +49,12 @@ body {
     list-style: none;
   }
 
+  .button-white {
+    color: white;
+    border: 1px solid gray;
+  }
+
+  .button-white:hover {
+    border: 1px solid darkgray;
+  }
   

@@ -10,6 +10,7 @@
 
 .user-song-button-container {
     flex-direction: column;
+    height: min-content;
     margin: 2rem;
 }
 
