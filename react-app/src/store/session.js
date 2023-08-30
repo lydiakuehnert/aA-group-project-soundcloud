@@ -108,10 +108,8 @@ export const postImage = (image) => async (dispatch) => {
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify(image)
 	})
-	console.log("IN POST IMAGE THUNK", image)
-	const updated_user = await res.json();
-	dispatch(postUserImage(updated_user.image))
-	return updated_user.image
+	const updated_image = await res.json();
+	dispatch(postUserImage(updated_image))
 }
 
 export default function reducer(state = initialState, action) {
@@ -121,7 +119,9 @@ export default function reducer(state = initialState, action) {
 		case REMOVE_USER:
 			return { user: null };
 		case POST_USER_IMAGE:
-			return { ...state, user: action.image}
+			let newState = {...state, user: {...state.user}}
+				newState.user.image = action.image
+			return newState
 		default:
 			return state;
 	}
