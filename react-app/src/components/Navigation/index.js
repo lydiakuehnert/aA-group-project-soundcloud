@@ -16,25 +16,29 @@ function Navigation({ isLoaded }){
 		<div className="nav-background">
 		<ul className='nav-bar'>
 			<li className="logo-li">
-			<i className="fa-solid fa-cloud-bolt fa-2x"></i><NavLink id="logo" exact to="/">LoudCloud</NavLink>
+				<NavLink  exact to="/"><i className="fa-solid fa-cloud-bolt fa-2x"></i><span id="logo">LoudCloud</span></NavLink>
 			</li>
 			<li className='searchbar-li'>
 				<SongSearchBar id='searchbar' />
 			</li>
-			{sessionUser ? (
-			<li className="upload-button">
-				<NavLink exact to={`/upload`}><button>Upload (still wonky)</button></NavLink>
-			</li>) : null}
-			<li className="user-songs-button">
-				<NavLink exact to={`/uploads`}><button>Your Songs</button></NavLink>
-			</li>
+			{/* {sessionUser ? ( */}
+			
 
 			{sessionUser ? (
 				<>
 				{isLoaded && (
+				<>
+				<li className="upload-button">
+				<NavLink className='navlink-link' exact to={`/upload`}>Upload (still wonky)</NavLink>
+			</li>
+			<li className="user-songs-button">
+				<NavLink className='navlink-link' exact to={`/uploads`}>Your Songs</NavLink>
+			</li>
 				<li className="profile-button">
 					<ProfileButton user={sessionUser} />
 				</li>
+
+			</>
 			)}
 				</>
 
@@ -43,12 +47,14 @@ function Navigation({ isLoaded }){
 					<li className="login-button">
 					<OpenModalButton
 						buttonText="Sign In"
+						buttonClass='button-black'
 						modalComponent={<LoginFormModal />}
 					/>
 					</li>
 					<li className="signup-button">
 					<OpenModalButton
 						buttonText="Create Account"
+						buttonClass='button-orange'
 						modalComponent={<SignupFormModal />}
 					/>
 					</li>

@@ -137,6 +137,16 @@
   cursor: pointer;
 }
 
-.menu-button:hover .fa-angle-down{
+.menu-button:hover .fa-angle-down {
+  color: white;
+}
+
+.navlink-link {
+  text-decoration: none;
+  color: gray;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navlink-link:hover {
   color: white;
 }
