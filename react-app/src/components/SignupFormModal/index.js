@@ -72,7 +72,7 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
-				{errors.email && <p className='errors'>{errors.email}</p>}
+				{errorObject.email && <p className='errors'>{errorObject.email}</p>}
 
 				<label>
 					<input
@@ -84,6 +84,8 @@ function SignupFormModal() {
 						required
 					/>
 				</label>
+				{errorObject.username && <p className='errors'>{errorObject.username}</p>}
+
 				<label>
 				<input className='signup-input'
 					placeholder="First Name"
