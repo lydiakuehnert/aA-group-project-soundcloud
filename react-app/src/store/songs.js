@@ -199,8 +199,8 @@ export const editSongThunk = (song, songId) => async dispatch => {
             return song;
         }
     } catch (e) {
-        const data = await e.json()
-        return data;
+        const error = await e.json()
+        return error;
     }
 }
 
