@@ -17,10 +17,12 @@ export default function LikedSongs() {
     }, [dispatch])
 
     return (
-        <div className="all-songs index">
+        <div className="index">
+            <div className="all-songs">
             {songs.length > 0 && songs.map(song => (
                 <SongCard key={song.id} song={song} />
             ))}
+            </div>
         </div>
     )
 }

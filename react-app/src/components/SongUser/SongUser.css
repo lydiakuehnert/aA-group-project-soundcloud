@@ -22,8 +22,3 @@
 .user-song-buttons button {
     width: 80px
 }
-
-.flexed-div {
-    display: flex;
-    flex-wrap: wrap;
-  }

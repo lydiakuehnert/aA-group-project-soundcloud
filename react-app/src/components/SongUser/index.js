@@ -20,8 +20,8 @@ export default function SongUser() {
 
     return (
         <>
-            <div className="all-user-songs index">
-                <div className="flexed-div">
+            <div className=" index">
+                <div className="all-user-songs">
                 {songs.length > 0 && songs.map(song => (
                     <>
                         <div className="user-song-button-container">
