@@ -58,8 +58,8 @@ function ProfileButton({ user }) {
             <li>{user.username}</li>
             <li>{user.email}</li>
             <li>{user.firstname} {user.lastname}</li>
-            <li><Link to='/profile' onClick={closeMenu}>Profile</Link></li>
-            <li>
+            <li className="clicky" id="profile-link"><Link to='/profile' onClick={closeMenu}>Profile</Link></li>
+            <li className="clicky">
               <NavLink className='liked-songs-link' exact to={`/likes`}>Liked Songs</NavLink>
             </li>
             <li>

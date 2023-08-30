@@ -6,6 +6,29 @@
   border: 1px solid gainsboro;
 }
 
+.profile-dropdown li {
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+
+.profile-dropdown a {
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+.clicky {
+  background-color: gainsboro;
+}
+
+.clicky:hover {
+  background-color: gray;
+}
+
+#profile-link {
+  border-bottom: 1px solid white;
+}
+
 .fa-cloud-bolt {
   color: rgb(219, 50, 75);
 }
