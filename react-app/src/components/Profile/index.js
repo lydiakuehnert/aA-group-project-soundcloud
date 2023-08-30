@@ -4,9 +4,9 @@ import OpenModalButton from "../OpenModalButton";
 import AddImageModal from "../AddImageModal";
 import "./Profile.css"
 import noProfileImg from '../../images/blue-profile.jpeg';
-import SongCard from "../SongCard";
-import AudioPlayer from 'react-h5-audio-player';
-
+// import SongCard from "../SongCard";
+// import AudioPlayer from 'react-h5-audio-player';
+import { Link } from 'react-router-dom';
 
 
 
@@ -29,20 +29,20 @@ export default function Profile() {
             </div>
             <div className='tracks-likes-div'>
             <div>
-                <h1 className='profile-h1'>Tracks</h1>
-                    {user.songs.map((song) => (
-                        // <div key={song.id} className='userSongs'>
-                        // <img className='track-image' src={song.image} alt={user.username}></img>
-                        // <p >{user.username}</p>
-                        // <p >{song.name}</p>
-                        // </div>
+				<Link className='link1' exact to={`/uploads`}><h1 className='profile-h1'>Tracks</h1></Link>
 
-                        <SongCard key={song.id} song={song} />
-                        
-                    ))}
+                
+                    {/* {user.songs.map((song) => (
+                        <SongCard key={song.id} song={song} />                  
+                    ))} */}
             </div>    
                 <div>
+              <Link className='link1' exact to={`/likes`}>
                 <h1 className='profile-h1'><i class="fa-solid fa-heart"></i> {user.likes} Likes</h1>
+              </Link>
+
+                
+{/*                 
                 {user.likesList.map(like => (
                     <div className='likes-list-div'> 
                         <img className='album-like' src={like.image} alt={like.user.username}></img>
@@ -52,7 +52,7 @@ export default function Profile() {
                         </div>
                         
                     </div>
-                ))}
+                ))} */}
                 
                 </div>
             </div>

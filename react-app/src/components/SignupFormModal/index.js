@@ -33,7 +33,7 @@ function SignupFormModal() {
 		if (submitted) {
 			setErrorObject(errorObj) 
 		}
-		}, [username, email, password, confirmPassword, submitted])
+		}, [username, email, password, confirmPassword, submitted, firstname, lastname])
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -42,7 +42,7 @@ function SignupFormModal() {
 
 		if(!Object.values(errorObject).length){
 			if (password === confirmPassword) {
-			const data = await dispatch(signUp(firstname, lastname, username, email, password));
+			const data = await dispatch(signUp(username, firstname, lastname, email, password));
 			if (data) {
 				setErrors(data);
 			} else {
