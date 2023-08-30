@@ -6,6 +6,7 @@ const DELETE_SONG = "songs/deleteSong";
 const EDIT_SONG = "songs/editSong";
 const PLAYER_SONG = "songs/playerSong"
 const CREATE_LIKE = "songs/likeSong"
+const DELETE_LIKE = "songs/likeDelete"
 
 
 const getUserSongsAction = (songs) => {
@@ -39,6 +40,13 @@ const createSongAction = (song) => {
 const createLikeAction = (songId) => {
     return {
         type: CREATE_LIKE,
+        songId
+    }
+}
+
+const deleteLikeAction = (songId) => {
+    return {
+        type: DELETE_LIKE,
         songId
     }
 }
@@ -142,7 +150,7 @@ export const deleteLikeThunk = (songId) => async dispatch => {
 
         if (res.ok) {
             const deleteLike = await res.json()
-            dispatch()
+            dispatch(deleteLikeAction())
             return deleteLike
         }
     } catch (e) {
@@ -164,7 +172,7 @@ export const createSongThunk = (song, user) => async dispatch => {
             if (!user) throw new Error('Please log in to create a song')
             const newSong = await res.json();
             dispatch(createSongAction(newSong))
-            console.log(newSong)
+            // console.log(newSong)
             return newSong;
         }
     } catch (e) {
@@ -199,8 +207,8 @@ export const editSongThunk = (song, songId) => async dispatch => {
             return song;
         }
     } catch (e) {
-        const data = await e.json()
-        return data;
+        const error = await e.json()
+        return error;
     }
 }
 
@@ -232,6 +240,10 @@ const songReducer = (state = initialState, action) => {
             // newState.singleSong = action.song
             return newState
         }
+        case DELETE_LIKE: {
+            newState = { ...state, allSongs: { ...state.allSongs } }
+            return newState
+        }
         case GET_USER_SONGS: {
             newState = { ...state, allSongs: {}, singleSong: {} }
             action.songs.forEach(song => newState.allSongs[song.id] = song)
@@ -248,7 +260,7 @@ const songReducer = (state = initialState, action) => {
             return newState;
         }
         case PLAYER_SONG: {
-            newState = { ...state, allSongs: { ...state.allSongs }, singleSong: {}, playerSong: {} }
+            newState = { ...state, allSongs: { ...state.allSongs }, playerSong: {} }
             newState.playerSong = action.song
             return newState
         }

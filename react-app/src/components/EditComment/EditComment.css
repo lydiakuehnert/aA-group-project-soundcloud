@@ -1,3 +1,8 @@
+.errors {
+    color: red;
+    text-align: center;
+}
+
 .edit-modal {
     height: 220px;
     width: 400px;

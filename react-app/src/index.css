@@ -48,3 +48,15 @@ body {
     margin: 0;
     list-style: none;
   }
+
+  .button-white {
+    background-color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+    padding: 2px;
+  }
+
+  .button-white:hover {
+    border: 1px solid darkgray;
+  }
+  

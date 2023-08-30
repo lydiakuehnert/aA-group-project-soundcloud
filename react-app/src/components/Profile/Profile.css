@@ -30,3 +30,29 @@
     width: 160px;
     object-fit: cover;
 }
+
+.likes-list-div {
+    display: flex;
+    flex-flow: row;
+    padding: 5px;
+}
+
+.likes-list-div p {
+    margin: 3px;
+    padding-left: 5px;
+}
+
+.profile-h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    color: gray;
+}
+
+.link1 {
+    text-decoration: none;
+    color: black;
+}
+
+.profile-h1:hover {
+    color: darkgray;
+}

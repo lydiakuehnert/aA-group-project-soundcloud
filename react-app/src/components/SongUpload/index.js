@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { createSongThunk } from '../../store/songs';
+import "./SongUpload.css"
 
 export default function SongUpload() {
     const dispatch = useDispatch()
@@ -38,7 +39,8 @@ export default function SongUpload() {
         try {
             setUploading(true)
             const newSong = await dispatch(createSongThunk(formData, user))
-            history.push(`/songs/${newSong.id}`)
+            // console.log("NEWSONG FROM SONGUPLOAD",newSong)
+            history.push(`/songs/${newSong?.newSong.id}`)
         } catch (error) {
             console.error('Error creating spot:', error)
         }
@@ -46,9 +48,10 @@ export default function SongUpload() {
 
 
     return (
-        <>
+        <div className='index'>
+            <div className='song-upload-div'>
             <h1>still buggy</h1>
-            <form enctype="multipart/form-data" onSubmit={handleSubmit}>
+            <form className='upload-form' enctype="multipart/form-data" onSubmit={handleSubmit}>
                 <section>
                     <label>
                         Name
@@ -82,6 +85,7 @@ export default function SongUpload() {
                 <button type="submit">Create Song</button>
                 {(uploading)&& <p className='status-message'>Uploading...</p>}
             </form>
-        </>
+            </div>
+        </div>
     )
 }

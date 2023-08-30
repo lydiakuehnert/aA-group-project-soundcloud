@@ -9,8 +9,9 @@
 }
 
 .user-song-button-container {
-    display: flex;
     flex-direction: column;
+    height: min-content;
+    margin: 2rem;
 }
 
 .user-song-buttons {

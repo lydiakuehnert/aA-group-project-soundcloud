@@ -1,0 +1,11 @@
+.song-upload-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upload-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

@@ -9,25 +9,42 @@ export default function EditComment({ comment, songId }) {
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const [input, setInput] = useState(comment.comment);
+    const [errors, setErrors] = useState({})
     const sessionUser = useSelector(state => state.session.user);
 
 
     const handleEdit = async (e) => {
         e.preventDefault()
+        let validationErrors = {}
+
+        if (input.length < 1) validationErrors.comment = 'Please provide a valid comment'
+
+        if (Object.keys(validationErrors).length > 0) {
+            setErrors(validationErrors)
+            return
+        }
+
         const payload = {
             id: comment.id,
             comment: input, 
             song_Id: songId, 
             user_Id: sessionUser.id
         }
-        await dispatch(editCommentThunk(payload))
-        await dispatch(getSongThunk(songId))
-        closeModal()
+        try {
+            await dispatch(editCommentThunk(payload))
+            await dispatch(getSongThunk(songId))
+            dispatch(getSongThunk(songId))
+            setErrors({})
+            closeModal()
+        } catch (error) {
+            console.error('Error editing comment:', error)
+        }
     }
 
     return (
         <div className="edit-modal">
             <h2>Edit Comment</h2>
+            {Object.values(errors).length > 0 && <p className="errors">{errors.comment}</p>}
             <textarea
                 type="text"
                 placeholder="Write a comment"

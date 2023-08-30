@@ -20,8 +20,8 @@
 }
 
 .logo-li {
-  position: absolute;
-  left: 15%;
+  margin-right: auto;
+  padding-left: 5px;
 }
 
 .nav-bar {
@@ -45,7 +45,7 @@
 }
 
 .nav-bar > li {
-  margin-right: 1em;
+  padding-right: 1em;
 }
 /* 
 .signup-button{
@@ -61,14 +61,6 @@
 .create-spot-link {
   text-decoration: none;
   color: rgb(84, 84, 212);
-}
-
-.menu-button {
-  border: 2px solid black;
-  border-radius: 45%;
-  padding: .5em .7em;
-  cursor: pointer;
-  background-color: white;
 }
 
 .menu-div {
@@ -124,3 +116,37 @@
 /* .search-button { 
   background-image: ;
 } */
+
+.menu-button {
+  cursor: pointer;
+}
+
+.profile-menu {
+  height: 33px;
+  width: 33px;
+  object-fit: cover;
+  
+  border-radius: 45%;
+}
+
+.fa-angle-down {
+  font-size: small;
+  color: gray;
+  margin-left: 3px;
+  vertical-align: super;
+  cursor: pointer;
+}
+
+.menu-button:hover .fa-angle-down {
+  color: white;
+}
+
+.navlink-link {
+  text-decoration: none;
+  color: gray;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navlink-link:hover {
+  color: white;
+}

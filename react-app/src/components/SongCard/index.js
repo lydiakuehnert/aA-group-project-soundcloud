@@ -18,7 +18,6 @@ export default function SongCard({ song }) {
 
     const sendAudio = () => {
         setSongAudio(song.audio)
-        console.log("INSENDAUDIO", songAudio)
         dispatch(playerSongThunk(songAudio))
     }
 
@@ -27,21 +26,23 @@ export default function SongCard({ song }) {
 
     return (
         //play button appears on hover
-        //TODO: link song to play button and allow play on click
         <div title={song.name} className="song-card"
         onMouseEnter={hoverPlay}
         onMouseLeave={mouseLeave}
         >
 
                 <div className="card-image">
+                <NavLink className="song-card-link" exact to={`/songs/${song.id}`}>
+
                     <img src={song.image} alt="album of song"></img>
+                </NavLink>
 
 
-            <div className={songClass} onClick={sendAudio}><i class="fa-regular fa-circle-play fa-4x"></i></div>
+            <div className={songClass} onClick={sendAudio}><i className="fa-regular fa-circle-play fa-4x"></i></div>
 
                 </div>
-
             <NavLink className="song-card-link" exact to={`/songs/${song.id}`}>
+
                 <div className="song-details">
                     <p className="song-track-name">{song.name}</p>
                     <p className="artist-name">{song.user.username}</p>

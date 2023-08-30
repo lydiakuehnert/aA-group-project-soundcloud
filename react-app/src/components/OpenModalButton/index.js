@@ -5,7 +5,9 @@ function OpenModalButton({
   modalComponent, // component to render inside the modal
   buttonText, // text of the button that opens the modal
   onButtonClick, // optional: callback function that will be called once the button that opens the modal is clicked
-  onModalClose // optional: callback function that will be called once the modal is closed
+  onModalClose, // optional: callback function that will be called once the modal is closed
+  buttonClass, // optional: sets the button class
+  buttonText2
 }) {
   const { setModalContent, setOnModalClose } = useModal();
 
@@ -15,18 +17,8 @@ function OpenModalButton({
     if (onButtonClick) onButtonClick();
   };
 
-  if (buttonText === 'Create Account') {
-    return (
-      <button className='button-orange' onClick={onClick}>{buttonText}</button>
-    );
-  }
-  if (buttonText === 'Sign In') {
-    return (
-      <button className='button-black' onClick={onClick}>{buttonText}</button>
-    );
-  }
   return (
-      <button onClick={onClick}>{buttonText}</button>
+      <button onClick={onClick} className={buttonClass}>{buttonText}{buttonText2}</button>
     );
 }
 
