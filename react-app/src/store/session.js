@@ -105,11 +105,13 @@ export const signUp = (username, firstname, lastname, email, password) => async 
 export const postImage = (image) => async (dispatch) => {
 	const res = await fetch('/api/users/image', {
 		method: 'PUT',
-		headers: { 'Content-Type': 'application/json' },
+		headers: { "Content-Type": "application/json", },
 		body: JSON.stringify(image)
 	})
+	console.log(image)
 	const updated_image = await res.json();
 	dispatch(postUserImage(updated_image))
+	return image
 }
 
 export default function reducer(state = initialState, action) {
