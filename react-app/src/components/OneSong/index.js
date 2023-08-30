@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { getSongThunk } from "../../store/songs";
 import SongComments from "../SongComments";
 import LikeSong from "../LikeSong";
+import LikeDelete from "../LikeDelete";
 import "./OneSong.css"
 
 export default function OneSong() {
@@ -31,6 +32,7 @@ export default function OneSong() {
                     <div>
                         <h1>Artist: {song.user.username}</h1>
                         <LikeSong />
+                        <LikeDelete />
                     </div>
                     {/* <div className="callout-info-box">
                         <div className="callout-info">

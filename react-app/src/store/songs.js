@@ -6,6 +6,7 @@ const DELETE_SONG = "songs/deleteSong";
 const EDIT_SONG = "songs/editSong";
 const PLAYER_SONG = "songs/playerSong"
 const CREATE_LIKE = "songs/likeSong"
+const DELETE_LIKE = "songs/likeDelete"
 
 
 const getUserSongsAction = (songs) => {
@@ -39,6 +40,13 @@ const createSongAction = (song) => {
 const createLikeAction = (songId) => {
     return {
         type: CREATE_LIKE,
+        songId
+    }
+}
+
+const deleteLikeAction = (songId) => {
+    return {
+        type: DELETE_LIKE,
         songId
     }
 }
@@ -142,7 +150,7 @@ export const deleteLikeThunk = (songId) => async dispatch => {
 
         if (res.ok) {
             const deleteLike = await res.json()
-            dispatch()
+            dispatch(deleteLikeAction())
             return deleteLike
         }
     } catch (e) {
@@ -230,6 +238,10 @@ const songReducer = (state = initialState, action) => {
             newState = { ...state, allSongs: { ...state.allSongs } }
             // newState.allSongs[action.songId] = action.song
             // newState.singleSong = action.song
+            return newState
+        }
+        case DELETE_LIKE: {
+            newState = { ...state, allSongs: { ...state.allSongs } }
             return newState
         }
         case GET_USER_SONGS: {
