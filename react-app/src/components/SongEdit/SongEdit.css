@@ -10,9 +10,16 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem;
+    width: 500px
 }
 
 .button-center {
     margin-left: 30%;
     margin-top: .5em;
+}
+
+#edit-song-data{
+    display:flex;
+    flex-direction: column;
+    
 }
