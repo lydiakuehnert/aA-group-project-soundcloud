@@ -105,16 +105,6 @@ export const signUp = (username, firstname, lastname, email, password) => async 
 export const postImage = (user) => async (dispatch) => {
 	const res = await fetch('/api/users/image', {
 		method: 'PUT',
-<<<<<<< HEAD
-		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify(user)
-	})
-	if (res.ok) {
-		const updated_user = await res.json();
-		dispatch(postUserImage(updated_user))
-		return updated_user
-	}
-=======
 		headers: { "Content-Type": "application/json", },
 		body: JSON.stringify(image)
 	})
@@ -122,7 +112,6 @@ export const postImage = (user) => async (dispatch) => {
 	console.log(updated_image);
 	dispatch(postUserImage(updated_image))
 	return image
->>>>>>> wed4
 }
 
 
@@ -135,13 +124,8 @@ export default function reducer(state = initialState, action) {
 		case REMOVE_USER:
 			return { user: null };
 		case POST_USER_IMAGE:
-<<<<<<< HEAD
-			newState = { ...state }
-			newState.user[action.user.id] = action.user;
-=======
 			let newState = {...state, user: {...state.user}}
 				newState.user.image = action.image
->>>>>>> wed4
 			return newState
 		default:
 			return state;
