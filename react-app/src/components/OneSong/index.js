@@ -29,7 +29,13 @@ export default function OneSong() {
 
     useEffect(() => {
         if (user) {
-            const findLike = user.likesList.find(likedSong => Number(likedSong.id) === Number(songId))
+            console.log(user.likesList)
+            const findLike = user.likesList.find(likedSong => {
+                console.log("likedSong.id", likedSong.id)
+                console.log("songId", songId)
+                return Number(likedSong.id) === Number(songId)
+                })
+            console.log("findLike", findLike)
             setLiked(Boolean(findLike))
         }
     }, [user])
