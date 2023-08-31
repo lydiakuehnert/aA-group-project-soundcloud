@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import { postImage } from "../../store/session";
+import './AddImageModal.css';
 
 
 export default function AddImageModal() {
@@ -33,16 +34,20 @@ export default function AddImageModal() {
     }
 
     return (
-        <div>
+        <div className="prof-img-div">
         <input type='url' className='txtInput'
                 name='profile-image'
                 value={image}
                 onChange={(e) => setImage(e.target.value)}
                 placeholder='Image URL'
                 size='30' />
+        <div className="add-image-errors">
         <p className={errorClass}>{errors.image}</p>
-        <button onClick={handleSubmit}>Add Image</button>
-        <button onClick={closeModal}>Cancel</button>
+        </div>
+        <div>
+            <button className='button-orange' onClick={handleSubmit}>Add Image</button>
+            <p className='cancel-click' onClick={closeModal}>Cancel</p>
+        </div>
         </div>
     )
 
