@@ -2,6 +2,8 @@
 const SET_USER = "session/SET_USER";
 const REMOVE_USER = "session/REMOVE_USER";
 const POST_USER_IMAGE = "session/POST_USER_IMAGE"
+const CREATE_LIKE = "songs/likeSong"
+const DELETE_LIKE = "songs/likeDelete"
 
 const setUser = (user) => ({
 	type: SET_USER,
@@ -16,6 +18,20 @@ const postUserImage = (image) => ({
 	type: POST_USER_IMAGE,
 	image
 })
+
+const createLikeAction = (user) => {
+	return {
+		type: CREATE_LIKE,
+		user
+	}
+}
+
+const deleteLikeAction = (user) => {
+	return {
+		type: DELETE_LIKE,
+		user
+	}
+}
 
 const initialState = { user: null };
 
@@ -114,6 +130,44 @@ export const postImage = (image) => async (dispatch) => {
 	return image
 }
 
+export const createLikeThunk = (songId) => async dispatch => {
+	try {
+		const res = await fetch(`/api/likes/${songId}`, {
+			method: 'POST',
+			headers: { 'Content-Type': 'application/json' }
+		})
+		if (res.ok) {
+			const user = await res.json()
+			dispatch(createLikeAction(user))
+			return user
+		} else {
+			const data = await res.json()
+			return data
+		}
+	} catch (e) {
+		console.error("an error has occured:", e)
+		return null
+	}
+}
+
+export const deleteLikeThunk = (songId) => async dispatch => {
+	try {
+		const res = await fetch(`/api/likes/${songId}`, {
+			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json' }
+		})
+
+		if (res.ok) {
+			const user = await res.json()
+			dispatch(deleteLikeAction(user))
+			return user
+		}
+	} catch (e) {
+		const data = await e.json()
+		return data
+	}
+}
+
 
 
 export default function reducer(state = initialState, action) {
@@ -128,6 +182,14 @@ export default function reducer(state = initialState, action) {
 			let new_user = {...newState.user}
 			new_user.image = action.image.image
 			return {...newState, user: {...new_user}}
+		case CREATE_LIKE: 
+			newState = {...state, user: {}}
+			newState.user = action.user
+			return newState;
+		case DELETE_LIKE:
+			newState = { ...state, user: {} }
+			newState.user = action.user
+			return newState;
 		default:
 			return state;
 	}

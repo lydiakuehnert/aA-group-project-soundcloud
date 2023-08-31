@@ -14,6 +14,8 @@ export default function SongUpload() {
     const [audio, setAudio] = useState('')
     const [errors, setErrors] = useState({})
     const [uploading, setUploading] = useState(false);
+    const audioTypes = [".mp3", ".mp4", ".wav"]
+    const imageTypes = [".pdf", ".png", ".jpeg", ".jpg", ".gif"];
 
     const handleSubmit = async (e) => {
         e.preventDefault()
