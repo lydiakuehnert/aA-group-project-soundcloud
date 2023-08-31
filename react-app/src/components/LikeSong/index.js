@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { createLikeThunk } from "../../store/songs"
+import { createLikeThunk } from "../../store/session"
 import { useParams } from "react-router-dom"
 
 export default function LikeSong({ toggleLiked }) {
