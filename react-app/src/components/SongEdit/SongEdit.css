@@ -4,3 +4,15 @@
 #image-btn{
     display:none
 }
+
+.song-edit-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.button-center {
+    margin-left: 30%;
+    margin-top: .5em;
+}
