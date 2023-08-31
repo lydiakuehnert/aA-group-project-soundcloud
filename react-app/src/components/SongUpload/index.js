@@ -25,15 +25,15 @@ export default function SongUpload() {
         if (!audio) validationErrors.audio = 'Please provide valid audio'
         // console.log('AUDIO FROM AUDIO',audio)
         if (audio && !(audioTypes.some(type => {
-            return audio.name.endsWith(type)})))
-            {
-                validationErrors.audio = 'Acceptable audio files must end in .mp3, .mp4, or .wav'
-            }
+            return audio.name.endsWith(type)
+        }))) {
+            validationErrors.audio = 'Acceptable audio files must end in .mp3, .mp4, or .wav'
+        }
         if (image && !(imageTypes.some(type => {
-            return image.name.endsWith(type)})))
-            {
-                validationErrors.audio = 'Acceptable image files must end in .pdf, .png, .jpg, .jpeg or .gif'
-            }
+            return image.name.endsWith(type)
+        }))) {
+            validationErrors.audio = 'Acceptable image files must end in .pdf, .png, .jpg, .jpeg or .gif'
+        }
 
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors)
@@ -41,10 +41,10 @@ export default function SongUpload() {
         }
 
         const formData = new FormData()
-        formData.append("name",name)
-        formData.append("user_id",user_id)
-        formData.append("image",image)
-        formData.append("audio",audio)
+        formData.append("name", name)
+        formData.append("user_id", user_id)
+        formData.append("image", image)
+        formData.append("audio", audio)
 
 
         // const song = { name, user_id, image, audio }
@@ -62,49 +62,53 @@ export default function SongUpload() {
     return (
         <div className='index'>
             <div className='song-upload-div'>
-            <h1>Upload a Song</h1>
-            <form className='upload-form' enctype="multipart/form-data" onSubmit={handleSubmit}>
-                <div className='upload-div'>
-                <section>
-                    <div>
-                    <label>
-                        Name
-                        <input
-                            type='text'
-                            placeholder='Name your track'
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-                    </label>
+                <h1>Upload a Song</h1>
+                <form className='upload-form' enctype="multipart/form-data" onSubmit={handleSubmit}>
+                    <div className='upload-div'>
+                        <section id='upload-form-data'>
+
+                            <label className='upload-form-elements' >
+                                Name:
+                                <input
+                                    className='song-inputs'
+                                    type='text'
+                                    placeholder='Name your track'
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                />
+                            </label>
+
+                            {errors.name && <p className='upload-validators'>{errors.name}</p>}
+
+                            <label className='upload-form-elements' >
+                                Image:
+                                <input
+                                    className='song-inputs'
+                                    type='file'
+                                    accept='image/*'
+                                    onChange={(e) => setImage(e.target.files[0])}
+                                />
+                            </label>
+
+                            {errors.image && <p className='upload-validators'>{errors.image}</p>}
+
+                            <label className='upload-form-elements' >
+                                Audio:
+                                <input
+                                    className='song-inputs'
+                                    type='file'
+                                    accept='audio/*'
+                                    onChange={(e) => setAudio(e.target.files[0])}
+                                />
+                            </label>
+
+                            {errors.audio && <p className='upload-validators'>{errors.audio}</p>}
+                        </section>
+                        <button id='upload-song-btn' type="submit" className='button-orange'>Create Song</button>
                     </div>
-                    {errors.name && <p>{errors.name}</p>}
-                    <div>
-                    <label>
-                        Image
-                        <input
-                            type='file'
-                            accept='image/*'
-                            onChange={(e) => setImage(e.target.files[0])}
-                        />
-                    </label>
-                    </div>
-                    {errors.image && <p>{errors.image}</p>}
-                    <div>
-                    <label>
-                        Audio
-                        <input
-                            type='file'
-                            accept='audio/*'
-                            onChange={(e) => setAudio(e.target.files[0])}
-                        />
-                    </label>
-                    </div>
-                    {errors.audio && <p>{errors.audio}</p>}
-                </section>
-                <button type="submit" className='button-orange'>Create Song</button>
-                </div>
-                {(uploading)&& <p className='status-message'>Uploading...</p>}
-            </form>
+                    {(uploading) && <p className='status-message'>Uploading...</p>}
+                </form>
+                        <a id='free-link' href="https://pixabay.com/sound-effects/search/relax/?duration=0-30" target="_blank">Free Audio Files!</a>
             </div>
         </div>
     )
