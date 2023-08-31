@@ -24,21 +24,21 @@ export default function OneSong() {
 
     useEffect(() => {
         dispatch(getSongThunk(songId))
-    }, [dispatch])
+    }, [dispatch, liked])
 
     useEffect(() => {
-        if (song && user) {
+        if (user) {
             const findLike = user.likesList.find(likedSong => likedSong.id === song.id)
             setLiked(Boolean(findLike))
         }
-    }, [song, user])
-    
+    }, [user])
+
     useEffect(() => {
         if (song) {
             setSongAudio(song.audio)
         }
     }, [song])
-    
+
     const hoverPlay = () => {
         setSongClass("song-play-button")
     }
