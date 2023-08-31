@@ -22,14 +22,14 @@ function Navigation({ isLoaded }){
 				<SongSearchBar id='searchbar' />
 			</li>
 			{/* {sessionUser ? ( */}
-			
+
 
 			{sessionUser ? (
 				<>
 				{isLoaded && (
 				<>
 				<li className="upload-button">
-				<NavLink className='navlink-link' exact to={`/upload`}>Upload (still wonky)</NavLink>
+				<NavLink className='navlink-link' exact to={`/upload`}>Upload a Song</NavLink>
 			</li>
 			<li className="user-songs-button">
 				<NavLink className='navlink-link' exact to={`/uploads`}>Your Songs</NavLink>
@@ -63,7 +63,7 @@ function Navigation({ isLoaded }){
 			}
 
 
-			
+
 		</ul>
 		</div>
 	);

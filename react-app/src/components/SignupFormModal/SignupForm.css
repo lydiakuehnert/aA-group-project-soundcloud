@@ -10,9 +10,13 @@
     height: 100%;
     flex-direction: column;
     width: 400px;
-  
-}
 
+}
+#modal-content{
+    /* set border for every modal on site */
+    border: 3px solid black;
+    border-radius: 5px;
+}
 
 .signup-input{
     display: inline-block;
