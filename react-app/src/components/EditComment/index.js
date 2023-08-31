@@ -49,6 +49,7 @@ export default function EditComment({ comment, songId }) {
                 type="text"
                 placeholder="Write a comment"
                 value={input}
+                maxlength="1000"
                 onChange={(e) => setInput(e.target.value)}
             />
             <button onClick={handleEdit} className="edit-button">Edit Comment</button>

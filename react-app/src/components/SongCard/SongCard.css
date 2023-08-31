@@ -1,5 +1,7 @@
 .song-card {
     margin-bottom: 1em;
+    height: 225px;
+    width: 180px;
 }
 
 .song-card-link {
@@ -47,4 +49,11 @@
 
 .song-track-name:hover{
     text-decoration: underline;
+}
+
+.song-track-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: normal;
+    white-space: nowrap;
 }

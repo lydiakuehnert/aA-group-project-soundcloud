@@ -91,6 +91,7 @@ export default function SongEdit({ songId }) {
                         <input
                             type='text'
                             value={name}
+                            maxLength='100'
                             onChange={(e) => setName(e.target.value)}
                         />
                     </label>
@@ -102,7 +103,8 @@ export default function SongEdit({ songId }) {
                         Image
                         <input
                             type='file'
-                            accept='image/*'
+                            // accept='image/*'
+                            accept='.pdf, .png, .jpg, .jpeg, .gif'
                             id='image-btn'
                             onChange={(e) => setImage(e.target.files[0])}
                         />
@@ -122,7 +124,8 @@ export default function SongEdit({ songId }) {
                         Audio
                         <input
                             type='file'
-                            accept='audio/*'
+                            // accept='audio/*'
+                            accept='.mp3, .mp4, .wav'
                             id='audio-btn'
                             onChange={(e) => setAudio(e.target.files[0])}
                         />

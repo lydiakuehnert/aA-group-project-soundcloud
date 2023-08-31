@@ -73,7 +73,7 @@ function LoginFormModal() {
           <input
             className="input"
             placeholder="Email"
-            type="text"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
