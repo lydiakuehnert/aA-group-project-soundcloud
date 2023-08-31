@@ -17,7 +17,8 @@ export default function SongEdit({ songId }) {
     const [errors, setErrors] = useState({})
     const {closeModal} = useModal()
     const [updating, setUpdating] = useState(false);
-
+    const audioTypes = [".mp3", ".mp4", ".wav"]
+    const imageTypes = [".pdf", ".png", ".jpeg", ".jpg", ".gif"];
     const handleSubmit = async (e) => {
         e.preventDefault()
         let validationErrors = {}
@@ -25,6 +26,17 @@ export default function SongEdit({ songId }) {
         if (!name) validationErrors.name = 'Please provide a valid name'
         if (!image) validationErrors.image = 'Please provide a valid image'
         if (!audio) validationErrors.audio = 'Please provide valid audio'
+
+        if (audio && !(audioTypes.some(type => {
+            return audio.name.endsWith(type)
+        }))) {
+            validationErrors.audio = 'Acceptable audio files must end in .mp3, .mp4, or .wav'
+        }
+        if (image && !(imageTypes.some(type => {
+            return image.name.endsWith(type)
+        }))) {
+            validationErrors.audio = 'Acceptable image files must end in .pdf, .png, .jpg, .jpeg or .gif'
+        }
 
         if (Object.keys(validationErrors).length > 0) {
             setErrors(validationErrors)
@@ -70,9 +82,9 @@ export default function SongEdit({ songId }) {
 
     return (
         <div className='song-edit-div'>
-            <h1>still shitty</h1>
+            <h1>Edit Song</h1>
             <form onSubmit={handleSubmit}>
-                <section>
+                <section id='edit-song-data'>
                     <div>
                     <label>
                         Name
