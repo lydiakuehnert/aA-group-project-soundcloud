@@ -68,6 +68,7 @@ export default function OneSong() {
                     <div>
                         <h1>Artist: {song.user.username}</h1>
                         { liked ? <LikeDelete toggleLiked={toggleLiked}/> : <LikeSong toggleLiked={toggleLiked} /> }
+                        <h3>Likes: {song.likes}</h3>
                     </div>
                 </div>
             </div>
