@@ -1,0 +1,12 @@
+.prof-img-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 2rem 1rem  2rem;
+}
+
+.cancel-click {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 1em;
+}

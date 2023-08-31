@@ -41,14 +41,20 @@ export default function SongComments({ song }) {
                             {month} {year}
                         </h5>
                         <p>{comment.comment}</p>
+                        <div className="comment-buttons">
+                        <div id='deletebtn'>
                         {sessionUser && sessionUser.id === comment.user.id && <OpenModalButton
-                            buttonText=<i className=" fa-solid fa-trash"></i> 
+                            buttonText= <i className="fa-solid fa-trash"></i>
                             modalComponent={<DeleteComment comment={comment} songId={song.id} />}
                         />}
+                        </div>
+                        <div id='editbtn'>
                         {sessionUser && sessionUser.id === comment.user.id && <OpenModalButton
-                            buttonText=<i className="fa-solid fa-pen-nib"></i>
+                            buttonText= <i className="fa-solid fa-pen-nib" ></i>
                             modalComponent={<EditComment comment={comment} songId={song.id} />}
                         />}
+                        </div>
+                        </div>
                     </div>
                 )
             })}

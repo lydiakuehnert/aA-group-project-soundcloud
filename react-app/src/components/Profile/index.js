@@ -1,30 +1,31 @@
-// import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import OpenModalButton from "../OpenModalButton";
 import AddImageModal from "../AddImageModal";
 import "./Profile.css"
 import noProfileImg from '../../images/blue-profile.jpeg';
-// import SongCard from "../SongCard";
-// import AudioPlayer from 'react-h5-audio-player';
 import { Link } from 'react-router-dom';
-
+import { useEffect } from 'react';
 
 
 export default function Profile() {
-    const dispatch = useDispatch()
 
     const user = useSelector(state => state.session.user);
+
+    useEffect(() => {
+    }, [user])
+
     if (!user) return null;
+    let icon = <i class="fa-solid fa-camera"></i>
 
     return (
         <div className='profile index'>
             <div className='profile-header'>
 
                 <img id='profile-image' src={user.image || noProfileImg} alt={user.username}></img>
-                <OpenModalButton
-                    buttonText="+"
+                <div className='plus-button' title="Upload Image"><OpenModalButton
+                    buttonText={icon}
                     modalComponent={<AddImageModal />} 
-                />
+                /></div>
                 <h1>{user.username}</h1>
             </div>
             <div className='tracks-likes-div'>

@@ -36,5 +36,5 @@ def image():
     curr_user = User.query.get(current_user.id)
     curr_user.image = form.data['image']
     db.session.commit()
-    return curr_user.image
+    return {'image': curr_user.image}
 
