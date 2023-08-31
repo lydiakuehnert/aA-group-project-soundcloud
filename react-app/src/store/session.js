@@ -102,7 +102,7 @@ export const signUp = (username, firstname, lastname, email, password) => async 
 	}
 };
 
-export const postImage = (user) => async (dispatch) => {
+export const postImage = (image) => async (dispatch) => {
 	const res = await fetch('/api/users/image', {
 		method: 'PUT',
 		headers: { "Content-Type": "application/json", },

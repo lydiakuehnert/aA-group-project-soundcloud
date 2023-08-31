@@ -24,25 +24,10 @@ export default function AddImageModal() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorClass('errors')
-<<<<<<< HEAD
-        
-        const new_user = {
-            // id: sessionUser.id,
-            image: url,
-            // username: sessionUser.username,
-            // email: sessionUser.email,
-            // firstname: sessionUser.firstname,
-            // lastname: sessionUser.lastname,
-            // password: sessionUser.password
-        }
-        if(!errors.url){
-            dispatch(postImage(new_user))
-=======
         const payload = {image: image}
         // const payload2 = JSON.stringify(payload)
         if(!errors.image){
             dispatch(postImage(payload))
->>>>>>> wed4
             closeModal()
         }
         
