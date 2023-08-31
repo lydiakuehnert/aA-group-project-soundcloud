@@ -74,7 +74,7 @@
 .nav-bar > li {
   padding-right: 1em;
 }
-/* 
+/*
 .signup-button{
   margin-left: auto;
 } */
@@ -140,7 +140,7 @@
   border: 0;
 }
 
-/* .search-button { 
+/* .search-button {
   background-image: ;
 } */
 
@@ -152,7 +152,7 @@
   height: 33px;
   width: 33px;
   object-fit: cover;
-  
+
   border-radius: 45%;
 }
 
@@ -176,4 +176,5 @@
 
 .navlink-link:hover {
   color: white;
+  text-decoration: underline;
 }
