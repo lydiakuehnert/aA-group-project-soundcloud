@@ -108,8 +108,8 @@ export const postImage = (image) => async (dispatch) => {
 		headers: { "Content-Type": "application/json", },
 		body: JSON.stringify(image)
 	})
-	console.log(image)
 	const updated_image = await res.json();
+	console.log(updated_image);
 	dispatch(postUserImage(updated_image))
 	return image
 }
