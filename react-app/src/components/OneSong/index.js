@@ -29,7 +29,9 @@ export default function OneSong() {
 
     useEffect(() => {
         if (user) {
-            const findLike = user.likesList.find(likedSong => Number(likedSong.id) === Number(songId))
+            const findLike = user.likesList.find(likedSong => {
+                return Number(likedSong.id) === Number(songId)
+                })
             setLiked(Boolean(findLike))
         }
     }, [user])
@@ -54,7 +56,7 @@ export default function OneSong() {
 
     if (!song) return null;
     if (!song.id) return null;
-    if (!user) return null
+    // if (!user) return null
     if (!song.audio) return null;
 
     return (
@@ -68,8 +70,10 @@ export default function OneSong() {
                 <div className="under-pics">
                     <div>
                         <h1>Artist: {song.user.username}</h1>
-                        { liked ? <LikeDelete toggleLiked={toggleLiked}/> : <LikeSong toggleLiked={toggleLiked} /> }
-                        <h3>Likes: {song.likes}</h3>
+                        {user && <div>
+                            { liked ? <LikeDelete toggleLiked={toggleLiked}/> : <LikeSong toggleLiked={toggleLiked} /> }
+                            <h3>Likes: {song.likes}</h3>
+                        </div>}
                     </div>
                 </div>
             </div>

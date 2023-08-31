@@ -31,3 +31,9 @@
 #deletebtn{
     margin-right: 10px;
 }
+
+#noComment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

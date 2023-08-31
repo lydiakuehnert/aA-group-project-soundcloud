@@ -5,8 +5,7 @@ const GET_USER_SONGS = "songs/getUserSongs";
 const DELETE_SONG = "songs/deleteSong";
 const EDIT_SONG = "songs/editSong";
 const PLAYER_SONG = "songs/playerSong"
-const CREATE_LIKE = "songs/likeSong"
-const DELETE_LIKE = "songs/likeDelete"
+
 
 
 const getUserSongsAction = (songs) => {
@@ -37,19 +36,6 @@ const createSongAction = (song) => {
     }
 }
 
-const createLikeAction = (songId) => {
-    return {
-        type: CREATE_LIKE,
-        songId
-    }
-}
-
-const deleteLikeAction = (songId) => {
-    return {
-        type: DELETE_LIKE,
-        songId
-    }
-}
 
 const deleteSongAction = (songId) => {
     return {
@@ -121,43 +107,6 @@ export const getLikedSongsThunk = () => async dispatch => {
     }
 };
 
-export const createLikeThunk = (songId) => async dispatch => {
-    try {
-        const res = await fetch(`/api/likes/${songId}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' }
-        })
-        if (res.ok) {
-            const postLike = await res.json()
-            dispatch(createLikeAction(songId))
-            return postLike
-        } else {
-            const data = await res.json()
-            return data
-        }
-    } catch (e) {
-        console.error("an error has occured:", e)
-        return null
-    }
-}
-
-export const deleteLikeThunk = (songId) => async dispatch => {
-    try {
-        const res = await fetch(`/api/likes/${songId}`, {
-            method: 'DELETE',
-            headers: { 'Content-Type': 'application/json' }
-        })
-
-        if (res.ok) {
-            const deleteLike = await res.json()
-            dispatch(deleteLikeAction())
-            return deleteLike
-        }
-    } catch (e) {
-        const data = await e.json()
-        return data
-    }
-}
 
 export const createSongThunk = (song, user) => async dispatch => {
     try {
@@ -232,16 +181,6 @@ const songReducer = (state = initialState, action) => {
             newState = { ...state, allSongs: { ...state.allSongs }, singleSong: {} }
             newState.allSongs[action.song.id] = action.song;
             newState.singleSong = action.song;
-            return newState
-        }
-        case CREATE_LIKE: {
-            newState = { ...state, allSongs: { ...state.allSongs } }
-            // newState.allSongs[action.songId] = action.song
-            // newState.singleSong = action.song
-            return newState
-        }
-        case DELETE_LIKE: {
-            newState = { ...state, allSongs: { ...state.allSongs } }
             return newState
         }
         case GET_USER_SONGS: {

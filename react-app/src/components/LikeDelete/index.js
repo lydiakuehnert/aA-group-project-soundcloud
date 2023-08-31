@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux"
-import { deleteLikeThunk } from "../../store/songs"
+import { deleteLikeThunk } from "../../store/session"
 import { useParams } from "react-router-dom"
 
 export default function LikeDelete({ toggleLiked }) {

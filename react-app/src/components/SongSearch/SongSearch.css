@@ -1,0 +1,9 @@
+.no-songs-index {
+    display: flex;
+    flex-direction: column;
+}
+
+.no-songs-subtext {
+    display: flex;
+    flex-direction: column;
+}

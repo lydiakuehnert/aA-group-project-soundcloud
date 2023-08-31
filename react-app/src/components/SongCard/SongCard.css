@@ -44,3 +44,7 @@
 .song-play:hover .fa-circle-play{
     color: rgb(228, 38, 13);
 }
+
+.song-track-name:hover{
+    text-decoration: underline;
+}
