@@ -47,6 +47,10 @@
   padding-left: 5px;
 }
 
+#noDeco{
+  text-decoration: none;
+}
+
 .nav-bar {
   display: flex;
   justify-content: flex-end;
