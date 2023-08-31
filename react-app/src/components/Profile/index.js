@@ -15,7 +15,7 @@ export default function Profile() {
     }, [user])
 
     if (!user) return null;
-    let icon = <i class="fa-solid fa-camera"></i>
+    let icon = <i className="fa-solid fa-camera"></i>
 
     return (
         <div className='profile index'>

@@ -10,7 +10,7 @@ export default function AddImageModal() {
     const dispatch = useDispatch();
     const [image, setImage] = useState("");
     const [errors, setErrors] = useState({});
-    const [errorClass, setErrorClass] = useState("errors zero-opacity");
+    const [errorClass, setErrorClass] = useState("errors hidden");
 
 
     useEffect(()=> {

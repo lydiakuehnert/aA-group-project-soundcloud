@@ -18,8 +18,7 @@ export default function SongUpload() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         let validationErrors = {}
-        const audioTypes = [".mp3", ".mp4", ".wav"]
-        const imageTypes = [".pdf", ".png", ".jpeg", ".jpg", ".gif"];
+
         if (!name) validationErrors.name = 'Please provide a valid name'
         if (!image) validationErrors.image = 'Please provide a valid image'
         if (!audio) validationErrors.audio = 'Please provide valid audio'

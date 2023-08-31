@@ -26,19 +26,23 @@ export default function SongComments({ song }) {
     return (
         <div className="song-comments">
             {sessionUser && (sessionUser.id !== song.user.id) ? <CommentPost song={song} /> : <></>}
-            {sessionUser && !comments.length && sessionUser.id !== song.user.id && <h5>Be the first to post a comment!</h5>}
+            {sessionUser && !comments.length && sessionUser.id !== song.user.id && 
+            <div id="noComment"><h4>Be the first to post a comment!</h4></div>}
             {comments.length > 0 && comments.slice().reverse().map(comment => {
-                const commentMonth = comment.createdAt.split("")[6]
-                const commentMonth2 = comment.createdAt.split("-")[1];
-                let month;
-                if (commentMonth2 < 10) month = months[commentMonth - 1]
-                if (commentMonth2 >= 10) month = months[commentMonth2 - 1]
-                const year = comment.createdAt.split("-")[0]
+                // const commentMonth = comment.createdAt.split("")[6]
+                // const commentMonth2 = comment.createdAt.split("-")[1];
+                // let month;
+                // if (commentMonth2 < 10) month = months[commentMonth - 1]
+                // if (commentMonth2 >= 10) month = months[commentMonth2 - 1]
+                const year = comment.createdAt.split(" ")[3]
+                const date = comment.createdAt.split(" ")[1]
+                const month = comment.createdAt.split(" ")[2]
+
                 return (
                     <div key={comment.id} className="one-comment-box">
                         <h4>{comment.user && comment.user.username}</h4>
                         <h5>
-                            {month} {year}
+                            {month} {date}, {year}
                         </h5>
                         <p>{comment.comment}</p>
                         <div className="comment-buttons">
