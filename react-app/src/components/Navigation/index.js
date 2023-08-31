@@ -29,7 +29,7 @@ function Navigation({ isLoaded }){
 				{isLoaded && (
 				<>
 				<li className="upload-button">
-				<NavLink className='navlink-link' exact to={`/upload`}>Upload a Song</NavLink>
+				<NavLink className='navlink-link' exact to={`/upload`}>Upload</NavLink>
 			</li>
 			<li className="user-songs-button">
 				<NavLink className='navlink-link' exact to={`/uploads`}>Your Songs</NavLink>

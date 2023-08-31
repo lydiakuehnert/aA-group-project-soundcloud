@@ -9,13 +9,42 @@
     flex-direction: column;
     align-items: center;
     align-content: space-between;
+    width:1000px;
+    justify-content: center;
 }
 
-.upload-div label, input {
+.upload-div label{
+    margin: 30px 30px;
+
+}
+
+#upload-song-btn{
+    margin: 20px;
+}
+
+#free-link{
+    margin: 20px;
+
+}
+
+.song-inputs{
+    margin-left: 5px;
+}
+
+.upload-validators{
     padding: 5px;
-    margin: 5px;
+    color: crimson;
 }
-
-/* .index{
-    max-width: fit-content;
-} */
+#upload-form-data{
+    width: 800px;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid lightgrey;
+    padding: 25px 25px;
+}
+.upload-form-elements{
+    width:400px;
+    padding-left: 170px;
+}
