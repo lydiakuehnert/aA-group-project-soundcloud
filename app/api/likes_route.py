@@ -25,7 +25,8 @@ def create_like(songId):
     curr_user = User.query.get(current_user.id)
     db.session.execute(likes.insert().values(user_id=curr_user.id, song_id=songId))
     db.session.commit()
-    return jsonify({"message": "Liked"}), 200
+    return curr_user
+    # return jsonify({"message": "Liked"}), 200
 
 @likes_bp.route('/<int:songId>', methods=["DELETE"])
 @login_required
@@ -33,4 +34,5 @@ def delete_like(songId):
     curr_user = User.query.get(current_user.id)
     db.session.execute(delete(likes).where((likes.c.user_id == curr_user.id) & (likes.c.song_id == songId)))
     db.session.commit()
-    return jsonify({"message": "Unliked"}), 200
+    return curr_user
+    # return jsonify({"message": "Unliked"}), 200
