@@ -12,7 +12,7 @@ export default function SongUser() {
 
     const songsObj = useSelector(state => state.songs.allSongs);
     const user = useSelector(state => state.session.user)
-    const songs = Object.values(songsObj).filter(song => song.user.id === user.id)
+    const songs = Object.values(songsObj).filter(song => song.user?.id === user.id)
 
     useEffect(() => {
         dispatch(getSongsThunk())

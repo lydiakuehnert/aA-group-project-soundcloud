@@ -50,7 +50,23 @@ export default function SongEdit({ songId }) {
             }
         // }
     }
+    const handleAudio = async (e) => {
+        e.preventDefault();
+        const ogBtn = document.getElementById('audio-btn')
+        ogBtn.click()
+        const newBtn = document.getElementById('new-audio-btn')
+        newBtn.style.display = 'none'
+        ogBtn.style.display = 'revert'
+    }
 
+    const handleImage = async (e) => {
+        e.preventDefault();
+        const ogBtn = document.getElementById('image-btn')
+        ogBtn.click()
+        const newBtn = document.getElementById('new-image-btn')
+        newBtn.style.display = 'none'
+        ogBtn.style.display = 'revert'
+    }
 
     return (
         <>
@@ -78,7 +94,9 @@ export default function SongEdit({ songId }) {
                         type="button"
                         id="new-image-btn"
                         value="Choose New File"
-                        onClick={(e)=> document.getElementById('image-btn').click()} />
+                        // onClick={(e)=> document.getElementById('image-btn').click()}
+                        onClick={handleImage}
+                        />
                     </label>
                     {errors.image && <p>{errors.image}</p>}
                     <label>
@@ -93,7 +111,9 @@ export default function SongEdit({ songId }) {
                         type="button"
                         id="new-audio-btn"
                         value="Choose New File"
-                        onClick={(e)=> document.getElementById('audio-btn').click()} />
+                        // onClick={(e)=> document.getElementById('audio-btn').click()}
+                        onClick={handleAudio}
+                        />
                     </label>
                     {errors.audio && <p>{errors.audio}</p>}
                 </section>

@@ -45,7 +45,7 @@ export default function SongCard({ song }) {
 
                 <div className="song-details">
                     <p className="song-track-name">{song.name}</p>
-                    <p className="artist-name">{song.user.username}</p>
+                    <p className="artist-name">{song.user && song.user.username}</p>
                 </div>
             </NavLink>
         </div>
