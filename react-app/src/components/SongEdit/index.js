@@ -69,10 +69,11 @@ export default function SongEdit({ songId }) {
     }
 
     return (
-        <>
+        <div className='song-edit-div'>
             <h1>still shitty</h1>
             <form onSubmit={handleSubmit}>
                 <section>
+                    <div>
                     <label>
                         Name
                         <input
@@ -81,7 +82,10 @@ export default function SongEdit({ songId }) {
                             onChange={(e) => setName(e.target.value)}
                         />
                     </label>
+                    </div>
                     {errors.name && <p>{errors.name}</p>}
+
+                    <div>
                     <label>
                         Image
                         <input
@@ -98,7 +102,10 @@ export default function SongEdit({ songId }) {
                         onClick={handleImage}
                         />
                     </label>
+                    </div>
                     {errors.image && <p>{errors.image}</p>}
+
+                    <div>
                     <label>
                         Audio
                         <input
@@ -115,11 +122,15 @@ export default function SongEdit({ songId }) {
                         onClick={handleAudio}
                         />
                     </label>
+                    </div>
                     {errors.audio && <p>{errors.audio}</p>}
                 </section>
-                <button type="submit">Edit Song</button>
+                <div >
+                <button className='button-center button-orange' type="submit">Edit Song</button>
+
+                </div>
                 {(updating)&& <p className='status-message'>Updating...</p>}
             </form>
-        </>
+        </div>
     )
 }
