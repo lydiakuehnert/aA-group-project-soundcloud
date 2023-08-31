@@ -12,9 +12,9 @@ const removeUser = () => ({
 	type: REMOVE_USER,
 });
 
-const postUserImage = (image) => ({
+const postUserImage = (user) => ({
 	type: POST_USER_IMAGE,
-	image
+	user
 })
 
 const initialState = { user: null };
@@ -102,26 +102,32 @@ export const signUp = (username, firstname, lastname, email, password) => async 
 	}
 };
 
-export const postImage = (image) => async (dispatch) => {
+export const postImage = (user) => async (dispatch) => {
 	const res = await fetch('/api/users/image', {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
-		body: JSON.stringify(image)
+		body: JSON.stringify(user)
 	})
-	console.log("IN POST IMAGE THUNK", image)
-	const updated_user = await res.json();
-	dispatch(postUserImage(updated_user.image))
-	return updated_user.image
+	if (res.ok) {
+		const updated_user = await res.json();
+		dispatch(postUserImage(updated_user))
+		return updated_user
+	}
 }
 
+
+
 export default function reducer(state = initialState, action) {
+	let newState;
 	switch (action.type) {
 		case SET_USER:
 			return { user: action.payload };
 		case REMOVE_USER:
 			return { user: null };
 		case POST_USER_IMAGE:
-			return { ...state, user: action.image}
+			newState = { ...state }
+			newState.user[action.user.id] = action.user;
+			return newState
 		default:
 			return state;
 	}
