@@ -25,7 +25,6 @@ export default function AddImageModal() {
         e.preventDefault();
         setErrorClass('errors')
         const payload = {image: image}
-        // const payload2 = JSON.stringify(payload)
         if(!errors.image){
             dispatch(postImage(payload))
             closeModal()

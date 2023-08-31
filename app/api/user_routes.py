@@ -30,8 +30,11 @@ def user(id):
 @user_routes.route('/image', methods=["PUT"])
 @login_required
 def image():
+    form = ProfileImage()
+    form["csrf_token"].data = request.cookies['csrf_token']
+
     curr_user = User.query.get(current_user.id)
-    curr_user.image = url
-    print("IN USER ROUTE", curr_user)
+    curr_user.image = form.data['image']
     db.session.commit()
-    return {"Success": "Image added"}
+    return curr_user.image
+
