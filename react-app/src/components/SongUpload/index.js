@@ -74,6 +74,7 @@ export default function SongUpload() {
                                     className='song-inputs'
                                     type='text'
                                     placeholder='Name your track'
+                                    maxlength="100"
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
@@ -86,7 +87,8 @@ export default function SongUpload() {
                                 <input
                                     className='song-inputs'
                                     type='file'
-                                    accept='image/*'
+                                    // accept='image/*'
+                                    accept=".pdf, .png, .jpg, .jpeg, .gif"
                                     onChange={(e) => setImage(e.target.files[0])}
                                 />
                             </label>
@@ -98,7 +100,9 @@ export default function SongUpload() {
                                 <input
                                     className='song-inputs'
                                     type='file'
-                                    accept='audio/*'
+                                    // accept='audio/*'
+                                    accept='.mp3, .mp4, .wav'
+
                                     onChange={(e) => setAudio(e.target.files[0])}
                                 />
                             </label>
