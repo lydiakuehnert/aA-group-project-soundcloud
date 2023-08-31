@@ -10,7 +10,7 @@ export default function AddImageModal() {
     const [image, setImage] = useState("");
     const [errors, setErrors] = useState({});
     const [errorClass, setErrorClass] = useState("errors zero-opacity");
-    const sessionUser = useSelector(state => state.session.user);
+
 
     useEffect(()=> {
         const errorObj = {};
@@ -22,12 +22,12 @@ export default function AddImageModal() {
         setErrors(errorObj);
     }, [image])
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         setErrorClass('errors')
         const payload = {image: image}
         if(!errors.image){
-            await dispatch(postImage(payload))
+            dispatch(postImage(payload))
             closeModal()
         }
     }

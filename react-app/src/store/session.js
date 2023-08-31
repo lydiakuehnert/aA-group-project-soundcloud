@@ -12,9 +12,9 @@ const removeUser = () => ({
 	type: REMOVE_USER,
 });
 
-const postUserImage = (user) => ({
+const postUserImage = (image) => ({
 	type: POST_USER_IMAGE,
-	user
+	image
 })
 
 const initialState = { user: null };
@@ -124,9 +124,10 @@ export default function reducer(state = initialState, action) {
 		case REMOVE_USER:
 			return { user: null };
 		case POST_USER_IMAGE:
-			let newState = {...state, user: {...state.user}}
-				newState.user.image = action.image
-			return newState
+			newState = {...state }
+			let new_user = {...newState.user}
+			new_user.image = action.image.image
+			return {...newState, user: {...new_user}}
 		default:
 			return state;
 	}
