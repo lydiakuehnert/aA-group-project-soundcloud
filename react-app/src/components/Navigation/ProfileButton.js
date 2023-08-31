@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { logout } from "../../store/session";
-import OpenModalButton from "../OpenModalButton";
-import LoginFormModal from "../LoginFormModal";
-import SignupFormModal from "../SignupFormModal";
-import Profile from "../Profile";
+// import OpenModalButton from "../OpenModalButton";
+// import LoginFormModal from "../LoginFormModal";
+// import SignupFormModal from "../SignupFormModal";
+// import Profile from "../Profile";
 import { useHistory, Link } from 'react-router-dom';
 import "./Navigation.css";
 import { NavLink } from 'react-router-dom';
