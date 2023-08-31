@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import { postImage } from "../../store/session";
@@ -9,7 +9,7 @@ export default function AddImageModal() {
     const [url, setUrl] = useState("");
     const [errors, setErrors] = useState({});
     const [errorClass, setErrorClass] = useState("errors zero-opacity");
-
+    const sessionUser = useSelector(state => state.session.user);
 
     useEffect(()=> {
         const errorObj = {};
@@ -24,9 +24,18 @@ export default function AddImageModal() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setErrorClass('errors')
-        console.log(url)
+        
+        const new_user = {
+            // id: sessionUser.id,
+            image: url,
+            // username: sessionUser.username,
+            // email: sessionUser.email,
+            // firstname: sessionUser.firstname,
+            // lastname: sessionUser.lastname,
+            // password: sessionUser.password
+        }
         if(!errors.url){
-            dispatch(postImage(url))
+            dispatch(postImage(new_user))
             closeModal()
         }
         

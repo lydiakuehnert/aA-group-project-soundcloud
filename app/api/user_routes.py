@@ -1,6 +1,7 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required, current_user
 from app.models import User, db
+from ..forms import SignUpForm
 
 
 user_routes = Blueprint('users', __name__)
@@ -28,8 +29,18 @@ def user(id):
 
 @user_routes.route('/image', methods=["PUT"])
 @login_required
-def image(url):
-    current_user.image = url
-    db.session.commit()
-    return {"Success": "Image added"}
+def image():
+    form = SignUpForm()
+
+    form["csrf_token"].data = request.cookies["csrf_token"]
+
+    if form.validate_on_submit():
+        user_to_update = User.query.get(current_user.id)
+        user_to_update.image = form.data['image']
+        db.session.commit()
+        return user_to_update.to_dict_no_song()
+
+    else:
+        print(form.errors)
+        return {"errors": form.errors}
 
