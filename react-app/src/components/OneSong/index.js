@@ -8,6 +8,7 @@ import LikeDelete from "../LikeDelete";
 import "./OneSong.css"
 import { playerSongThunk } from "../../store/songs";
 
+
 export default function OneSong() {
     const { songId } = useParams();
 
@@ -24,7 +25,7 @@ export default function OneSong() {
 
     useEffect(() => {
         dispatch(getSongThunk(songId))
-    }, [dispatch])
+    }, [dispatch, songId])
 
     useEffect(() => {
         if (song && user) {

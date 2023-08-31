@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useModal } from "../../context/Modal";
 import { postImage } from "../../store/session";
 
+
 export default function AddImageModal() {
     const { closeModal } = useModal();
     const dispatch = useDispatch();
@@ -26,10 +27,9 @@ export default function AddImageModal() {
         setErrorClass('errors')
         const payload = {image: image}
         if(!errors.image){
-            dispatch(postImage(payload))
+            await dispatch(postImage(payload))
             closeModal()
         }
-        
     }
 
     return (
