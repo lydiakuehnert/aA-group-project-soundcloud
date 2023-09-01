@@ -26,8 +26,8 @@
 }
 
 .song-edit-inputs{
-    margin: 10px 0 10px 100px;
-    display: flex;
+    margin: 10px 0 10px;
+    /* display: flex; */
 
 }
 
