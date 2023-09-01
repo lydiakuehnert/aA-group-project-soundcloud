@@ -14,13 +14,12 @@ export default function SongUpload() {
     const [audio, setAudio] = useState('')
     const [errors, setErrors] = useState({})
     const [uploading, setUploading] = useState(false);
-    const audioTypes = [".mp3", ".mp4", ".wav"]
-    const imageTypes = [".pdf", ".png", ".jpeg", ".jpg", ".gif"];
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         let validationErrors = {}
-
+        const audioTypes = [".mp3", ".mp4", ".wav"]
+        const imageTypes = [".pdf", ".png", ".jpeg", ".jpg", ".gif"];
         if (!name) validationErrors.name = 'Please provide a valid name'
         if (!image) validationErrors.image = 'Please provide a valid image'
         if (!audio) validationErrors.audio = 'Please provide valid audio'
@@ -75,6 +74,7 @@ export default function SongUpload() {
                                     type='text'
                                     placeholder='Name your track'
                                     value={name}
+                                    maxLength='100'
                                     onChange={(e) => setName(e.target.value)}
                                 />
                             </label>
@@ -86,7 +86,8 @@ export default function SongUpload() {
                                 <input
                                     className='song-inputs'
                                     type='file'
-                                    accept='image/*'
+                                    // accept='image/*'
+                                    accept='.pdf, .png, .jpg, .jpeg, .gif'
                                     onChange={(e) => setImage(e.target.files[0])}
                                 />
                             </label>
@@ -98,7 +99,8 @@ export default function SongUpload() {
                                 <input
                                     className='song-inputs'
                                     type='file'
-                                    accept='audio/*'
+                                    // accept='audio/*'
+                                    accept='.pdf, .png, .jpg, .jpeg, .gif'
                                     onChange={(e) => setAudio(e.target.files[0])}
                                 />
                             </label>
