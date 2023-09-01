@@ -51,6 +51,7 @@ export default function CommentPost({ song }) {
             <input
                 type="text"
                 placeholder="Write a comment"
+                maxlength="1000"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
             />
