@@ -16,8 +16,8 @@ export default function SongEdit({ songId }) {
     const currentImage = chosenSong.image.split('/').reverse()[0]
 
     const [name, setName] = useState(chosenSong.name)
-    const [image, setImage] = useState('')
-    const [audio, setAudio] = useState('')
+    const [image, setImage] = useState(chosenSong.image)
+    const [audio, setAudio] = useState(chosenSong.audio)
     const [errors, setErrors] = useState({})
     const {closeModal} = useModal()
     const [updating, setUpdating] = useState(false);
@@ -115,7 +115,8 @@ export default function SongEdit({ songId }) {
                         <input
                         type="button"
                         id="new-image-btn"
-                        value="Choose New File"
+                        // value="Choose New File"
+                        value={`Replace ${currentImage}`}
                         // onClick={(e)=> document.getElementById('image-btn').click()}
                         onClick={handleImage}
                         />
@@ -136,7 +137,8 @@ export default function SongEdit({ songId }) {
                          <input
                         type="button"
                         id="new-audio-btn"
-                        value="Choose New File"
+                        // value="Choose New File"
+                        value={`Replace ${currentAudio}`}
                         // onClick={(e)=> document.getElementById('audio-btn').click()}
                         onClick={handleAudio}
                         />
