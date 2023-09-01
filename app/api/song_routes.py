@@ -70,7 +70,7 @@ def edit_song(id):
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         song_to_update = Song.query.get(id)
-
+        print('@@@@@@@@@@@@',form.data["image"])
 
         if len(form.data["image"]):
             image_deleted = remove_file_from_s3(song_to_update.image)

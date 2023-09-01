@@ -30,15 +30,15 @@ export default function SongEdit({ songId }) {
         let validationErrors = {}
 
         if (!name) validationErrors.name = 'Please provide a valid name'
-        if (!image) validationErrors.image = 'Please provide a valid image'
-        if (!audio) validationErrors.audio = 'Please provide valid audio'
+        // if (!image) validationErrors.image = 'Please provide a valid image'
+        // if (!audio) validationErrors.audio = 'Please provide valid audio'
 
-        if (audio && !(audioTypes.some(type => {
+        if (audio.length && !(audioTypes.some(type => {
             return audio.name.endsWith(type)
         }))) {
             validationErrors.audio = 'Acceptable audio files must end in .mp3, .mp4, or .wav'
         }
-        if (image && !(imageTypes.some(type => {
+        if (image.length && !(imageTypes.some(type => {
             return image.name.endsWith(type)
         }))) {
             validationErrors.audio = 'Acceptable image files must end in .pdf, .png, .jpg, .jpeg or .gif'
