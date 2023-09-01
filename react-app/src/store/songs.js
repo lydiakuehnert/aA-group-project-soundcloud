@@ -8,12 +8,12 @@ const PLAYER_SONG = "songs/playerSong"
 
 
 
-const getUserSongsAction = (songs) => {
-    return {
-        type: GET_USER_SONGS,
-        songs
-    }
-}
+// const getUserSongsAction = (songs) => {
+//     return {
+//         type: GET_USER_SONGS,
+//         songs
+//     }
+// }
 
 const getSongAction = (song) => {
     return {
@@ -151,7 +151,6 @@ export const editSongThunk = (song, songId) => async dispatch => {
 
         if (res.ok) {
             const song = await res.json();
-            console.log("NEW SONG FROM THUNKY", song)
             dispatch(editSongAction(song))
             return song;
         }

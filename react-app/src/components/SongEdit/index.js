@@ -11,6 +11,10 @@ export default function SongEdit({ songId }) {
     const chosenSong = useSelector(state => Object.values(state.songs.allSongs)).filter(song => song.id === songId)[0];
     const user = useSelector(state => state.session.user)
     const user_id = user.id
+
+    const currentAudio = chosenSong.audio.split('/').reverse()[0]
+    const currentImage = chosenSong.image.split('/').reverse()[0]
+
     const [name, setName] = useState(chosenSong.name)
     const [image, setImage] = useState('')
     const [audio, setAudio] = useState('')
