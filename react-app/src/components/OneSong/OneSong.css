@@ -59,3 +59,9 @@
     color: white;
     box-shadow: 3px 3px black;
 }
+
+.heart-likes-div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}

@@ -60,3 +60,19 @@ body {
     border: 1px solid darkgray;
   }
   
+  .fa-heart {
+    color: rgb(255, 75, 20);
+    background-color: white;
+    border: 1px solid gainsboro;
+    padding: 2px 4px;
+    font-size: large;
+    margin-right: 5px;
+  }
+
+  .fa-heart-broken {
+    background-color: white;
+    border: 1px solid gainsboro;
+    padding: 2px 4px;
+    font-size: large;
+    margin-right: 5px;
+  }
