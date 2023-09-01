@@ -18,8 +18,8 @@ export default function SongEdit({ songId }) {
     const [name, setName] = useState(chosenSong.name)
     const [image, setImage] = useState('')
     const [audio, setAudio] = useState('')
-    console.log(audio);
-    console.log(image);
+    console.log('AUDIO',audio);
+    console.log('IMAGE',image);
     const [errors, setErrors] = useState({})
     const {closeModal} = useModal()
     const [updating, setUpdating] = useState(false);
@@ -32,7 +32,6 @@ export default function SongEdit({ songId }) {
         if (!name) validationErrors.name = 'Please provide a valid name'
         // if (!image) validationErrors.image = 'Please provide a valid image'
         // if (!audio) validationErrors.audio = 'Please provide valid audio'
-
         if (audio.length && !(audioTypes.some(type => {
             return audio.name.endsWith(type)
         }))) {
@@ -52,9 +51,10 @@ export default function SongEdit({ songId }) {
         // formData.append("songId",songId)
         formData.append("user_id",user_id)
         formData.append("name",name)
-        formData.append("audio",audio)
-        formData.append("image",image)
-        console.log("SONG.IMAGE WITHOUT IMAGE SET", formData.image)
+        console.log(typeof image);
+        if (typeof audio !== 'string') formData.append("audio",audio)
+        if (typeof image !== 'string') formData.append("image",image)
+        // console.log("SONG.IMAGE WITHOUT IMAGE SET", formData.image)
 
         // const song = { songId, name, user_id, image, audio }
         // if(Object.values(errors).length > 0){
@@ -103,7 +103,7 @@ export default function SongEdit({ songId }) {
                         />
                     </label>
                     </div>
-                    {errors.name && <p>{errors.name}</p>}
+                    {errors.name && <p className='errors'>{errors.name}</p>}
 
                     <div>
                     <label>
@@ -125,7 +125,7 @@ export default function SongEdit({ songId }) {
                         />
                     </label>
                     </div>
-                    {errors.image && <p>{errors.image}</p>}
+                    {errors.image && <p className='errors'>{errors.image}</p>}
 
                     <div>
                     <label>
@@ -147,7 +147,7 @@ export default function SongEdit({ songId }) {
                         />
                     </label>
                     </div>
-                    {errors.audio && <p>{errors.audio}</p>}
+                    {errors.audio && <p className='errors'>{errors.audio}</p>}
                 </section>
                 <div >
                 <button className='button-center button-orange' type="submit">Edit Song</button>

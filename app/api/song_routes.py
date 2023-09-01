@@ -70,9 +70,10 @@ def edit_song(id):
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         song_to_update = Song.query.get(id)
-        print('@@@@@@@@@@@@',form.data["image"])
+        print('@@@@@@@@@@@@',form.data)
 
-        if len(form.data["image"]):
+        # if len(form.data["image"]):
+        if form.data["image"]:
             image_deleted = remove_file_from_s3(song_to_update.image)
             image = form.data["image"]
             if image_deleted is True:
@@ -84,7 +85,7 @@ def edit_song(id):
                     return {'errors': upload}
             song_to_update.image = upload['url']
 
-        if len(form.data["audio"]):
+        if form.data["audio"]:
             audio_deleted = remove_file_from_s3(song_to_update.audio)
             audio = form.data["audio"]
             if audio_deleted is True:
