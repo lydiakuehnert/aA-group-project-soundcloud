@@ -16,11 +16,14 @@ function Navigation({ isLoaded }){
 		<div className="nav-background">
 		<ul className='nav-bar'>
 			<li className="logo-li">
-				<NavLink  exact to="/" id='noDeco'><i className="fa-solid fa-cloud-bolt fa-2x"></i><span id="logo">LoudCloud</span></NavLink>
+				<NavLink exact to="/" id='noDeco'><i className="fa-solid fa-cloud-bolt fa-2x"></i><span id="logo">LoudCloud</span></NavLink>
 			</li>
 			<li className='searchbar-li'>
 				<SongSearchBar id='searchbar' />
 			</li>
+			<li className="liked-songs-li">
+              <NavLink className='likedSongsClass' exact to={`/likes`}>Liked Songs</NavLink>
+            </li>
 			{/* {sessionUser ? ( */}
 
 
