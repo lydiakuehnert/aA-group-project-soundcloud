@@ -14,12 +14,15 @@
 }
 
 .button-center {
-    margin-left: 30%;
+    margin-left: 40%;
     margin-top: .5em;
 }
 
 #edit-song-data{
     display:flex;
     flex-direction: column;
-    
+}
+
+.song-edit-div input{
+    margin: 3px;
 }

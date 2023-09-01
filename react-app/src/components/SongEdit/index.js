@@ -16,8 +16,10 @@ export default function SongEdit({ songId }) {
     const currentImage = chosenSong.image.split('/').reverse()[0]
 
     const [name, setName] = useState(chosenSong.name)
-    const [image, setImage] = useState(chosenSong.image)
-    const [audio, setAudio] = useState(chosenSong.audio)
+    const [image, setImage] = useState('')
+    const [audio, setAudio] = useState('')
+    console.log(audio);
+    console.log(image);
     const [errors, setErrors] = useState({})
     const {closeModal} = useModal()
     const [updating, setUpdating] = useState(false);
@@ -96,6 +98,7 @@ export default function SongEdit({ songId }) {
                             type='text'
                             value={name}
                             maxLength='100'
+                            size='30'
                             onChange={(e) => setName(e.target.value)}
                         />
                     </label>
