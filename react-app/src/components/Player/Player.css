@@ -4,3 +4,47 @@
     bottom: 0;
     z-index: 999;
 }
+
+.rhap_container {
+    background-color: rgb(69, 69, 69);
+}
+
+.rhap_progress-section {
+    /* background-color: black; */
+}
+
+.rhap_time {
+    color: black;
+}
+
+.rhap_progress-container {
+    /* background-color: black; */
+}
+
+.rhap_progress-bar {
+    background-color: rgb(219, 50, 75);
+}
+
+.rhap_progress-indicator {
+    background-color: black;
+}
+
+.rhap_repeat-button {
+    color: black;
+}
+
+.rhap_main-controls-button {
+    color: black;
+}
+
+.rhap_volume-button {
+    color: black;
+}
+
+.rhap_volume-bar {
+    background-color: rgb(219, 50, 75);
+}
+
+.rhap_volume-indicator {
+    background-color: black;
+}
