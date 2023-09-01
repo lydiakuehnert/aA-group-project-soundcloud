@@ -195,6 +195,7 @@ const songReducer = (state = initialState, action) => {
         case EDIT_SONG: {
             newState = { ...state, allSongs: { ...state.allSongs }, singleSong: {} }
             newState.allSongs[action.song.id] = action.song;
+            newState.singleSong = action.song;
             return newState;
         }
         case PLAYER_SONG: {
