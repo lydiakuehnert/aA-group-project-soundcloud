@@ -78,3 +78,8 @@ button {
 .profile-h1:hover {
     color: darkgray;
 }
+
+#prof-heart {
+    border: 0;
+    font-size: 1em;
+}

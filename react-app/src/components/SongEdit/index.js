@@ -24,8 +24,8 @@ export default function SongEdit({ songId }) {
         let validationErrors = {}
 
         if (!name) validationErrors.name = 'Please provide a valid name'
-        if (!image) validationErrors.image = 'Please provide a valid image'
-        if (!audio) validationErrors.audio = 'Please provide valid audio'
+        if (!image) validationErrors.image = 'Please provide a valid image file'
+        if (!audio) validationErrors.audio = 'Please provide a valid audio file'
 
         if (audio && !(audioTypes.some(type => {
             return audio.name.endsWith(type)
@@ -83,12 +83,13 @@ export default function SongEdit({ songId }) {
     return (
         <div className='song-edit-div'>
             <h1>Edit Song</h1>
-            <form onSubmit={handleSubmit}>
+            <form id='song-edit-form' onSubmit={handleSubmit}>
                 <section id='edit-song-data'>
-                    <div>
+                    <div className='song-edit-inputs'>
                     <label>
                         Name
                         <input
+                            className='edit-bars'
                             type='text'
                             value={name}
                             maxLength='100'
@@ -96,12 +97,13 @@ export default function SongEdit({ songId }) {
                         />
                     </label>
                     </div>
-                    {errors.name && <p>{errors.name}</p>}
+                    {errors.name && <p className='song-edit-errors'>{errors.name}</p>}
 
-                    <div>
+                    <div className='song-edit-inputs'>
                     <label>
                         Image
                         <input
+                            className='edit-bars'
                             type='file'
                             // accept='image/*'
                             accept='.pdf, .png, .jpg, .jpeg, .gif'
@@ -109,6 +111,7 @@ export default function SongEdit({ songId }) {
                             onChange={(e) => setImage(e.target.files[0])}
                         />
                         <input
+                        className='edit-bars'
                         type="button"
                         id="new-image-btn"
                         value="Choose New File"
@@ -117,12 +120,13 @@ export default function SongEdit({ songId }) {
                         />
                     </label>
                     </div>
-                    {errors.image && <p>{errors.image}</p>}
+                    {errors.image && <p className='song-edit-errors'>{errors.image}</p>}
 
-                    <div>
+                    <div className='song-edit-inputs'>
                     <label>
                         Audio
                         <input
+                            className='edit-bars'
                             type='file'
                             // accept='audio/*'
                             accept='.mp3, .mp4, .wav'
@@ -130,6 +134,7 @@ export default function SongEdit({ songId }) {
                             onChange={(e) => setAudio(e.target.files[0])}
                         />
                          <input
+                        className='edit-bars'
                         type="button"
                         id="new-audio-btn"
                         value="Choose New File"
@@ -138,10 +143,10 @@ export default function SongEdit({ songId }) {
                         />
                     </label>
                     </div>
-                    {errors.audio && <p>{errors.audio}</p>}
+                    {errors.audio && <p className='song-edit-errors'>{errors.audio}</p>}
                 </section>
-                <div >
-                <button className='button-center button-orange' type="submit">Edit Song</button>
+                <div id='edit-song-btn'>
+                <button  className='button-orange' type="submit">Edit Song</button>
 
                 </div>
                 {(updating)&& <p className='status-message'>Updating...</p>}

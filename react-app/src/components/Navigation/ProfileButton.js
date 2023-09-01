@@ -59,9 +59,6 @@ function ProfileButton({ user }) {
             <li>{user.email}</li>
             <li>{user.firstname} {user.lastname}</li>
             <li className="clicky" id="profile-link"><Link to='/profile' onClick={closeMenu}>Profile</Link></li>
-            <li className="clicky">
-              <NavLink className='liked-songs-link' exact to={`/likes`}>Liked Songs</NavLink>
-            </li>
             <li>
               <button onClick={handleLogout}>Sign Out</button>
             </li>
@@ -82,7 +79,7 @@ function ProfileButton({ user }) {
                 modalComponent={<SignupFormModal />}
               />
             </li> */}
-            
+
           </>
         )}
       </ul>

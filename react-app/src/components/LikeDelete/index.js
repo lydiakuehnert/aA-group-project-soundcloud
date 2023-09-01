@@ -11,6 +11,8 @@ export default function LikeDelete({ toggleLiked }) {
         toggleLiked()
     }
     return (
-        <button onClick={handleClick} class="fa-solid fa-heart-broken" />
+        <button onClick={handleClick} 
+        title="Unlike"
+        class="fa-solid fa-heart-broken" />
     )
 }

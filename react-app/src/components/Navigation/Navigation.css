@@ -178,3 +178,13 @@
   color: white;
   text-decoration: underline;
 }
+
+.likedSongsClass {
+  color: grey;
+  text-decoration: none;
+}
+
+.likedSongsClass:hover {
+  color: white;
+  text-decoration: underline;
+}

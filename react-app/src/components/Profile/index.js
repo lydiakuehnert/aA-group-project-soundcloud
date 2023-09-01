@@ -39,7 +39,7 @@ export default function Profile() {
             </div>    
                 <div>
               <Link className='link1' exact to={`/likes`}>
-                <h1 className='profile-h1'><i className="fa-solid fa-heart"></i> {user.likes} Likes</h1>
+                <h1 className='profile-h1'><i id='prof-heart' className="fa-solid fa-heart"></i>{user.likes} Likes</h1>
               </Link>
 
                 

@@ -52,6 +52,7 @@ body {
   .button-white {
     background-color: white;
     border: 1px solid gray;
+    border-radius: 3px;
     cursor: pointer;
     padding: 2px;
   }
@@ -59,7 +60,7 @@ body {
   .button-white:hover {
     border: 1px solid darkgray;
   }
-  
+
   .fa-heart {
     color: rgb(255, 75, 20);
     background-color: white;
