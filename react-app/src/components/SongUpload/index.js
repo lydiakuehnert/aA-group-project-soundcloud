@@ -100,7 +100,7 @@ export default function SongUpload() {
                                     className='song-inputs'
                                     type='file'
                                     // accept='audio/*'
-                                    accept='.pdf, .png, .jpg, .jpeg, .gif'
+                                    accept='.mp3, .mp4, .wav'
                                     onChange={(e) => setAudio(e.target.files[0])}
                                 />
                             </label>
