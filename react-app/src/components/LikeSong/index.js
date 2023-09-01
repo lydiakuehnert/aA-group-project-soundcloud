@@ -11,6 +11,8 @@ export default function LikeSong({ toggleLiked }) {
         toggleLiked()
     }
     return (
-        <button onClick={handleClick} class="fa-solid fa-heart" />
+        <button onClick={handleClick} 
+        title="Like"
+        class="fa-solid fa-heart" />
     )
 }
