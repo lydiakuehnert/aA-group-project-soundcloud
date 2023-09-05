@@ -9,17 +9,17 @@
     background-color: rgb(69, 69, 69);
 }
 
-.rhap_progress-section {
-    /* background-color: black; */
-}
+/* .rhap_progress-section {
+    background-color: black;
+} */
 
 .rhap_time {
     color: black;
 }
 
-.rhap_progress-container {
-    /* background-color: black; */
-}
+/* .rhap_progress-container {
+    background-color: black;
+} */
 
 .rhap_progress-bar {
     background-color: rgb(219, 50, 75);

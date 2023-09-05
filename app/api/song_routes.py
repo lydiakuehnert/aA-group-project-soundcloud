@@ -3,6 +3,8 @@ from flask_login import login_required, current_user
 from app.models import User, Comment, Song, db
 from .AWS_helpers import upload_file_to_s3, get_unique_filename, remove_file_from_s3
 from ..forms.song_form import SongForm
+from ..forms.song_edit_form import SongEditForm
+
 from .auth_routes import validation_errors_to_error_messages
 from sqlalchemy import func
 
@@ -64,34 +66,42 @@ def post_song():
 @songs.route('/<int:id>', methods=['PUT'])
 @login_required
 def edit_song(id):
-    form = SongForm()
+    form = SongEditForm()
     form["csrf_token"].data = request.cookies["csrf_token"]
     if form.validate_on_submit():
         song_to_update = Song.query.get(id)
-        image_deleted = remove_file_from_s3(song_to_update.image)
-        audio_deleted = remove_file_from_s3(song_to_update.audio)
-        if image_deleted and audio_deleted is True:
+        print('@@@@@@@@@@@@',form.data)
+
+        # if len(form.data["image"]):
+        if form.data["image"]:
+            image_deleted = remove_file_from_s3(song_to_update.image)
             image = form.data["image"]
-            image.filename = get_unique_filename(image.filename)
-            upload = upload_file_to_s3(image)
-            print(upload)
-            if "url" not in upload:
-                print([upload])
-                return {'errors': upload}
-            audio = form.data["audio"]
-            audio.filename = get_unique_filename(audio.filename)
-            audioLoad = upload_file_to_s3(audio)
-            print(audioLoad)
-            if "url" not in audioLoad:
-                print([audioLoad])
-                return {'errors': audioLoad}
+            if image_deleted is True:
+                image.filename = get_unique_filename(image.filename)
+                upload = upload_file_to_s3(image)
+                print(upload)
+                if "url" not in upload:
+                    print([upload])
+                    return {'errors': upload}
             song_to_update.image = upload['url']
+
+        if form.data["audio"]:
+            audio_deleted = remove_file_from_s3(song_to_update.audio)
+            audio = form.data["audio"]
+            if audio_deleted is True:
+                audio.filename = get_unique_filename(audio.filename)
+                audioLoad = upload_file_to_s3(audio)
+                print(audioLoad)
+                if "url" not in audioLoad:
+                    print([audioLoad])
+                    return {'errors': audioLoad}
             song_to_update.audio = audioLoad['url']
-        else:
-            return "<h1> Error Occurred in Updating Song<h1>"
+
+        # else:
+        #     return "<h1> Error Occurred in Updating Song<h1>"
         song_to_update.name = form.data['name']
 
-        print("EDITED SONG IMAGE AND AUDIO", song_to_update.image, song_to_update.audio)
+        # print("EDITED SONG IMAGE AND AUDIO", song_to_update.image, song_to_update.audio)
         db.session.commit()
         return song_to_update.to_dict()
     else:
