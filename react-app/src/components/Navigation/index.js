@@ -21,9 +21,6 @@ function Navigation({ isLoaded }){
 			<li className='searchbar-li'>
 				<SongSearchBar id='searchbar' />
 			</li>
-			<li className="liked-songs-li">
-              <NavLink className='likedSongsClass' exact to={`/likes`}>Liked Songs</NavLink>
-            </li>
 			{/* {sessionUser ? ( */}
 
 
@@ -31,6 +28,9 @@ function Navigation({ isLoaded }){
 				<>
 				{isLoaded && (
 				<>
+			<li className="liked-songs-li">
+              <NavLink className='likedSongsClass' exact to={`/likes`}>Liked Songs</NavLink>
+            </li>
 				<li className="upload-button">
 				<NavLink className='navlink-link' exact to={`/upload`}>Upload</NavLink>
 			</li>
