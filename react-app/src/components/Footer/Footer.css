@@ -1,0 +1,53 @@
+#footer-box {
+    background-color: rgb(219, 50, 75);
+    border-top: 1px solid black;
+    position: fixed;
+    width: 100%;
+    margin: 0 auto;
+    bottom: 0;
+    z-index: 999;
+    display: flex;
+    justify-content: space-around;
+    padding: 2px;
+    height: 3rem;
+}
+
+.footer-person {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.personal-details {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.person-pic {
+    transition: all 0.6s;
+    border-radius: 50%;
+    border: solid 0.1rem rgb(69, 69, 69);
+    width: 2.4rem;
+}
+
+.person-pic:hover {
+    transition: all 0.6s;
+    width: 2.8rem;
+}
+
+.footer-link-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.fa-brands {
+    font-size: 30px;
+    color: rgb(69, 69, 69);
+    transition: all 0.6s;
+}
+
+.fa-brands:hover {
+    transition: all 0.6s;
+    font-size: 33px;
+}

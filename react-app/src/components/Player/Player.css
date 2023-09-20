@@ -1,7 +1,7 @@
 .player-background {
     background-color: rgb(69, 69, 69);
     position: sticky;
-    bottom: 0;
+    bottom: 3rem;
     z-index: 999;
 }
 
