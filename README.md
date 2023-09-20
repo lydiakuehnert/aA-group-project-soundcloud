@@ -28,8 +28,8 @@ Live Link: https://loudcloud.onrender.com/
 ![Review](https://myaaprojects.s3.us-east-2.amazonaws.com/Kora-answers.png)
 
 
-# Endpoints
-## Auth
+## Endpoints
+### Auth
 | Request                        | Purpose                | Return Value  |                  
 | :----------------------------- | :--------------------: | :------------------------------ |
 | GET /api/auth/        | This fetch is sent upon initial app load and on subsequent refreshes.<br>It returns an object representing the current user, if user is logged in.                                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'username': STRING,<br>&nbsp;&nbsp;&nbsp;'email': STRING,<br>&nbsp;&nbsp;&nbsp;'firstname': STRING,<br>&nbsp;&nbsp;&nbsp;'lastname': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING<br>}<br>|
@@ -38,7 +38,7 @@ Live Link: https://loudcloud.onrender.com/
 | POST /api/auth/login | This fetch attempts to login a user with the provided credentials.<br>It returns an object representing the current user, if validation succeeds.                                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'username': STRING,<br>&nbsp;&nbsp;&nbsp;'email': STRING,<br>&nbsp;&nbsp;&nbsp;'firstname': STRING,<br>&nbsp;&nbsp;&nbsp;'lastname': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING<br>}<br>|                                                                        
 | POST /api/auth/logout | This fetch will logout the current user.<br>It returns an object with the message 'User logged Out' if it succeeds.                                 | {<br>&nbsp;&nbsp;&nbsp;'message': 'User logged out'<br>}<br>|
 
-## Songs
+### Songs
 | Request                        | Purpose                | Return Value  | 
 | :----------------------------- | :--------------------: | :------------------------------ |
 | GET /api/songs        | This fetch is sent to get all the songs in the song table. Upon success, it returns an array of song objects.                 | [{<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'name': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING,<br>&nbsp;&nbsp;&nbsp;'audio': STRING,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'likes': INT,<br>}]<br>|
@@ -48,28 +48,27 @@ Live Link: https://loudcloud.onrender.com/
 | GET /api/songs/<int:id>        | This fetch is sent to get one song based on id. Upon success, it returns the an object with that song.                | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'name': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING,<br>&nbsp;&nbsp;&nbsp;'audio': STRING,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'likes': INT,<br>}<br>|
 | GET /api/songs/search        | This fetch is sent to get songs based on a filter. Upon success, it returns an array of song objects.                | [{<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'name': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING,<br>&nbsp;&nbsp;&nbsp;'audio': STRING,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'likes': INT,<br>}]<br>|
 
-## Shipping Info
+### Comments
 | Request                        | Purpose                | Return Value  | 
 | :----------------------------- | :--------------------: | :------------------------------ |
-| GET /api/shipping/<int:user_id>        | This fetch is sent to retrieve all shipping info records for the user specified by the id. Upon success, we return an array of objects representing that data.           | ARRAY[<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;apt_number: INT,<br>&nbsp;&nbsp;&nbsp;city: STRING,<br>&nbsp;&nbsp;&nbsp;company: STRING,<br>&nbsp;&nbsp;&nbsp;country: STRING,<br>&nbsp;&nbsp;&nbsp;primary: BOOLEAN,<br>&nbsp;&nbsp;&nbsp;shipping_name: STRING,<br>&nbsp;&nbsp;&nbsp;state: STRING,<br>&nbsp;&nbsp;&nbsp;street: STRING,<br>&nbsp;&nbsp;&nbsp;user_id: INT,<br>&nbsp;&nbsp;&nbsp;zip: STRING,<br>&nbsp;&nbsp;&nbsp;},<br>]<br><br>Status: 200<br>|
-| POST /api/shipping/add        | This fetch is sent to add a new entry to the shipping info table. Due to the existence of the Primary property, we update the frontend store by sending back an array of all entries and replacing the value of the current state upon success.        | ARRAY[<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;apt_number: INT,<br>&nbsp;&nbsp;&nbsp;city: STRING,<br>&nbsp;&nbsp;&nbsp;company: STRING,<br>&nbsp;&nbsp;&nbsp;country: STRING,<br>&nbsp;&nbsp;&nbsp;primary: BOOLEAN,<br>&nbsp;&nbsp;&nbsp;shipping_name: STRING,<br>&nbsp;&nbsp;&nbsp;state: STRING,<br>&nbsp;&nbsp;&nbsp;street: STRING,<br>&nbsp;&nbsp;&nbsp;user_id: INT,<br>&nbsp;&nbsp;&nbsp;zip: STRING,<br>&nbsp;&nbsp;&nbsp;},<br>]<br><br>Status: 201<br>|
-| PUT /api/shipping/update/<int:shipping_id>        | This fetch is sent to update the shipping info record specified by the shipping id. Upon success, we return an array of objects representing all entries for current user.           | ARRAY[<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;apt_number: INT,<br>&nbsp;&nbsp;&nbsp;city: STRING,<br>&nbsp;&nbsp;&nbsp;company: STRING,<br>&nbsp;&nbsp;&nbsp;country: STRING,<br>&nbsp;&nbsp;&nbsp;primary: BOOLEAN,<br>&nbsp;&nbsp;&nbsp;shipping_name: STRING,<br>&nbsp;&nbsp;&nbsp;state: STRING,<br>&nbsp;&nbsp;&nbsp;street: STRING,<br>&nbsp;&nbsp;&nbsp;user_id: INT,<br>&nbsp;&nbsp;&nbsp;zip: STRING,<br>&nbsp;&nbsp;&nbsp;},<br>]<br><br>Status: 200<br>|
-| DELETE /api/shipping/delete     | This fetch sends a shipping info id in the body of the request. Upon successful deletion we return the updated array of user entries. | ARRAY[<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;apt_number: INT,<br>&nbsp;&nbsp;&nbsp;city: STRING,<br>&nbsp;&nbsp;&nbsp;company: STRING,<br>&nbsp;&nbsp;&nbsp;country: STRING,<br>&nbsp;&nbsp;&nbsp;primary: BOOLEAN,<br>&nbsp;&nbsp;&nbsp;shipping_name: STRING,<br>&nbsp;&nbsp;&nbsp;state: STRING,<br>&nbsp;&nbsp;&nbsp;street: STRING,<br>&nbsp;&nbsp;&nbsp;user_id: INT,<br>&nbsp;&nbsp;&nbsp;zip: STRING,<br>&nbsp;&nbsp;&nbsp;},<br>]<br><br>Status: 200<br>|
+| GET /api/comments/<int:songId>        | This fetch is sent to get all the comments associated with a particular song. Upon success, it returns an array of comment objects.                 | [{<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'comment': STRING,<br>&nbsp;&nbsp;&nbsp;'createdAt': DATE,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'song': OBJECT<br>}]<br>|
+| POST /api/comments/<int:songId>/new        | This fetch is sent to add a new item to the comment table. Upon success, it returns that new comment.                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'comment': STRING,<br>&nbsp;&nbsp;&nbsp;'createdAt': DATE,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'song': OBJECT<br>}<br>|
+| PUT /api/comments/edit/<int:id>       | This fetch is sent to update a comment. Upon success, it returns an object representing that comment with the updated information.                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'comment': STRING,<br>&nbsp;&nbsp;&nbsp;'createdAt': DATE,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'song': OBJECT<br>}<br>|
+| DELETE /api/comments/<int:id>        | This fetch is sent to delete a comment. Upon success, it returns an object of success with the string "successfully deleted".                | {"Success": "successfully deleted"}<br>|
 
-## Billing Info
+
+### Likes
 | Request                        | Purpose                | Return Value  | 
 | :----------------------------- | :--------------------: | :------------------------------ |
-| GET /api/billing/<int:user_id>        | This fetch is sent to retrieve all billing info records for the user specified by the id. Upon success, we return an array of objects representing that data.           | ARRAY[<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;apt_number: INT,<br>&nbsp;&nbsp;&nbsp;city: STRING,<br>&nbsp;&nbsp;&nbsp;company: STRING,<br>&nbsp;&nbsp;&nbsp;country: STRING,<br>&nbsp;&nbsp;&nbsp;primary: BOOLEAN,<br>&nbsp;&nbsp;&nbsp;shipping_name: STRING,<br>&nbsp;&nbsp;&nbsp;state: STRING,<br>&nbsp;&nbsp;&nbsp;street: STRING,<br>&nbsp;&nbsp;&nbsp;user_id: INT,<br>&nbsp;&nbsp;&nbsp;zip: STRING,<br>&nbsp;&nbsp;&nbsp;},<br>]<br><br>Status: 200<br>|
-| POST /api/billing/add        | This fetch is sent to add a new entry to the billing info table. Due to the existence of the Primary property, we update the frontend store by sending back an array of all entries and replacing the value of the current state upon success.        | ARRAY[<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;apt_number: INT,<br>&nbsp;&nbsp;&nbsp;city: STRING,<br>&nbsp;&nbsp;&nbsp;company: STRING,<br>&nbsp;&nbsp;&nbsp;country: STRING,<br>&nbsp;&nbsp;&nbsp;primary: BOOLEAN,<br>&nbsp;&nbsp;&nbsp;shipping_name: STRING,<br>&nbsp;&nbsp;&nbsp;state: STRING,<br>&nbsp;&nbsp;&nbsp;street: STRING,<br>&nbsp;&nbsp;&nbsp;user_id: INT,<br>&nbsp;&nbsp;&nbsp;zip: STRING,<br>&nbsp;&nbsp;&nbsp;},<br>]<br><br>Status: 201<br>|
-| PUT /api/shipping/update/<int:billing_id>        | This fetch is sent to update the billing info record specified by the billing id. Upon success, we return an array of objects representing all entries for current user.           | ARRAY[<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;apt_number: INT,<br>&nbsp;&nbsp;&nbsp;city: STRING,<br>&nbsp;&nbsp;&nbsp;company: STRING,<br>&nbsp;&nbsp;&nbsp;country: STRING,<br>&nbsp;&nbsp;&nbsp;primary: BOOLEAN,<br>&nbsp;&nbsp;&nbsp;shipping_name: STRING,<br>&nbsp;&nbsp;&nbsp;state: STRING,<br>&nbsp;&nbsp;&nbsp;street: STRING,<br>&nbsp;&nbsp;&nbsp;user_id: INT,<br>&nbsp;&nbsp;&nbsp;zip: STRING,<br>&nbsp;&nbsp;&nbsp;},<br>]<br><br>Status: 200<br>|
-| DELETE /api/billing/delete     | This fetch sends a billing info id in the body of the request. Upon successful deletion we return the updated array of user entries. | ARRAY[<br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;apt_number: INT,<br>&nbsp;&nbsp;&nbsp;city: STRING,<br>&nbsp;&nbsp;&nbsp;company: STRING,<br>&nbsp;&nbsp;&nbsp;country: STRING,<br>&nbsp;&nbsp;&nbsp;primary: BOOLEAN,<br>&nbsp;&nbsp;&nbsp;shipping_name: STRING,<br>&nbsp;&nbsp;&nbsp;state: STRING,<br>&nbsp;&nbsp;&nbsp;street: STRING,<br>&nbsp;&nbsp;&nbsp;user_id: INT,<br>&nbsp;&nbsp;&nbsp;zip: STRING,<br>&nbsp;&nbsp;&nbsp;},<br>]<br><br>Status: 200<br>|
 
-# Feature List
-1. Cart
-2. Shipping Entries
-3. Billing Accounts
 
-# Future Implementation Goals
+## Feature List
+1. Songs
+2. Comments
+3. Likes
+4. Search
+
+## Future Implementation Goals
 
 1. Reviews (w/AWS image uploads)
 2. ChatHelpBot (websockets)
@@ -78,5 +77,8 @@ Live Link: https://loudcloud.onrender.com/
 5. Payment Accounts (Credit Cards / PayPal)
 6. Make pixel perfect to target site.
 
-# Connect
-[LinkedIn](https://www.linkedin.com/in/brian-kiesel-94475696/)
+## Connect with the developers
+[Helen: LinkedIn](http://www.linkedin.com/in/helen-coates-b93116292) | 
+[Shaun: LinkedIn](https://www.linkedin.com/in/shaun-fisher-139115271/) | 
+[David: LinkedIn](https://github.com/Gdavidu) | 
+[Lydia: LinkedIn](https://www.linkedin.com/in/lydia-kuehnert-619286203/)
