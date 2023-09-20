@@ -1,4 +1,10 @@
 /* TODO Add site wide styles */
+
+#root {
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
+
 ul {
   margin: 0;
   padding: 0;
