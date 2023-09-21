@@ -14,6 +14,7 @@ import LikedSongs from "./components/LikedSongs";
 import SongUpload from "./components/SongUpload";
 import SongUser from "./components/SongUser";
 import Profile from "./components/Profile";
+import LandingPage from './components/LandingPage';
 
 
 function App() {
@@ -25,9 +26,13 @@ function App() {
 
   return (
     <>
+      
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+        <LandingPage />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
@@ -43,7 +48,7 @@ function App() {
           <Route path="/songs/search">
             <SongSearch />
           </Route>
-          <Route exact path="/">
+          <Route exact path="/home">
             <AllSongs />
           </Route>
           <Route exact path="/likes">
