@@ -1,8 +1,9 @@
 .splash-image {
     background-image: url("https://i.ibb.co/yVxN4hf/club2-cut.png");
     background-repeat: no-repeat;
+    background-size: cover;
     height:555px;
-    width: 1024px;
+    width: 1240px;
     margin: auto;
 }
 
