@@ -13,7 +13,7 @@ import LikedSongs from "./components/LikedSongs";
 import SongUpload from "./components/SongUpload";
 import SongUser from "./components/SongUser";
 import Profile from "./components/Profile";
-import SplashPage from './components/SplashPage';
+import LandingPage from './components/LandingPage';
 
 
 function App() {
@@ -25,12 +25,13 @@ function App() {
 
   return (
     <>
-      <Route path='/'>
-        <SplashPage />
-      </Route>
+      
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/'>
+        <LandingPage />
+          </Route>
           <Route path="/login" >
             <LoginFormPage />
           </Route>
