@@ -80,5 +80,5 @@ Live Link: https://loudcloud.onrender.com/
 ## Connect with the developers
 [Helen: LinkedIn](http://www.linkedin.com/in/helen-coates-b93116292) | 
 [Shaun: LinkedIn](https://www.linkedin.com/in/shaun-fisher-139115271/) | 
-[David: LinkedIn](https://github.com/Gdavidu) | 
+[David: LinkedIn](http://www.linkedin.com/in/david-gu-79ab311b5) | 
 [Lydia: LinkedIn](https://www.linkedin.com/in/lydia-kuehnert-619286203/)

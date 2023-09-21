@@ -45,11 +45,11 @@ function Footer({ isLoaded }) {
                         </div>
                         <div className='personal-details'>
                             <a href="https://github.com/Gdavidu" target='_blank'>
-                                <img alt='David' className="person-pic" src="../../profile-pic.png"></img>
+                                <img alt='David' className="person-pic" src="../../david-pic.jpeg"></img>
                             </a>
                             <div className='footer-link-icons'>
                                 <a className="link-icon" href="https://github.com/Gdavidu" target='_blank'><i class="fa-brands fa-github"></i></a>
-                                <a className="link-icon" href="https://github.com/Gdavidu" target='_blank'><i class="fa-brands fa-linkedin"></i></a>
+                                <a className="link-icon" href="http://www.linkedin.com/in/david-gu-79ab311b5" target='_blank'><i class="fa-brands fa-linkedin"></i></a>
                             </div>
                         </div>
                     </div>
