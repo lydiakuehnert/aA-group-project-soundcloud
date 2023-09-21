@@ -44,12 +44,13 @@ export default function LandingPage() {
             <div className="splash-image">
 
 			<div className="splash-text">
-					<h1 className="">What's next in music is first on LoudCloud</h1> 
+					What's next in music is first on LoudCloud
+			</div>
+
 					<p className="splash-p">Upload your first track and begin your journey.</p>
 					
 					<p className="splash-p">LoudCloud gives you space to create, find your fans, and connect with other artists.</p>
 						 
-			</div>
 			</div>
 
 			<div>
