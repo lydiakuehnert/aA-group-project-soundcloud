@@ -59,7 +59,7 @@ function Footer({ isLoaded }) {
                             <h3>Lydia Kuehnert</h3>
                         </div>
                         <div className='personal-details'>
-                            <a href="https://github.com/lydiakuehnert" target='_blank'>
+                            <a href="https://lydiakuehnert.github.io/" target='_blank'>
                                 <img alt='Lydia' className="person-pic" src="../../lydia-pic.jpg"></img>
                             </a>
                             <div className='footer-link-icons'>
