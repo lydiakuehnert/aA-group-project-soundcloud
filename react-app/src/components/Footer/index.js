@@ -14,7 +14,7 @@ function Footer({ isLoaded }) {
                             <h3>Helen Coates</h3>
                         </div>
                         <div className='personal-details'>
-                            <a href="https://github.com/hcoates86" target='_blank'>
+                            <a href="https://hcoates86.github.io/" target='_blank'>
                                 <img alt='Helen' className="person-pic" src="../../profile-pic.png"></img>
                             </a>
                             <div className='footer-link-icons'>
@@ -45,11 +45,11 @@ function Footer({ isLoaded }) {
                         </div>
                         <div className='personal-details'>
                             <a href="https://github.com/Gdavidu" target='_blank'>
-                                <img alt='David' className="person-pic" src="../../profile-pic.png"></img>
+                                <img alt='David' className="person-pic" src="../../david-pic.jpeg"></img>
                             </a>
                             <div className='footer-link-icons'>
                                 <a className="link-icon" href="https://github.com/Gdavidu" target='_blank'><i class="fa-brands fa-github"></i></a>
-                                <a className="link-icon" href="https://github.com/Gdavidu" target='_blank'><i class="fa-brands fa-linkedin"></i></a>
+                                <a className="link-icon" href="http://www.linkedin.com/in/david-gu-79ab311b5" target='_blank'><i class="fa-brands fa-linkedin"></i></a>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@ function Footer({ isLoaded }) {
                             <h3>Lydia Kuehnert</h3>
                         </div>
                         <div className='personal-details'>
-                            <a href="https://github.com/lydiakuehnert" target='_blank'>
+                            <a href="https://lydiakuehnert.github.io/" target='_blank'>
                                 <img alt='Lydia' className="person-pic" src="../../lydia-pic.jpg"></img>
                             </a>
                             <div className='footer-link-icons'>
