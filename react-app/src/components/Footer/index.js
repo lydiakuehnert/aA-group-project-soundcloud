@@ -29,7 +29,7 @@ function Footer({ isLoaded }) {
                             <h3>Shaun Fisher</h3>
                         </div>
                         <div className='personal-details'>
-                            <a href="https://github.com/fishcakefish" target='_blank'>
+                            <a href="http://fishcake.fish/" target='_blank'>
                                 <img alt='Shaun' className="person-pic" src="../../shaun-pic.jpg"></img>
                             </a>
                             <div className='footer-link-icons'>
