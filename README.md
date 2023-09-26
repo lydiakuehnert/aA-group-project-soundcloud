@@ -60,7 +60,9 @@ Live Link: https://loudcloud.onrender.com/
 ### Likes
 | Request                        | Purpose                | Return Value  | 
 | :----------------------------- | :--------------------: | :------------------------------ |
-
+| GET /api/likes        | This fetch is sent to get all the liked songs of a particular user. Upon success, it returns an array of songs objects.                 | [{<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'name': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING,<br>&nbsp;&nbsp;&nbsp;'audio': STRING,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'likes': INT,<br>}]<br>|
+| POST /api/likes/<int:songId>        | This fetch is sent to add a user_id and song_id into the likes join table. Upon success, it returns that user.                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'username': STRING,<br>&nbsp;&nbsp;&nbsp;'email': STRING,<br>&nbsp;&nbsp;&nbsp;'firstname': STRING,<br>&nbsp;&nbsp;&nbsp;'lastname': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING<br>}<br>|
+| DELETE /api/likes/<int:songId>        | This fetch is sent to delete a like from the joing table. Upon success, it returns that current user.                | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'username': STRING,<br>&nbsp;&nbsp;&nbsp;'email': STRING,<br>&nbsp;&nbsp;&nbsp;'firstname': STRING,<br>&nbsp;&nbsp;&nbsp;'lastname': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING<br>}<br>|
 
 ## Feature List
 1. Songs
@@ -68,14 +70,6 @@ Live Link: https://loudcloud.onrender.com/
 3. Likes
 4. Search
 
-## Future Implementation Goals
-
-1. Reviews (w/AWS image uploads)
-2. ChatHelpBot (websockets)
-3. Search Bar
-4. Sales Professionals
-5. Payment Accounts (Credit Cards / PayPal)
-6. Make pixel perfect to target site.
 
 ## Connect with the developers
 [Helen: LinkedIn](http://www.linkedin.com/in/helen-coates-b93116292) | 
