@@ -94,7 +94,7 @@ function SignupFormModal() {
 
 				<label>
 				<input className='signup-input'
-					placeholder="First Name"
+					placeholder="First Name (optional)"
 					type="text"
 					value={firstname}
 					onChange={(e) => setfirstname(e.target.value)}
@@ -103,7 +103,7 @@ function SignupFormModal() {
 				{errorObject.firstname && <p className='errors'>{errorObject.firstname}</p>}
 				<label>
 				<input className='signup-input'
-					placeholder="Last Name"
+					placeholder="Last Name (optional)"
 					type="text"
 					value={lastname}
 					onChange={(e) => setlastname(e.target.value)}

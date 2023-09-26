@@ -1,148 +1,81 @@
-# Flask React Project
+# LoudCloud
 
-This is the starter for the Flask React project.
+LoudCloud is a soft clone of SoundCloud. It is a music site where users can upload songs, review songs, like and unlike songs, and play songs. LoudCloud was built using Flask and Python for the backend and React and Redux for the frontend. 
 
-## Getting started
-1. Clone this repository (only this branch)
+Live Link: https://loudcloud.onrender.com/	
 
-2. Install dependencies
+## Tech Stack
+### Frameworks and Libraries
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
-      ```bash
-      pipenv install -r requirements.txt
-      ```
+ ### Database:
+ ![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+  
+ ### Hosting:
+ ![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
+ ## Index
 
-4. Make sure the SQLite3 database connection URL is in the **.env** file
+[Feature List](https://github.com/lydiakuehnert/aA-group-project-soundcloud/wiki/Feature-List) | [Database Schema](https://github.com/lydiakuehnert/aA-group-project-soundcloud/wiki/Database-Schema) | [User Stories](https://github.com/lydiakuehnert/aA-group-project-soundcloud/wiki/User-Stories) 
 
-5. This starter organizes all tables inside the `flask_schema` schema, defined
-   by the `SCHEMA` environment variable.  Replace the value for
-   `SCHEMA` with a unique name, **making sure you use the snake_case
-   convention**.
+## Splash Page
+![splash](https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/LoudCloud+Screenshots/LoudCloud+Splash+Page.png)
 
-6. Get into your pipenv, migrate your database, seed your database, and run your Flask app
+## User Home Page
+![splash](https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/LoudCloud+Screenshots/LoudCloud+User+Home+Page.png)
 
-   ```bash
-   pipenv shell
-   ```
+## Song Page
+![song](https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/LoudCloud+Screenshots/LoudCloud+Song+Page.png)
 
-   ```bash
-   flask db upgrade
-   ```
-
-   ```bash
-   flask seed all
-   ```
-
-   ```bash
-   flask run
-   ```
-
-7. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+## Upload Page
+![upload](https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/LoudCloud+Screenshots/LoudCloud+Upload+Page.png)
 
 
-## Deployment through Render.com
+## Endpoints
+### Auth
+| Request                        | Purpose                | Return Value  |                  
+| :----------------------------- | :--------------------: | :------------------------------ |
+| GET /api/auth/        | This fetch is sent upon initial app load and on subsequent refreshes.<br>It returns an object representing the current user, if user is logged in.                                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'username': STRING,<br>&nbsp;&nbsp;&nbsp;'email': STRING,<br>&nbsp;&nbsp;&nbsp;'firstname': STRING,<br>&nbsp;&nbsp;&nbsp;'lastname': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING<br>}<br>|
+| POST /api/auth/unauthorized      | This endpoint will be routed to in the case that a protected route does not pass validations for the current user.<br>It returns an object with an errors property, which is an array with the value 'Unauthorized'          | {<br>&nbsp;&nbsp;&nbsp;'errors': ['Unauthorized']<br>}<br>|
+| POST /api/auth/signup        | This fetch sends the form data signup from data to the backend to process the creation of a new user.<br>It returns an object representing the current user, after logging them in, if account creation succeeds.                                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'username': STRING,<br>&nbsp;&nbsp;&nbsp;'email': STRING,<br>&nbsp;&nbsp;&nbsp;'firstname': STRING,<br>&nbsp;&nbsp;&nbsp;'lastname': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING<br>}<br>|
+| POST /api/auth/login | This fetch attempts to login a user with the provided credentials.<br>It returns an object representing the current user, if validation succeeds.                                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'username': STRING,<br>&nbsp;&nbsp;&nbsp;'email': STRING,<br>&nbsp;&nbsp;&nbsp;'firstname': STRING,<br>&nbsp;&nbsp;&nbsp;'lastname': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING<br>}<br>|                                                                        
+| POST /api/auth/logout | This fetch will logout the current user.<br>It returns an object with the message 'User logged Out' if it succeeds.                                 | {<br>&nbsp;&nbsp;&nbsp;'message': 'User logged out'<br>}<br>|
 
-First, refer to your Render.com deployment articles for more detailed
-instructions about getting started with [Render.com], creating a production
-database, and deployment debugging tips.
+### Songs
+| Request                        | Purpose                | Return Value  | 
+| :----------------------------- | :--------------------: | :------------------------------ |
+| GET /api/songs        | This fetch is sent to get all the songs in the song table. Upon success, it returns an array of song objects.                 | [{<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'name': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING,<br>&nbsp;&nbsp;&nbsp;'audio': STRING,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'likes': INT,<br>}]<br>|
+| POST /api/songs/upload        | This fetch is sent to add a new item to the song table. Upon success, it returns an object with the key of 'newSong' representing that item.                 | {<br>&nbsp;&nbsp;&nbsp;'newSong': <br>&nbsp;&nbsp;&nbsp;{<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'name': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING,<br>&nbsp;&nbsp;&nbsp;'audio': STRING,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'likes': INT,<br>}}<br>|
+| PUT /api/songs/<int:id>       | This fetch is sent to update a song. Upon success, it returns an object representing that song with the updated information.                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'name': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING,<br>&nbsp;&nbsp;&nbsp;'audio': STRING,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'likes': INT,<br>}<br>|
+| DELETE /api/songs/<int:id>        | This fetch is sent to delete a song. Upon success, it returns an object of success with the string "successfully deleted", otherwise, we throw an error.                | {"Success": "successfully deleted"}<br>|
+| GET /api/songs/<int:id>        | This fetch is sent to get one song based on id. Upon success, it returns the an object with that song.                | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'name': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING,<br>&nbsp;&nbsp;&nbsp;'audio': STRING,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'likes': INT,<br>}<br>|
+| GET /api/songs/search        | This fetch is sent to get songs based on a filter. Upon success, it returns an array of song objects.                | [{<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'name': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING,<br>&nbsp;&nbsp;&nbsp;'audio': STRING,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'likes': INT,<br>}]<br>|
 
-From the [Dashboard], click on the "New +" button in the navigation bar, and
-click on "Web Service" to create the application that will be deployed.
+### Comments
+| Request                        | Purpose                | Return Value  | 
+| :----------------------------- | :--------------------: | :------------------------------ |
+| GET /api/comments/<int:songId>        | This fetch is sent to get all the comments associated with a particular song. Upon success, it returns an array of comment objects.                 | [{<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'comment': STRING,<br>&nbsp;&nbsp;&nbsp;'createdAt': DATE,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'song': OBJECT<br>}]<br>|
+| POST /api/comments/<int:songId>/new        | This fetch is sent to add a new item to the comment table. Upon success, it returns that new comment.                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'comment': STRING,<br>&nbsp;&nbsp;&nbsp;'createdAt': DATE,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'song': OBJECT<br>}<br>|
+| PUT /api/comments/edit/<int:id>       | This fetch is sent to update a comment. Upon success, it returns an object representing that comment with the updated information.                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'comment': STRING,<br>&nbsp;&nbsp;&nbsp;'createdAt': DATE,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'song': OBJECT<br>}<br>|
+| DELETE /api/comments/<int:id>        | This fetch is sent to delete a comment. Upon success, it returns an object of success with the string "successfully deleted".                | {"Success": "successfully deleted"}<br>|
 
-Look for the name of the application you want to deploy, and click the "Connect"
-button to the right of the name.
 
-Now, fill out the form to configure the build and start commands, as well as add
-the environment variables to properly deploy the application.
+### Likes
+| Request                        | Purpose                | Return Value  | 
+| :----------------------------- | :--------------------: | :------------------------------ |
+| GET /api/likes        | This fetch is sent to get all the liked songs of a particular user. Upon success, it returns an array of songs objects.                 | [{<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'name': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING,<br>&nbsp;&nbsp;&nbsp;'audio': STRING,<br>&nbsp;&nbsp;&nbsp;'user': OBJECT,<br>&nbsp;&nbsp;&nbsp;'likes': INT,<br>}]<br>|
+| POST /api/likes/<int:songId>        | This fetch is sent to add a user_id and song_id into the likes join table. Upon success, it returns that user.                 | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'username': STRING,<br>&nbsp;&nbsp;&nbsp;'email': STRING,<br>&nbsp;&nbsp;&nbsp;'firstname': STRING,<br>&nbsp;&nbsp;&nbsp;'lastname': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING<br>}<br>|
+| DELETE /api/likes/<int:songId>        | This fetch is sent to delete a like from the joing table. Upon success, it returns that current user.                | {<br>&nbsp;&nbsp;&nbsp;'id': INT,<br>&nbsp;&nbsp;&nbsp;'username': STRING,<br>&nbsp;&nbsp;&nbsp;'email': STRING,<br>&nbsp;&nbsp;&nbsp;'firstname': STRING,<br>&nbsp;&nbsp;&nbsp;'lastname': STRING,<br>&nbsp;&nbsp;&nbsp;'image': STRING<br>}<br>|
 
-### Part A: Configure the Start and Build Commands
+## Feature List
+1. Songs
+2. Comments
+3. Likes
+4. Search
 
-Start by giving your application a name.
 
-Leave the root directory field blank. By default, Render will run commands from
-the root directory.
-
-Make sure the Environment field is set set to "Python 3", the Region is set to
-the location closest to you, and the Branch is set to "main".
-
-Next, add your Build command. This is a script that should include everything
-that needs to happen _before_ starting the server.
-
-For your Flask project, enter the following command into the Build field, all in
-one line:
-
-```shell
-# build command - enter all in one line
-npm install --prefix react-app &&
-npm run build --prefix react-app &&
-pip install -r requirements.txt &&
-pip install psycopg2 &&
-flask db upgrade &&
-flask seed all
-```
-
-This script will install dependencies for the frontend, and run the build
-command in the __package.json__ file for the frontend, which builds the React
-application. Then, it will install the dependencies needed for the Python
-backend, and run the migration and seed files.
-
-Now, add your start command in the Start field:
-
-```shell
-# start script
-gunicorn app:app
-```
-
-_If you are using websockets, use the following start command instead for increased performance:_
-
-`gunicorn --worker-class eventlet -w 1 app:app`
-
-### Part B: Add the Environment Variables
-
-Click on the "Advanced" button at the bottom of the form to configure the
-environment variables your application needs to access to run properly. In the
-development environment, you have been securing these variables in the __.env__
-file, which has been removed from source control. In this step, you will need to
-input the keys and values for the environment variables you need for production
-into the Render GUI.
-
-Click on "Add Environment Variable" to start adding all of the variables you
-need for the production environment.
-
-Add the following keys and values in the Render GUI form:
-
-- SECRET_KEY (click "Generate" to generate a secure secret for production)
-- FLASK_ENV production
-- FLASK_APP app
-- SCHEMA (your unique schema name, in snake_case)
-- REACT_APP_BASE_URL (use render.com url, located at top of page, similar to
-  https://this-application-name.onrender.com)
-
-In a new tab, navigate to your dashboard and click on your Postgres database
-instance.
-
-Add the following keys and values:
-
-- DATABASE_URL (copy value from Internal Database URL field)
-
-_Note: Add any other keys and values that may be present in your local __.env__
-file. As you work to further develop your project, you may need to add more
-environment variables to your local __.env__ file. Make sure you add these
-environment variables to the Render GUI as well for the next deployment._
-
-Next, choose "Yes" for the Auto-Deploy field. This will re-deploy your
-application every time you push to main.
-
-Now, you are finally ready to deploy! Click "Create Web Service" to deploy your
-project. The deployment process will likely take about 10-15 minutes if
-everything works as expected. You can monitor the logs to see your build and
-start commands being executed, and see any errors in the build process.
-
-When deployment is complete, open your deployed site and check to see if you
-successfully deployed your Flask application to Render! You can find the URL for
-your site just below the name of the Web Service at the top of the page.
-
-[Render.com]: https://render.com/
-[Dashboard]: https://dashboard.render.com/
+## Connect with the developers
+[Helen: LinkedIn](http://www.linkedin.com/in/helen-coates-b93116292) | 
+[Shaun: LinkedIn](https://www.linkedin.com/in/shaun-fisher-139115271/) | 
+[David: LinkedIn](http://www.linkedin.com/in/david-gu-79ab311b5) | 
+[Lydia: LinkedIn](https://www.linkedin.com/in/lydia-kuehnert-619286203/)
