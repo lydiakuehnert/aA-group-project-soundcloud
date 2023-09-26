@@ -18,14 +18,17 @@ Live Link: https://loudcloud.onrender.com/
 
 [Feature List](https://github.com/lydiakuehnert/aA-group-project-soundcloud/wiki/Feature-List) | [Database Schema](https://github.com/lydiakuehnert/aA-group-project-soundcloud/wiki/Database-Schema) | [User Stories](https://github.com/lydiakuehnert/aA-group-project-soundcloud/wiki/User-Stories) 
 
-## Home Page
-![splash](https://myaaprojects.s3.us-east-2.amazonaws.com/kora-splash.png)
+## Splash Page
+![splash](https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/LoudCloud+Screenshots/LoudCloud+Splash+Page.png)
+
+## User Home Page
+![splash](https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/LoudCloud+Screenshots/LoudCloud+User+Home+Page.png)
 
 ## Song Page
-![product](https://myaaprojects.s3.us-east-2.amazonaws.com/Kora-questions.png)
+![song](https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/LoudCloud+Screenshots/LoudCloud+Song+Page.png)
 
 ## Upload Page
-![Review](https://myaaprojects.s3.us-east-2.amazonaws.com/Kora-answers.png)
+![upload](https://soundcloudaudiofiles.s3.us-west-1.amazonaws.com/LoudCloud+Screenshots/LoudCloud+Upload+Page.png)
 
 
 ## Endpoints
