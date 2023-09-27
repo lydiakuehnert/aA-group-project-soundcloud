@@ -15,7 +15,7 @@ function Footer({ isLoaded }) {
                         </div>
                         <div className='personal-details'>
                             <a href="https://hcoates86.github.io/" target='_blank'>
-                                <img alt='Helen' className="person-pic" src="../../profile-pic.png"></img>
+                                <img alt='Helen' className="person-pic" src="../../helen-pic.jpg"></img>
                             </a>
                             <div className='footer-link-icons'>
                                 <a className="link-icon" href="https://github.com/hcoates86" target='_blank'><i class="fa-brands fa-github"></i></a>
