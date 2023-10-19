@@ -35,7 +35,7 @@ body {
     color: white;
     background-color: rgb(255, 75, 20);
     cursor: pointer;
-    border: 0;
+    border: 1px solid rgb(255, 75, 20);
     border-radius: 3px;
     padding: 8px;
   }
