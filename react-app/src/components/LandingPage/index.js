@@ -61,7 +61,7 @@ export default function LandingPage() {
 				</div>
 				<div className="all-songs">
                 {songArr.length && songArr.map(song => (
-                    <SongCard key={song.id} song={song} />
+					song && <SongCard key={song.id} song={song} />
                 ))}
             </div>
 			</div>
