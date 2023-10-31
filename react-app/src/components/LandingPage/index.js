@@ -21,18 +21,18 @@ import SongCard from "../SongCard";
 export default function LandingPage() {
 	const sessionUser = useSelector(state => state.session.user);
 	const history = useHistory();
-	
+
 	const dispatch = useDispatch();
-	
+
     const songsObj = useSelector(state => state.songs.allSongs);
     const songs = Object.values(songsObj)
 
 	const songArr = []
-	
+
     useEffect(() => {
 		dispatch(getSongsThunk())
     }, [dispatch])
-	
+
 	if (sessionUser) history.push('/home')
 	if (!songs.length) return null
 	for (let i = 0; i < 12; i++) {
@@ -48,16 +48,16 @@ export default function LandingPage() {
 			</div>
 
 					<p className="splash-p">Upload your first track and begin your journey.</p>
-					
+
 					<p className="splash-p">LoudCloud gives you space to create, find your fans, and connect with other artists.</p>
-						 
+
 			</div>
 
 			<div>
 
 				<div className="hear-div">
 					<p className="hear">Hear what's trending for free in the LoudCloud community</p>
-					
+
 				</div>
 				<div className="all-songs">
                 {songArr.length && songArr.map(song => (
@@ -65,7 +65,7 @@ export default function LandingPage() {
                 ))}
             </div>
 			</div>
-        
+
         </div>
     )
 }

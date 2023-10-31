@@ -6,7 +6,7 @@ from ..forms.song_form import SongForm
 from ..forms.song_edit_form import SongEditForm
 
 from .auth_routes import validation_errors_to_error_messages
-from sqlalchemy import func
+from sqlalchemy import func, or_
 
 songs = Blueprint('songs', __name__)
 
@@ -132,7 +132,10 @@ def get_one_song(id):
 @songs.route('/search')
 def get_searched_songs():
     query = request.args.get('').lower()
-    get_songs = Song.query.filter(func.lower(Song.name).like(f'%{query}%')).all()
+    get_songs = (db.session.query(Song)
+                 .join(User, User.id == Song.user_id)
+                 .filter(or_(func.lower(Song.name).like(f'%{query}%'), func.lower(User.username).like(f'%{query}%')))
+                 .all())
     response = [song.to_dict() for song in get_songs]
     return response
 
