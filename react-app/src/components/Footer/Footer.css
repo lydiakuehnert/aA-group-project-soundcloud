@@ -1,15 +1,18 @@
 #footer-box {
     background-color: rgb(219, 50, 75);
-    border-top: 1px solid black;
-    position: fixed;
+    /* border-top: 1px solid black; */
+    /* position: fixed; */
+    position: sticky;
+    border-top: 1px solid rgb(219, 50, 75);
     width: 100%;
-    margin: 0 auto;
+    /* margin: 0 auto;
     bottom: 0;
-    z-index: 999;
+    z-index: 999; */
     display: flex;
     justify-content: space-around;
     padding: 2px;
     height: 3rem;
+    bottom: 1;
 }
 
 .footer-person {
