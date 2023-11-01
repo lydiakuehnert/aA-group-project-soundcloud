@@ -26,7 +26,7 @@ function App() {
 
   return (
     <>
-      
+
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
@@ -62,8 +62,8 @@ function App() {
           </Route>
         </Switch>
       )}
-      <Player isLoaded={isLoaded} />
       <Footer isLoaded={isLoaded} />
+      <Player isLoaded={isLoaded} />
     </>
   );
 }

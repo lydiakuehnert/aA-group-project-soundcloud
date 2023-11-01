@@ -1,8 +1,10 @@
 .player-background {
     background-color: rgb(69, 69, 69);
     position: sticky;
-    bottom: 3rem;
+    /* bottom: 3rem; */
+    bottom: 0;
     z-index: 999;
+    width: 100%;
 }
 
 .rhap_container {
