@@ -72,8 +72,8 @@ export default function OneSong() {
                         <h1>Artist: {song.user.username}</h1>
                         {user && <div className="heart-likes-div">
                             { liked ? <LikeDelete toggleLiked={toggleLiked}/> : <LikeSong toggleLiked={toggleLiked} /> }
-                            <h3>Likes: {song.likes}</h3>
                         </div>}
+                            <h3>Likes: {song.likes}</h3>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@
     z-index: 999; */
     display: flex;
     justify-content: space-around;
-    padding: 2px;
+    padding: 6px 2px 4px 2px;
     height: 3rem;
     bottom: 1;
 }

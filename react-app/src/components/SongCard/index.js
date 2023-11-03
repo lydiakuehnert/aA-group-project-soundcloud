@@ -44,8 +44,11 @@ export default function SongCard({ song }) {
             <NavLink className="song-card-link" exact to={`/songs/${song.id}`}>
 
                 <div className="song-details">
-                    <p className="song-track-name">{song.name}</p>
+                    <div className="song-text">
+                    <p className="song-track-name">{ song && song.name}</p>
                     <p className="artist-name">{song.user && song.user.username}</p>
+                    </div>
+                    <div className="song-likes-num" >{song.likes && song.likes} <i id='songcard-heart' className="fa-solid fa-heart"></i> </div>
                 </div>
             </NavLink>
         </div>
