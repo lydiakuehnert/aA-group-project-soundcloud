@@ -38,6 +38,11 @@ export default function LandingPage() {
 	for (let i = 0; i < 12; i++) {
 		songArr.push(songs[i])
 	}
+	console.log("SONGARR B4 SORT", songArr)
+
+	let sorted = songArr.sort((a, b) => b.likes - a.likes)
+
+	console.log("SONGARR AFTER SORT", sorted)
 
     return (
         <div className="index-landing">
@@ -47,20 +52,20 @@ export default function LandingPage() {
 					What's next in music is first on LoudCloud
 			</div>
 
-					<p className="splash-p">Upload your first track and begin your journey.</p>
+					<p className="splash-p">Upload your first track and begin your journey</p>
 
-					<p className="splash-p">LoudCloud gives you space to create, find your fans, and connect with other artists.</p>
+					<p className="splash-p">LoudCloud gives you space to create, find your fans, and connect with other artists</p>
 
 			</div>
 
 			<div>
 
 				<div className="hear-div">
-					<p className="hear">Hear what's trending for free in the LoudCloud community</p>
+					<p className="hear">Hear what's trending in the LoudCloud community</p>
 
 				</div>
 				<div className="all-songs">
-                {songArr.length && songArr.map(song => (
+                {sorted.length && sorted.map(song => (
 					song && <SongCard key={song.id} song={song} />
                 ))}
             </div>

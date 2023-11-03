@@ -11,6 +11,8 @@
 
 .song-details {
     margin-top: .3em;
+    display: flex;
+    justify-content: space-between;
 }
 
 .song-details > p {
@@ -27,6 +29,7 @@
     font-size: .8em;
     color:rgb(153, 153, 153);
     padding-top: 3px;
+    margin: 0;
 }
 .card-image {
     position: relative;
@@ -56,4 +59,20 @@
     text-overflow: ellipsis;
     word-break: normal;
     white-space: nowrap;
+    /* padding: none; */
+    margin: 0;
+}
+
+.song-likes-num{
+    display: flex;
+    justify-content: right;
+    align-items: top;
+    /* position: relative;
+    bottom: 38px; */
+    margin: 0;
+}
+
+#songcard-heart{
+    border: none;
+    padding-top: 1px;
 }
